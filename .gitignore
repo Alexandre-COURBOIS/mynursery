@@ -178,3 +178,4 @@ wp-content/uploads
 # Ignore le contenu de "wp-content" sauf "plugins", "themes" et "mu-plugins"
 !wp-content
 !wp-content/themes/*
+!wp-content/themes/mynursery/*
