@@ -1,3 +1,4 @@
+@import "asset/css/about-us.css";
 /*!
 Theme Name: mynursery
 Theme URI: http://underscores.me/
@@ -82,3 +83,6 @@ table {
 	-moz-box-sizing: border-box; /* Firefox, other Gecko */
 	box-sizing: border-box; /* Opera/IE 8+ */
 }
+
+
+
