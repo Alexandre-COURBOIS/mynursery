@@ -1,6 +1,7 @@
 <?php
 global $web; ?>
 
+
 <footer class="footer bg-parallax">
     <div class="bg-color"></div>
     <div class="container">
