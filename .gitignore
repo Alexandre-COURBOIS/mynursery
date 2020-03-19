@@ -167,3 +167,26 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Ignore tout à la racine, sauf .gitignore et "wp-content"
+*
+!README.md
+!.gitignore
+
+# Ignore le contenu de "wp-content" sauf "plugins", "themes" et "mu-plugins"
+wp-content/*
+!wp-content/plugins/
+!wp-content/mu-plugins/
+
+# Ignore le contenu de "plugins" sauf le dossier de NOTRE plugin personnalisé
+# (la ligne ! sera à répêter pour chaque plugin à commiter...)
+wp-content/plugins/*
+!wp-content/plugins/mon-plugin/
+# et du "must-use" nommé ici "important.php"
+wp-content/mu-plugins/*
+!wp-content/mu-plugins/important.php
+
+# Ignore le contenu de "themes" sauf le dossier de NOTRE thème
+wp-content/
+wp-content/themes
+!wp-content/themes/mynursery/
