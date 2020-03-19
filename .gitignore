@@ -168,14 +168,30 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Ignore tout à la racine, sauf .gitignore et "wp-content"
-*
-!README.md
-!.gitignore
-wp-content/upgrade
-wp-content/uploads
+# Ignorer WORDPRESS
 
-# Ignore le contenu de "wp-content" sauf "plugins", "themes" et "mu-plugins"
-!wp-content
-!wp-content/themes/*
-!wp-content/themes/mynursery/*
+wp-admin
+wp-includes
+.htaccess
+/index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+wp-content/languages
+wp-content/plugins
+wp-content/uploads
+wp-content/upgrade
+wp-content/index.php
