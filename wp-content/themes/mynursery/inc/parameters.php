@@ -2,11 +2,11 @@
 
 global $web;
 
-/*$web = array(
+$web = array(
     'pages' => array(
         'home' => array(
-            'id' => 5,
+            'id' => 6,
             'slug' => '/'
         )
     )
-);*/
+);
