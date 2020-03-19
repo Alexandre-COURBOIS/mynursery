@@ -1,0 +1,24 @@
+footer{
+    background-image: url("../img/bg-footer.jpeg") ;
+    color: white;
+}
+.footer.bg-parallax{
+    background-position: 0 -245px;
+    background-attachment: scroll;
+}
+.bg-parallax{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.footer{
+    position: relative;
+    padding: 75px 0 95px;
+}
+.bg-color{
+    background: rgba(0, 0, 0, .85);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
