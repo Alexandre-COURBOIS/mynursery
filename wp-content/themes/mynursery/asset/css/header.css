@@ -23,11 +23,12 @@
 
 .social li {
     margin: 0 7px;
+    margin-top: 5px;
 }
 
 .nav {
     float: right;
-    margin-top: 59px;
+    margin-top: 50px;
     display: inline-block;
 }
 
