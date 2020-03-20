@@ -6,15 +6,15 @@ global $web; ?>
     <div class="bg-color"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-col">
-                    <div class="widget m-b-25">
+            <div class="column col-lg-4">
+                <div>
+                    <div>
                         <a href="<?= esc_url(home_url('/'))?>">
                             <img src="<?=get_template_directory_uri()?>/asset/img/mynursery.png"
-                                 alt="logo_mynursery"/>
+                                 alt="logo_mynursery" id="logo-footer"/>
                         </a>
                     </div>
-                    <div class="widget widget-address">
+                    <div>
                         <ul>
                             <li>24 Place Saint Marc, 76000 Rouen</li>
                             <li>02.35.00.11.22</li>
@@ -23,47 +23,61 @@ global $web; ?>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6">
-                <div class="footer-col p-l-70 p-md-l-0">
-                    <div class="widget widget_pages">
-                        <h4 class="widget-title">Link</h4>
+            <div class="column col-lg-2">
+                <div>
+                    <div>
+                        <h4>Link</h4>
                         <ul>
                             <li>
-                                <a href="#">About</a>
+                                <a href="<?= esc_url(home_url('/'))?>">Home</a>
                             </li>
                             <li>
-                                <a href="#">Services</a>
+                                <a href="<?= esc_url(home_url($web['pages']['features']['slug'])) ?>">Features</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="<?= esc_url(home_url($web['pages']['pages']['slug'])) ?>">Pages</a>
+                            </li>
+                            <li>
+                                <a href="<?= esc_url(home_url($web['pages']['gallery']['slug'])) ?>">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="<?= esc_url(home_url($web['pages']['blog']['slug'])) ?>">Blog</a>
+                            </li>
+                            <li>
+                                <a href="<?= esc_url(home_url($web['pages']['contact']['slug'])) ?>">Contact</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-col p-l-70 p-md-l-0">
-                    <h4 class="widget-title">Social</h4>
-                    <div class="widget widget_socials">
-                        <ul class="list-social list-social-2">
-                            <li class="list-social__item">
-                                <a class=" ic-fb" href="#">
-                                    <i class=" zmdi zmdi-facebook"></i>
-                                </a>
+            <div class="column col-lg-3">
+                <div>
+                    <h4>Social</h4>
+                    <div>
+                        <ul id="logo-social">
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
                             </li>
-                            <li class="list-social__item">
-                                <a class=" ic-twi" href="#">
-                                    <i class=" zmdi zmdi-twitter"></i>
-                                </a>
+                            <li>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-google"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-col">
-                    <div class="widget widget_text">
-                        <h4 class="widget-title">copyright</h4>
+            <div class="column col-lg-3">
+                <div>
+                    <div>
+                        <h4>copyright</h4>
                         <p>© 2020 WEBAPSY</p>
                     </div>
                 </div>
