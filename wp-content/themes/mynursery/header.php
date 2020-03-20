@@ -21,9 +21,10 @@
 
 <body <?php body_class(); ?>>
 
+<div class="wrap_header">
 
 <header class="page-header" id="myHeader">
-    <div class="wrap_header">
+
         <div class="nav_container">
 
             <h1>MyNursery</h1>
@@ -43,12 +44,9 @@
                 </ul>
 
                 <ul class="nav navbar">
-                    <li class="active"><a class="drop-a"
-                                          href="<?php echo esc_url(home_url($web['pages']['home']['slug'])) ?>"
-                                          title="">Home</a>
+                    <li><a href="<?php echo esc_url(home_url($web['pages']['home']['slug'])) ?>" title="">Home</a>
                     </li>
-                    <li><a href="<?php echo esc_url(home_url($web['pages']['features']['slug'])) ?>"
-                           title="">Features</a>
+                    <li><a href="<?php echo esc_url(home_url($web['pages']['features']['slug'])) ?>" title="">Features</a>
                     </li>
                     <li><a href="<?php echo esc_url(home_url($web['pages']['pages']['slug'])) ?>" title="">Pages</a>
                     </li>
@@ -60,8 +58,6 @@
                 </ul>
 
             </nav>
-
-        </div>
 
         <div class="clear"></div>
 

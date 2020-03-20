@@ -2,15 +2,17 @@
     max-width: 1780px;
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .sticky {
     position: fixed;
     top: 0;
+    max-width: 1780px;
     width: 100%;
     z-index: 20;
     background: rgba(255,255,255,0.9);
-    transition: .5s;
+    transition: 1s;
 }
 
 .logo {
@@ -33,7 +35,7 @@
 
 .nav {
     float: right;
-    margin-top: 50px;
+    margin-top: 35px;
     display: inline-block;
 }
 
