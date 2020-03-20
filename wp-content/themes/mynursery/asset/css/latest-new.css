@@ -1,0 +1,23 @@
+.img-new{
+    width: 75%;
+    margin: 5px 0;
+}
+
+.title-section{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 25px;
+    text-align: center;
+}
+.title-new{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 15px;
+}
+.section-latest-new span{
+    color: grey;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
