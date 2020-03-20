@@ -5,8 +5,7 @@ Template Name: Home
 
 get_header();
 ?>
-    <body>
-
+    <div class="clear"></div>
     <div id="wrap-about-us" class=".container">
         <section id="about-us" class="row">
             <div id="about-us-left" class="col-sm">
@@ -36,7 +35,5 @@ get_header();
         </section>
     </div>
     </body>
-
-
 <?php
 get_footer();

@@ -1,11 +1,16 @@
-.wrap {
+.wrap_header {
     max-width: 1780px;
     width: 100%;
     margin: 0 auto;
 }
 
-.nav_container {
-    background: bisque;
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    background: rgba(255,255,255,0.9);
+    transition: .5s;
 }
 
 .logo {
