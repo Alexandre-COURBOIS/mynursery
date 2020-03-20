@@ -29,22 +29,22 @@ global $web; ?>
                         <h4>Link</h4>
                         <ul>
                             <li>
-                                <a href="<?= esc_url(home_url('/'))?>">Home</a>
+                                <a href="<?= esc_url(home_url('/'))?>" class="lien-footer">Home</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['features']['slug'])) ?>">Features</a>
+                                <a href="<?= esc_url(home_url($web['pages']['features']['slug'])) ?>" class="lien-footer">Features</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['pages']['slug'])) ?>">Pages</a>
+                                <a href="<?= esc_url(home_url($web['pages']['pages']['slug'])) ?>" class="lien-footer">Pages</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['gallery']['slug'])) ?>">Gallery</a>
+                                <a href="<?= esc_url(home_url($web['pages']['gallery']['slug'])) ?>" class="lien-footer">Gallery</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['blog']['slug'])) ?>">Blog</a>
+                                <a href="<?= esc_url(home_url($web['pages']['blog']['slug'])) ?>" class="lien-footer">Blog</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['contact']['slug'])) ?>">Contact</a>
+                                <a href="<?= esc_url(home_url($web['pages']['contact']['slug'])) ?>" class="lien-footer">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -56,19 +56,19 @@ global $web; ?>
                     <div>
                         <ul id="logo-social">
                             <li>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#" class="lien-footer"><i class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="lien-footer"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="lien-footer"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                <a href="#" class="lien-footer"><i class="fab fa-pinterest"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-google"></i></a>
+                                <a href="#" class="lien-footer"><i class="fab fa-google"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -93,3 +93,4 @@ global $web; ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </footer>
+</div>

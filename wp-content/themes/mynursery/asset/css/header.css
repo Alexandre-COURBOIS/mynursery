@@ -2,6 +2,7 @@
     max-width: 1780px;
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .nav_container {

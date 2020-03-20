@@ -15,7 +15,7 @@ footer li, footer p {
     font-weight: 100;
 }
 
-footer a {
+.lien-footer{
     color: white;
     text-decoration: none;
     font-weight: 100;
@@ -65,7 +65,7 @@ footer a:hover {
 
 /*RESPONSIVE*/
 
-@media (max-width: 991px) {
+@media (max-width: 990px) {
     .footer.bg-color.bg-parallax {
         background-position: center center;
     }
