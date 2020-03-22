@@ -42,7 +42,7 @@ get_header();
                             </div>
                             <h3 class="title-new">Covid-19 et les crèches, que ce passe-t-il ?</h3>
                             <span>Publié le : 18 Mars 2020</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut
                                 labore et dolore magna aliqua.Ut enim ad minim binz veniam, quis nostrud exercitation
                                 ullamco laboris nisi ut...</p>
@@ -54,7 +54,7 @@ get_header();
                             </div>
                             <h3 class="title-new">Crèche 2.0, quelles sont les nouveautées ?</h3>
                             <span>Publié le : 2 Mars 2020</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt
+                            <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt
                                 ut
                                 labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                 ullamco
