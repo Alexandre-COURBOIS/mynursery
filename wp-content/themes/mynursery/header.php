@@ -23,12 +23,15 @@
 
 <header id="myHeader">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
         <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="200" height="100" alt="">
     </a>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown float-right">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
