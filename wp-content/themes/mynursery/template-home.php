@@ -5,6 +5,7 @@ Template Name: Home
 
 get_header();
 ?>
+
     <body>
     <div class="container">
         <div id="about-us" class="row">
@@ -13,6 +14,7 @@ get_header();
                 <h3 id="h3" class="title_aboutus">Ici le titre de la section about us</h3>
                 <p class="text_aboutus"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. A non odio pariatur,
                     ullam veniam
+
                     voluptatum!
                     Assumenda, aut autem delectus doloremque, dolores error est illum perferendis porro totam vitae
                     voluptas voluptatem.
@@ -66,7 +68,5 @@ get_header();
         </div>
     </div>
     </body>
-
-
 <?php
 get_footer();
