@@ -1,6 +1,22 @@
 .img-new{
     width: 75%;
     margin: 5px 0;
+    margin-left: 15%;
+}
+.img-hover-zoom{
+    overflow: hidden;
+}
+/* Brightness-zoom Container */
+.img-hover-zoom-translate img {
+    transition: transform 0.5s, filter 0.5s ease-in-out;
+    transform-origin: center center;
+    filter: brightness(50%);
+}
+
+/* The Transformation */
+.img-hover-zoom-translate:hover img {
+    transform: scale(1.1);
+    filter: brightness(100%);
 }
 
 .title-section{
