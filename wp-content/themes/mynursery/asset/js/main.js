@@ -1,5 +1,7 @@
 // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+window.onscroll = function () {
+    myFunction()
+};
 
 // Get the header
 var header = document.getElementById("myHeader");
@@ -16,14 +18,10 @@ function myFunction() {
     }
 }
 
-(function($) {
+// Slider
 
-    $(".form-style .form-control").on("input", function() {
-        if ($(this).val()) {
-            $(this).addClass("hasValue");
-        } else {
-            $(this).removeClass("hasValue");
-        }
-    });
+$('.carousel').carousel({
+    interval: 2000
 });
+
 

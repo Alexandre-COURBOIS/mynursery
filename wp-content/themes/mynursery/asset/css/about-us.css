@@ -2,25 +2,11 @@
 SECTION ABOUT US
 ////////////////// */
 
-/*modif global (#id)*/
+
 /*modif unique (.classe) */
-#h2 {
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 400;
-    letter-spacing: .3em;
-}
+
 .section_aboutus {
     margin-bottom: 18px;
-}
-#h3 {
-    font-weight: 700;
-    font-size: 38px;
-}
-.title_aboutus {
-    line-height: -webkit-calc(50/38);
-    line-height: -moz-calc(50/38);
-    line-height: calc(50/38);
 }
 .text_aboutus {
     margin-bottom: 74px;
@@ -38,8 +24,12 @@ SECTION ABOUT US
     border-radius: 0;
     cursor: pointer;
 }
-#test {
+
+#supprlink {
     text-decoration: none;
 }
+
+
+
 
 
