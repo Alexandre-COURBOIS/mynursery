@@ -5,7 +5,7 @@ Template Name: Home
 
 get_header();
 ?>
-
+    <section>
     <div class="wrap-slider">
         <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
 
@@ -48,7 +48,6 @@ get_header();
                         <p>With us, they will discover about whar their world is doing</p>
                     </div>
                 </div>
-
             </div>
 
             <!-- Left and right controls -->
@@ -61,6 +60,9 @@ get_header();
 
         </div>
     </div>
+    <section>
+
+    <div class="separator"></div>
 
     <section>
         <div class="container">

@@ -102,6 +102,9 @@ table {
     box-sizing: border-box; /* Opera/IE 8+ */
 }
 
+.separator {
+    height: 80px;
+}
 /* supprime tous les radius */
 * {
 	-webkit-border-radius: 0 !important;
