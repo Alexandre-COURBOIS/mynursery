@@ -1,5 +1,7 @@
 // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+window.onscroll = function () {
+    myFunction()
+};
 
 // Get the header
 var header = document.getElementById("myHeader");
@@ -15,5 +17,11 @@ function myFunction() {
         header.classList.remove("sticky");
     }
 }
+
+// Slider
+
+$('.carousel').carousel({
+    interval: 2000
+});
 
 

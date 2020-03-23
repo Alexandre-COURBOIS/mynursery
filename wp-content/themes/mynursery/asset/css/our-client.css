@@ -1,0 +1,11 @@
+.logo-hover-zoom{
+    overflow: hidden;
+    max-width: 300px;
+    max-height: 130px;
+    margin-bottom: 30px;
+}
+.logo-client{
+    margin-left: 30%;
+    width: 50%;
+    height: 50%;
+}
