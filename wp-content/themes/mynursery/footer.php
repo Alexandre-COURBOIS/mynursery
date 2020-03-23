@@ -92,4 +92,5 @@ global $web; ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </footer>
+</body>
 </div>

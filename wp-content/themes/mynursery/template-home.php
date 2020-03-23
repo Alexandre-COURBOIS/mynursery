@@ -6,7 +6,7 @@ Template Name: Home
 get_header();
 ?>
 
-    <body>
+<section>
     <div class="container">
         <div id="about-us" class="row">
             <div id="about-us-left" class="col-md-7">
@@ -27,7 +27,7 @@ get_header();
                 <img class="img-thumbnail img-fluid mx-auto"
                      src="<?php echo get_template_directory_uri() ?>/asset/img/about-us-family2.jpg" alt="">
             </div>
-
+        </section>
 
             <section class="section-latest-new">
                 <div class="container">
@@ -67,6 +67,5 @@ get_header();
             </section>
         </div>
     </div>
-    </body>
 <?php
 get_footer();
