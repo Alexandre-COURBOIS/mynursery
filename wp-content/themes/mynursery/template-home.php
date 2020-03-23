@@ -82,7 +82,7 @@ get_header();
                 </div>
                 <div id="about-us-right" class="col-md-5">
                     <img class="img-thumbnail img-fluid mx-auto"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/about-us-family2.jpg" alt="">
+                         src="<?php echo get_template_directory_uri() ?>/asset/img/about-us-family.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@ get_header();
     <div class="separator"></div>
 
     <section class="partner-section">
-        <div class="container">
+        <div class="wrap-slider">
             <div class="row">
                 <div class="col">
                     <h2 class="title-section">Our Clients</h2>
@@ -225,6 +225,8 @@ get_header();
             </div>
         </div>
     </section>
+
+    <div class="separator"></div>
 
 <?php
 get_footer();
