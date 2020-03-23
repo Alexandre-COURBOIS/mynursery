@@ -16,7 +16,7 @@ get_header();
                         <span class="input-highlight"></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="john.doe@gmail.com">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="john.doe@example.com">
                         <span class="input-highlight"></span>
                     </div>
                     <div class="form-group">
@@ -33,7 +33,7 @@ get_header();
 
             </div>
             <div class="col-md-5 mx-auto mt-5 mb-5">
-                <input type="submit" class="btn btn-lg btn-danger btn-block">
+                <input type="submit" class="btn btn-lg btn-success btn-block">
             </div>
         </form>
     </div>
