@@ -102,6 +102,13 @@ table {
     box-sizing: border-box; /* Opera/IE 8+ */
 }
 
+/* supprime tous les radius */
+* {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
 h1 {
     position: absolute;
     left: -500000px;
