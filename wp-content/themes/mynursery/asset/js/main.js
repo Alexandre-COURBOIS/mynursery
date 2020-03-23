@@ -15,5 +15,3 @@ function myFunction() {
         header.classList.remove("sticky");
     }
 }
-
-
