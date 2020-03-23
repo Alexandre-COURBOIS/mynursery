@@ -83,6 +83,11 @@ table {
 	-moz-box-sizing: border-box; /* Firefox, other Gecko */
 	box-sizing: border-box; /* Opera/IE 8+ */
 }
-
+/* supprime tous les radius */
+* {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
 
 

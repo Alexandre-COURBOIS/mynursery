@@ -18,7 +18,7 @@ get_header();
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur cumque cupiditate
                     debitis harum laudantium magni minima modi, quia rerum, saepe sapiente suscipit!
                 </p>
-                <a id="test" class="btn-redirection" href="http///www.ici-le-lien.fr">En savoir plus...</a>
+                <a id="supprlink" class="btn btn-outline-dark" role="button" href="http///www.ici-le-lien.fr">En savoir plus... <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div id="about-us-right" class="col-md-5">
