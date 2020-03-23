@@ -25,7 +25,7 @@ get_header();
                          alt="Enfants se tennant la main">
                     <div class="carousel-caption">
                         <h3 class="h2">Make them smile !</h3>
-                        <p>If we exist it's to improve the hapiness of your sons</p>
+                        <p>We're here to improve the happiness of your sons</p>
                     </div>
                 </div>
 
@@ -43,8 +43,8 @@ get_header();
                          src="<?php echo get_template_directory_uri() ?>/asset/img/slider3.jpg"
                          alt="Enfants dans un champ de coquelicots York">
                     <div class="carousel-caption">
-                        <h3 class="h2">Make them discover the world</h3>
-                        <p>With us, they will discover about whar their world is doing</p>
+                        <h3 class="h2">Let's discover the world together</h3>
+                        <p>To find all the possibilities and much more ... </p>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ get_header();
             <div id="about-us" class="row">
                 <div id="about-us-left" class="col-md-7">
                     <h2 id="h2" class="section_aboutus">about us</h2>
-                    <h3 id="h3" class="title_aboutus">Ici le titre de la section about us</h3>
+                    <h3 id="h3" class="title_aboutus">Here the title of about us</h3>
                     <p class="text_aboutus"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. A non odio
                         pariatur,
                         ullam veniam
@@ -78,7 +78,7 @@ get_header();
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur cumque cupiditate
                         debitis harum laudantium magni minima modi, quia rerum, saepe sapiente suscipit!
                     </p>
-                    <a id="test" class="btn-redirection" href="http///www.ici-le-lien.fr">En savoir plus...</a>
+                    <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read more...</a>
                 </div>
                 <div id="about-us-right" class="col-md-5">
                     <img class="img-thumbnail img-fluid mx-auto"
@@ -95,7 +95,7 @@ get_header();
             <div class="outer-div">
                 <div class="inner-div">
                     <h2 id="h2" class="section_ourspe">our specilization</h2>
-                    <h3 id="h3" class="title_ourspe">Title our spe</h3>
+                    <h3 id="h3" class="title_ourspe">Here the title of our specilization</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -114,7 +114,7 @@ get_header();
                 </div>
                 <div class="col-lg-4">
                     <i id="icon" class="fas fa-lock fa-7x"></i>
-                    <h4 id="space-between" class="h4"><a id="supprlink" href="">securité</a></h4>
+                    <h4 id="space-between" class="h4"><a id="supprlink" href="">safety</a></h4>
                     <p class="text-ourspe">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget
                         quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
                         commodo.</p>
@@ -138,8 +138,8 @@ get_header();
                         <img src="<?php echo get_template_directory_uri() ?>/asset/img/covid19.png" alt=""
                              class="img-new">
                     </div>
-                    <h3 class="title-new">Covid-19 et les crèches, que ce passe-t-il ?</h3>
-                    <span>Publié le : 18 Mars 2020</span>
+                    <h3 class="title-new">Covid-19 and Nurseries, what changed ?</h3>
+                    <span>Publish : The 19 of Marsh 2020 </span>
                     <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt
                         ut
@@ -151,8 +151,8 @@ get_header();
                         <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche.jpg" alt=""
                              class="img-new">
                     </div>
-                    <h3 class="title-new">Crèche 2.0, quelles sont les nouveautées ?</h3>
-                    <span>Publié le : 2 Mars 2020</span>
+                    <h3 class="title-new">Nursery 2.0, system updated...</h3>
+                    <span>Publish : The 2 Marsh 2020</span>
                     <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         temporincididunt
                         ut
@@ -170,7 +170,7 @@ get_header();
         <div class="wrap-slider">
             <div class="row">
                 <div class="col">
-                    <h2 class="title-section">Our Clients</h2>
+                    <h2 class="title-section">Our Partners</h2>
                 </div>
             </div>
             <div class="row">
