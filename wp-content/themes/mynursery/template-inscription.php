@@ -64,7 +64,7 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nom-rue" id="nom-rue" placeholder="Nom de la rue">
+                                <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
