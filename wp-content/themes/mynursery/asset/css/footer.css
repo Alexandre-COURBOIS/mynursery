@@ -1,0 +1,72 @@
+footer {
+    background-image: url("../img/bg-footer.jpeg");
+    color: white;
+}
+
+footer h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+footer li, footer p {
+    margin-bottom: 10px;
+    font-weight: 100;
+}
+
+.lien-footer{
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+footer a:hover {
+    color: grey;
+}
+
+.footer.bg-parallax {
+    background-position: 0 -245px;
+    background-attachment: scroll;
+}
+
+.bg-parallax {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer {
+    position: relative;
+    padding: 75px 0 95px;
+}
+
+.bg-color {
+    background: rgba(0, 0, 0, .85);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.column {
+    margin-top: 30px;
+}
+
+#logo-footer {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+#logo-social li {
+    display: inline-block;
+    margin-right: 5%;
+}
+
+/*RESPONSIVE*/
+
+@media (max-width: 990px) {
+    .footer.bg-color.bg-parallax {
+        background-position: center center;
+    }
+}

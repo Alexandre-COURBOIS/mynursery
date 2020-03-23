@@ -1,0 +1,15 @@
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+
+/*@media screen and (max-width: 950px) {}*/
+
