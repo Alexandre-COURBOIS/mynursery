@@ -31,6 +31,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 @import "asset/css/latest-new.css";
 
+@import "asset/css/ourspe.css";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -120,4 +122,19 @@ h1 {
 body {
     font-family: Roboto;
 }
+/*modif global des h2 et h3 (#id)*/
+#h2 {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .3em;
+}
+#h3 {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: -webkit-calc(50/38);
+    line-height: -moz-calc(50/38);
+    line-height: calc(50/38);
+}
+
 

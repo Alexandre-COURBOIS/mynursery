@@ -16,6 +16,7 @@
     <script src="https://kit.fontawesome.com/60cfdcc021.js" crossorigin="anonymous"></script>
 
 
+
     <?php wp_head(); ?>
 </head>
 

@@ -32,6 +32,33 @@ get_header();
     </div>
         </section>
 
+<section class="ourspecilization">
+    <div class="container">
+        <div class="outer-div">
+            <div class="inner-div">
+            <h2 id="h2" class="section_ourspe">our specilization</h2>
+            <h3 id="h3" class="title_ourspe">Title our spe</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-4">
+                <i id="icon" class="fas fa-search-location fa-7x"></i>
+                <h4 id="space-between" class="h4" ><a id="supprlink" href="">search</a></h4>
+                <p class="text-ourspe">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="col-lg-4">
+                <i id="icon" class="fas fa-user-shield fa-7x"></i>
+                <h4 id="space-between" class="h4" ><a id="supprlink" href="">professionnels</a></h4>
+                <p class="text-ourspe">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum, bi li li lu. </p>
+            </div>
+            <div class="col-lg-4">
+                <i id="icon"  class="fas fa-lock fa-7x"></i>
+                <h4 id="space-between" class="h4"><a id="supprlink" href="">securité</a></h4>
+                <p class="text-ourspe">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+        </div>
+</section>
+
 
             <section class="section-latest-new">
                 <div class="container">
