@@ -92,6 +92,7 @@ get_header();
         </div>
     </section>
 
+    <div class="separator"></div>
 
     <section class="section-latest-new">
         <div class="container">
@@ -130,6 +131,8 @@ get_header();
                 </div>
             </div>
     </section>
+
+    <div class="separator"></div>
 
 <?php
 get_footer();
