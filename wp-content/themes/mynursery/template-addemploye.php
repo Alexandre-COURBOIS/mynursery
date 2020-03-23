@@ -23,7 +23,7 @@ get_header();
                     </div>
                     <p class="errors"></p>
 
-                    <div class="form-group">
+                    <div class="form-group mb-5">
                         <input type="text" class="form-control" name="name" id="name" placeholder="N° de sécu">
                         <span class="input-highlight"></span>
                     </div>
@@ -31,7 +31,7 @@ get_header();
 
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="customFile">Télécharger le certificat</label>
                     </div>
 
                 </div>
