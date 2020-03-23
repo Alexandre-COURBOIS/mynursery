@@ -22,76 +22,68 @@
 <body <?php body_class(); ?>>
 
 <header id="myHeader">
+    <div class="wrap-header">
 
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-        <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="200" height="100" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="100" height="50"
+                     alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Home
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#"></a>
-                    <a class="dropdown-item" href="#"></a>
-                    <a class="dropdown-item" href="#"></a>
-                    <a class="dropdown-item" href="#"></a>
-                    <a class="dropdown-item" href="#"></a>
-                    <a class="dropdown-item" href="#"></a>
+            <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Home
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#"></a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Project</a>
+                    </li>
+                </ul>
+                <div class="btn-toolbar">
+                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Project</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fab fa-facebook-square"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fab fa-pinterest-p"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fab fa-google"></i></a>
-            </li>
-        </ul>
-</nav>
+                <div class="btn-toolbar">
+                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                </div>
+        </nav>
+    </div>
+    </div>
+</header>
 
 <!--    <ul class="nav navbar">
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['home']['slug'])) */?>" title="">Home</a>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['home']['slug'])) */ ?>" title="">Home</a>
         </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['features']['slug'])) */?>" title="">Features</a>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['features']['slug'])) */ ?>" title="">Features</a>
         </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['pages']['slug'])) */?>" title="">Pages</a>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['pages']['slug'])) */ ?>" title="">Pages</a>
         </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['gallery']['slug'])) */?>" title="">Gallery</a>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['gallery']['slug'])) */ ?>" title="">Gallery</a>
         </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['blog']['slug'])) */?>" title="">Blog</a></li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['contact']['slug'])) */?>" title="">Contact</a>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['blog']['slug'])) */ ?>" title="">Blog</a></li>
+        <li><a href="<?php /*echo esc_url(home_url($web['pages']['contact']['slug'])) */ ?>" title="">Contact</a>
         </li>
     </ul>
 -->
-    </div>
-</header>

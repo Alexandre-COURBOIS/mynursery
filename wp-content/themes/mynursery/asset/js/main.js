@@ -16,6 +16,14 @@ function myFunction() {
     }
 }
 
+// Slider
+
+$('.carousel').carousel({
+    interval: 2000
+})
+
+// Formulaires
+
 (function($) {
 
     $(".form-style .form-control").on("input", function() {
