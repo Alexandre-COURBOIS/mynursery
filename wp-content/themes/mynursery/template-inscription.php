@@ -116,7 +116,7 @@ get_header();
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp" placeholder="Confirmez votre mot de passe">
+                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp" placeholder="Confirmation mot de passe">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ get_header();
                 </div>
             </div>
             <div class="col-md-5 mx-auto mt-5">
-                <input type="submit" class="btn btn-lg btn-danger btn-block">
+                <input type="submit" class="btn btn-lg btn-success btn-block">
             </div>
         </form>
         <div class="clear"></div>

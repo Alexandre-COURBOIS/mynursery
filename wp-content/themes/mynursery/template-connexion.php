@@ -23,7 +23,7 @@ get_header();
             </div>
     </div>
     <div class="col-md-5 mx-auto mt-5">
-        <input type="submit" class="btn btn-lg btn-danger btn-block">
+        <input type="submit" class="btn btn-lg btn-success btn-block">
     </div>
     </form>
     <div class="clear"></div>
