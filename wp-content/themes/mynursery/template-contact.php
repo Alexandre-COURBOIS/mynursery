@@ -15,19 +15,26 @@ get_header();
                         <input type="text" class="form-control" name="name" id="name" placeholder="Votre nom">
                         <span class="input-highlight"></span>
                     </div>
+                    <p class="errors"></p>
+
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" id="email" placeholder="john.doe@example.com">
                         <span class="input-highlight"></span>
                     </div>
+                    <p class="errors"></p>
+
                     <div class="form-group">
                         <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet de votre message">
                         <span class="input-highlight"></span>
                     </div>
+                    <p class="errors"></p>
+
                     <!--                    <div class="col-md-6">-->
                     <div class="form-group">
                         <textarea name="message" id="message" class="form-control" placeholder="Votre message"></textarea>
                         <span class="input-highlight"></span>
                     </div>
+                    <p class="errors"></p>
                     <!--                    </div>-->
                 </div>
 
