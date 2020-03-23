@@ -76,9 +76,11 @@ function mynursery_scripts() {
 
     // js
 
+/*    wp_enqueue_script('FILENAME',get_template_directory_uri().'FILEDIRECTORY',array(),'VERSIONOFFILE', true);*/
+
     wp_enqueue_script('main',get_template_directory_uri().'/asset/js/main.js',array(),'1.0.0', true);
 
-/*    wp_enqueue_script('FILENAME',get_template_directory_uri().'FILEDIRECTORY',array(),'VERSIONOFFILE', true);*/
+
 
 }
 
