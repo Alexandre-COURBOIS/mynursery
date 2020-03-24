@@ -16,7 +16,6 @@ get_header();
             );
 
             $query = new WP_Query($args);
-            print_r($query);
             ?>
                 <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
                     <!-- Indicators -->
