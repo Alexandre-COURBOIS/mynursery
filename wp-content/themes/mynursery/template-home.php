@@ -7,57 +7,66 @@ get_header();
 ?>
     <section>
 
-    <div class="wrap-slider">
-        <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
+        <div class="wrap-slider">
+            <?php
+            $args = array(
+                'post_type' => 'slider',
+                'orderby' => '-1',
+                'order' => 'ASC',
+            );
 
-            <!-- The slideshow -->
-            <div class="carousel-inner">
+            $query = new WP_Query($args);
+            ?>
+                <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!-- Indicators -->
 
-                <div class="carousel-item active">
-                    <img class="d-block img-fluid"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/slider1.jpg"
-                         alt="Enfants content">
-                    <div class="carousel-caption">
-                        <h3 class="h2">Make them smile !</h3>
-                        <p>We're here to improve the happiness of your sons</p>
+                    <ul class="carousel-indicators">
+
+                        <?php if ($query->have_posts()) : ?>
+                            <?php $i = 0;
+                            while ($query->have_posts()) : $query->the_post(); ?>
+                                <li data-target="#demo" data-slide-to="<?php echo $i ?>"
+                                    class="<?php if ($i === 0) : ?>active<?php endif; ?>"></li>
+                                <?php $i++;
+                            endwhile;
+                        endif;
+                        wp_reset_postdata(); ?>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <?php if ($query->have_posts()) : ?>
+                            <?php $i = 0;
+                            while ($query->have_posts()) : $query->the_post(); ?>
+                                <div class="carousel-item <?php if ($i === 0): ?>active<?php endif; ?>">
+                                    <?php $image = get_the_post_thumbnail_url(get_the_ID(), 'imgslider');
+                                    if (!empty($image)) { ?>
+                                        <li><img class="d-block img-fluid" src="<?php echo $image ?>"
+                                                 alt="<?php get_the_content() ?>"></li>
+                                    <?php } ?>
+
+                                    <div class="carousel-caption">
+                                        <h3 class="h2">Make them smile !</h3>
+                                        <p>We're here to improve the happiness of your sons</p>
+                                    </div>
+                                </div>
+
+                                <?php $i++;
+                            endwhile;
+                        endif;
+                        wp_reset_postdata(); ?>
+
                     </div>
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
 
-                <div class="carousel-item">
-                    <img class="d-block img-fluid"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/slider2.jpg"
-                         alt="Enfants qui sourient">
-                    <div class="carousel-caption">
-                        <h3 class="h2">Give them some good time !</h3>
-                        <p>We've a lot of activities to make them grow</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block img-fluid"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/slider3.jpg"
-                         alt="Enfants dans un champ de coquelicots York">
-                    <div class="carousel-caption">
-                        <h3 class="h2">Let's discover the world together</h3>
-                        <p>To find all the possibilities and much more ... </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
         </div>
-    </div>
 
     </section>
 
