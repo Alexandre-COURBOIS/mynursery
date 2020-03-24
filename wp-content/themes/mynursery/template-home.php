@@ -6,7 +6,6 @@ Template Name: Home
 get_header();
 ?>
 
-    <section>
     <div class="wrap-slider">
         <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Indicators -->
@@ -20,9 +19,9 @@ get_header();
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img class="d-block img-fluid"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/slider1.jpg"
-                         alt="Enfants se tennant la main">
+                                <img class="d-block img-fluid"
+                                     src="<?php echo get_template_directory_uri() ?>/asset/img/slider1.jpg"
+                                     alt="Enfants content">
                     <div class="carousel-caption">
                         <h3 class="h2">Make them smile !</h3>
                         <p>We're here to improve the happiness of your sons</p>
@@ -58,6 +57,7 @@ get_header();
             </a>
         </div>
     </div>
+
     <section>
 
     <div class="separator"></div>
