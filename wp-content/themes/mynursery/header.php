@@ -65,10 +65,10 @@
                     </li>
                 </ul>
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
+                    <a href="inscription" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
                 </div>
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
                 </div>
         </nav>
     </div>
