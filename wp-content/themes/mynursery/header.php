@@ -27,7 +27,7 @@
     <div class="wrap-header">
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo esc_url(home_url($web['pages']['home']['slug']))?>">
                 <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="100" height="50"
                      alt="">
             </a>
@@ -74,6 +74,7 @@
     </div>
     </div>
 </header>
+
 
 <!--    <ul class="nav navbar">
         <li><a href="<?php /*echo esc_url(home_url($web['pages']['home']['slug'])) */ ?>" title="">Home</a>

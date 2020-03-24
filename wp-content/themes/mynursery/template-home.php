@@ -5,6 +5,7 @@ Template Name: Home
 
 get_header();
 ?>
+    <section>
 
     <div class="wrap-slider">
         <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
@@ -19,9 +20,9 @@ get_header();
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                                <img class="d-block img-fluid"
-                                     src="<?php echo get_template_directory_uri() ?>/asset/img/slider1.jpg"
-                                     alt="Enfants content">
+                    <img class="d-block img-fluid"
+                         src="<?php echo get_template_directory_uri() ?>/asset/img/slider1.jpg"
+                         alt="Enfants content">
                     <div class="carousel-caption">
                         <h3 class="h2">Make them smile !</h3>
                         <p>We're here to improve the happiness of your sons</p>
@@ -58,7 +59,7 @@ get_header();
         </div>
     </div>
 
-    <section>
+    </section>
 
     <div class="separator"></div>
 
@@ -78,7 +79,8 @@ get_header();
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur cumque cupiditate
                         debitis harum laudantium magni minima modi, quia rerum, saepe sapiente suscipit!
                     </p>
-                    <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read more...</a>
+                    <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read
+                        more...</a>
                 </div>
                 <div id="about-us-right" class="col-md-5">
                     <img class="img-thumbnail img-fluid mx-auto"
