@@ -61,29 +61,41 @@ get_header();
 
     <div class="separator"></div>
 
+    <?php
+    $args = array(
+        'post_type' => 'aboutus',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'order' => 'DESC',
+        'orderby' => 'date'
+    );
+    $the_query = new WP_Query($args);
+    ?>
     <section>
         <div class="container">
             <div id="about-us" class="row">
+                <?php
+                if ($the_query->have_posts()) {
+                while ($the_query->have_posts()) {
+                $the_query->the_post(); ?>
                 <div id="about-us-left" class="col-md-7">
                     <h2 id="h2" class="section_aboutus">about us</h2>
-                    <h3 id="h3" class="title_aboutus">Here the title of about us</h3>
-                    <p class="text_aboutus"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. A non odio
-                        pariatur,
-                        ullam veniam
-
-                        voluptatum!
-                        Assumenda, aut autem delectus doloremque, dolores error est illum perferendis porro totam vitae
-                        voluptas voluptatem.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur cumque cupiditate
-                        debitis harum laudantium magni minima modi, quia rerum, saepe sapiente suscipit!
+                    <h3 id="h3" class="title_aboutus"><?= get_the_title()?></h3>
+                    <p class="text_aboutus"> <?php echo substr(get_the_excerpt(),0,450); ?>
                     </p>
                     <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read
+
+
                         more...</a>
                 </div>
                 <div id="about-us-right" class="col-md-5">
                     <img class="img-thumbnail img-fluid mx-auto"
-                         src="<?php echo get_template_directory_uri() ?>/asset/img/about-us-family.jpg" alt="">
+                         src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'imgabout-us'); ?>" alt="">
                 </div>
+                <?php }
+                }
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
     </section>
