@@ -22,11 +22,11 @@
 }
 
 .title-section{
-    text-transform: uppercase;
     font-weight: bold;
     margin: 20px 0;
     font-size: 25px;
     text-align: center;
+    margin-bottom: 50px;
 }
 .title-new{
     text-transform: uppercase;
