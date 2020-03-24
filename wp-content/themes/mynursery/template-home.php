@@ -28,7 +28,6 @@ get_header();
                         <p>We're here to improve the happiness of your sons</p>
                     </div>
                 </div>
-
                 <div class="carousel-item">
                     <img class="d-block img-fluid"
                          src="<?php echo get_template_directory_uri() ?>/asset/img/slider2.jpg"
@@ -84,7 +83,9 @@ get_header();
                     <h3 id="h3" class="title_aboutus"><?= get_the_title()?></h3>
                     <p class="text_aboutus"> <?php echo substr(get_the_excerpt(),0,450); ?>
                     </p>
-                    <a id="test" class="btn-redirection btn btn-outline-dark" href="<?= get_the_permalink(); ?>">Read
+                    <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read
+
+
                         more...</a>
                 </div>
                 <div id="about-us-right" class="col-md-5">
@@ -109,27 +110,55 @@ get_header();
                     <h3 id="h3" class="title_ourspe">Here the title of our specilization</h3>
                 </div>
             </div>
+            <?php
+            $args = array(
+                'post_type' => 'specialization',
+                'post_status' => 'publish',
+                'posts_per_page' => 3,
+                'order' => 'DESC',
+                'orderby' => 'date',
+            );
+            $the_query = new WP_Query($args); ?>
             <div class="row text-center">
-                <div class="col-lg-4">
-                    <i id="icon" class="fas fa-search-location fa-7x"></i>
-                    <h4 id="space-between" class="h4"><a id="supprlink" href="">search</a></h4>
-                    <p class="text-ourspe">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id
-                        dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,
-                        vestibulum at eros.</p>
-                </div>
-                <div class="col-lg-4">
-                    <i id="icon" class="fas fa-user-shield fa-7x"></i>
-                    <h4 id="space-between" class="h4"><a id="supprlink" href="">professionnels</a></h4>
-                    <p class="text-ourspe">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-                        odio sem nec elit. Cras mattis consectetur purus sit amet fermentum, bi li li lu. </p>
-                </div>
-                <div class="col-lg-4">
-                    <i id="icon" class="fas fa-lock fa-7x"></i>
-                    <h4 id="space-between" class="h4"><a id="supprlink" href="">safety</a></h4>
-                    <p class="text-ourspe">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget
-                        quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
-                        commodo.</p>
-                </div>
+                <?php
+                if ($the_query->have_posts()) {
+                    while ($the_query->have_posts()) {
+                        $the_query->the_post();
+                        ?>
+                        <div class="col-lg-4">
+                            <?php
+                            $image = get_the_post_thumbnail_url(get_the_ID(), 'imgSpecialization');
+                            if (!empty($image)) { ?>
+                            <img src="<?php echo $image; ?>" alt="<?= get_the_title(); ?>">
+                            <?php }?>
+                            <!-- <i id="icon" class="fas fa-search-location fa-7x"></i>-->
+                            <h4 id="space-between" class="h4"><?=mb_strtoupper(get_the_title())?></h4>
+                            <p class="text-ourspe"><?= get_the_content()?></p>
+                        </div>
+                        <?php
+                    }
+                }
+                wp_reset_postdata(); ?>
+                <!-- <div class="col-lg-4">
+                     <i id="icon" class="fas fa-search-location fa-7x"></i>
+                     <h4 id="space-between" class="h4"><a id="supprlink" href="">search</a></h4>
+                     <p class="text-ourspe">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id
+                         dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,
+                         vestibulum at eros.</p>
+                 </div>
+                 <div class="col-lg-4">
+                     <i id="icon" class="fas fa-user-shield fa-7x"></i>
+                     <h4 id="space-between" class="h4"><a id="supprlink" href="">professionnels</a></h4>
+                     <p class="text-ourspe">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
+                         odio sem nec elit. Cras mattis consectetur purus sit amet fermentum, bi li li lu. </p>
+                 </div>
+                 <div class="col-lg-4">
+                     <i id="icon" class="fas fa-lock fa-7x"></i>
+                     <h4 id="space-between" class="h4"><a id="supprlink" href="">safety</a></h4>
+                     <p class="text-ourspe">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget
+                         quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
+                         commodo.</p>
+                 </div>-->
             </div>
         </div>
     </section>
