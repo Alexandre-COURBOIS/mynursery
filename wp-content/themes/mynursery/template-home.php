@@ -28,7 +28,6 @@ get_header();
                         <p>We're here to improve the happiness of your sons</p>
                     </div>
                 </div>
-
                 <div class="carousel-item">
                     <img class="d-block img-fluid"
                          src="<?php echo get_template_directory_uri() ?>/asset/img/slider2.jpg"
