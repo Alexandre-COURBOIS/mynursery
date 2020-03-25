@@ -27,15 +27,39 @@ $("#demo").carousel({
 
 });
 
+
 $('#pro').click(function () {
     $('#pro').prop('checked',true)
+    window.location = 'inscription';
     });
 
 $('#parent').click(function () {
     $('#parent').prop('checked',true)
+    alert('Lien vers l\'inscription parent');
 });
 
 });
+
+
+/*
+function userChoice() {
+
+    submit = document.getElementById('submit');
+
+    $('#pro').click(function () {
+       var pro = $('#pro').prop('checked', true)
+        if (pro === 1) {
+            submit.onsubmit = console.log('ça fonctionne!')
+        }
+    });
+    $('#parent').click(function () {
+        let parent = $('#pro').prop('checked', true)
+    });
+
+
+
+};
+*/
 
 
 
