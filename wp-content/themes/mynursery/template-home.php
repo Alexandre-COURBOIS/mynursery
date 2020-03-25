@@ -44,7 +44,7 @@ get_header();
                                 <?php $image = get_the_post_thumbnail_url(get_the_ID(), 'imgslider');
                                 if (!empty($image)) { ?>
                                     <img class="d-block img-fluid" src="<?php echo $image ?>"
-                                             alt="<?php get_the_content() ?>">
+                                         alt="<?php get_the_content() ?>">
                                 <?php } ?>
 
                                 <?php $slider = get_post_meta($web['pages']['home']['id']); ?>
