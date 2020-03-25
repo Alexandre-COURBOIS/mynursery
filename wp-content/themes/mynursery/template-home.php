@@ -3,6 +3,8 @@
 Template Name: Home
 */
 
+global $web;
+
 get_header();
 ?>
     <section>
@@ -44,7 +46,7 @@ get_header();
                                         <li><img class="d-block img-fluid" src="<?php echo $image ?>"
                                                  alt="<?php get_the_content() ?>"></li>
                                     <?php } ?>
-
+                                    <?php ($slider = get_post_meta($web['pages']['home']['id'])); echo $slider['titre_de_limage_1_du_slider'][0]; ?>
                                     <div class="carousel-caption">
                                         <h3 class="h2">Make them smile !</h3>
                                         <p>We're here to improve the happiness of your sons</p>
