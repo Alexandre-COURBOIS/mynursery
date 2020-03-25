@@ -45,7 +45,7 @@ function wpdocs_codex_slider_init() {
         'hierarchical'       => false,
         'menu_position'      => 46,
         'menu_icon'          => 'dashicons-slides',
-        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+        'supports'           => array( 'title','thumbnail')
 
     );
 
