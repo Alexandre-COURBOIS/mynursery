@@ -91,5 +91,5 @@ global $web; ?>
 
 
 </footer>
-</body>
 </div>
+</body>

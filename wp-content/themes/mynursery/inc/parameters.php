@@ -7,6 +7,6 @@ $web = array(
         'home' => array(
             'id' => 6,
             'slug' => '/'
-        )
+        ),
     )
 );

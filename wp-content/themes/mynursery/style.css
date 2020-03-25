@@ -115,6 +115,10 @@ table {
     height: 80px;
 }
 
+.separator-connexion {
+    height: 180px;
+}
+
 /* supprime tous les radius */
 * {
 	-webkit-border-radius: 0 !important;
@@ -128,16 +132,20 @@ h1 {
 }
 
 /*Fin du reset*/
+
 body {
     font-family: Roboto;
 }
+
 /*modif global des h2 et h3 (#id)*/
+
 #h2 {
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: .3em;
 }
+
 #h3 {
     font-weight: 700;
     font-size: 38px;
