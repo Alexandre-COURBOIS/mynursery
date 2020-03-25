@@ -159,6 +159,23 @@ get_header();
 
     <div class="separator"></div>
 
+    <?php
+
+        $args = array(
+            'post_type' => 'latestnew',
+            'post_status' => 'publish',
+            'posts_per_page' => 2,
+            'order' => 'DESC',
+            'orderby' => 'date',
+
+
+        );
+        $query = new WP_Query( $args );
+
+        // The Query
+        $the_query = new WP_Query( $args );
+        ?>
+
     <section class="section-latest-new">
         <div class="container">
             <div class="row">
@@ -167,33 +184,27 @@ get_header();
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="img-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/covid19.png" alt=""
-                             class="img-new">
+                <?php
+                // The Loop
+                if ( $the_query->have_posts() ) {
+                    while ( $the_query->have_posts() ) {
+                        $the_query->the_post();
+                        $image = get_the_post_thumbnail_url(get_the_ID()); ?>
+                    <div class="col-lg-6">
+                        <div class="img-hover-zoom img-hover-zoom-translate">
+                            <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>"><img src="<?php echo $image ?>" alt="" class="img-new"></a>
+                        </div>
+                        <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>"><h3 class="title-new"><?= get_the_title(); ?></h3></a>
+                        <span>Posté le : <?= get_the_date('d F Y') ?></span>
+                        <p class="resume-new"><?= get_the_excerpt() ?></p>
                     </div>
-                    <h3 class="title-new">Covid-19 and Nurseries, what changed ?</h3>
-                    <span>Publish : The 19 of Marsh 2020 </span>
-                    <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt
-                        ut
-                        labore et dolore magna aliqua.Ut enim ad minim binz veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut...</p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="img-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche.jpg" alt=""
-                             class="img-new">
-                    </div>
-                    <h3 class="title-new">Nursery 2.0, system updated...</h3>
-                    <span>Publish : The 2 Marsh 2020</span>
-                    <p class="resume-new">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        temporincididunt
-                        ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip...</p>
-                </div>
+               <?php }
+                } else {
+                // no posts found
+                }
+                /* Restore original Post Data */
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
     </section>
