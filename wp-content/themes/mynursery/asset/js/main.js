@@ -20,8 +20,8 @@ function myFunction() {
 
 // Slider
 
-$('.carousel').carousel({
-    interval: 2000
+$('#demo').carousel({
+    interval: 5000
 });
 
 
