@@ -8,8 +8,8 @@ function wpdocs_codex_slider_init() {
     $labels = array(
         'name'                  => _x( 'sliders', 'Post type general name', 'mynursery' ),
         'singular_name'         => _x( 'slider', 'Post type singular name', 'mynursery' ),
-        'menu_name'             => _x( 'sliders', 'Admin Menu text', 'mynursery' ),
-        'name_admin_bar'        => _x( 'slider', 'Add New on Toolbar', 'mynursery' ),
+        'menu_name'             => _x( 'Slider d\'accueil', 'Admin Menu text', 'mynursery' ),
+        'name_admin_bar'        => _x( 'Slider', 'Add New on Toolbar', 'mynursery' ),
         'add_new'               => __( 'Add New', 'mynursery' ),
         'add_new_item'          => __( 'Add New slider', 'mynursery' ),
         'new_item'              => __( 'New slider', 'mynursery' ),
@@ -45,7 +45,7 @@ function wpdocs_codex_slider_init() {
         'hierarchical'       => false,
         'menu_position'      => 46,
         'menu_icon'          => 'dashicons-slides',
-        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+        'supports'           => array( 'title','thumbnail')
 
     );
 
