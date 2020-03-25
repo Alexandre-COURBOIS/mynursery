@@ -27,7 +27,7 @@
     <div class="wrap-header">
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo esc_url(home_url($web['pages']['home']['slug']))?>">
                 <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="100" height="50"
                      alt="">
             </a>
@@ -65,15 +65,16 @@
                     </li>
                 </ul>
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
+                    <a href="inscription" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
                 </div>
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
                 </div>
         </nav>
     </div>
     </div>
 </header>
+
 
 <!--    <ul class="nav navbar">
         <li><a href="<?php /*echo esc_url(home_url($web['pages']['home']['slug'])) */ ?>" title="">Home</a>

@@ -8,10 +8,13 @@ $web = array(
             'id' => 5,
             'slug' => '/'
         ),
-        'about' => array(
+       
+      'about' => array(
             'id' => 19,
             'slug' => 'about',
         ),
+
+     
     )
 
 );

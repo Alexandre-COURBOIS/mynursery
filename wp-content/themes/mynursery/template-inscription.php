@@ -6,6 +6,8 @@ Template Name: Inscription
 get_header();
 ?>
 
+<div class="separator"></div>
+
     <div class="container">
         <form action="" method="post" class="form-style">
             <h2 class="text-center pt-4">Inscription</h2>
@@ -129,7 +131,8 @@ get_header();
         </form>
         <div class="clear"></div>
     </div>
-    </div>
-    </div>
+
+<div class="separator"></div>
+
 <?php
 get_footer();
