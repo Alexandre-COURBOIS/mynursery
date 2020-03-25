@@ -158,12 +158,11 @@ get_header();
                         $image = get_the_post_thumbnail_url(get_the_ID()); ?>
                     <div class="col-lg-6">
                         <div class="img-hover-zoom img-hover-zoom-translate">
-                            <img src="<?php echo $image ?>" alt=""
-                                 class="img-new">
+                            <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>"><img src="<?php echo $image ?>" alt="" class="img-new"></a>
                         </div>
                         <h3 class="title-new"><?= get_the_title(); ?></h3>
                         <span>Posté le : <?= get_the_date('d F Y') ?></span>
-                        <p class="resume-new"><?= get_the_content() ?></p>
+                        <p class="resume-new"><?= get_the_excerpt() ?></p>
                     </div>
                <?php }
                 } else {
