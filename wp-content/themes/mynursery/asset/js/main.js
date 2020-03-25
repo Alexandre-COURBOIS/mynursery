@@ -27,6 +27,14 @@ $("#demo").carousel({
 
 });
 
+$('#pro').click(function () {
+    $('#pro').prop('checked',true)
+    });
+
+$('#parent').click(function () {
+    $('#parent').prop('checked',true)
+});
+
 });
 
 

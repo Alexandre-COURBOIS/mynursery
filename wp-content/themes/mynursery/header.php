@@ -88,15 +88,15 @@
 
                                         <div class="subscription-container">
 
-                                            <input type="radio" name="radio" id="option1">
-                                            <label for="option1" class="subscription__button">
+                                            <input type="radio" name="radio" id="pro" value="pro">
+                                            <label for="pro" class="subscription__button">
                                                 <h3 class="subscription__title">Vous êtes un</h3>
                                                 <h3 class="subscription__main-feature"> professionnel</h3>
                                                 <span class="subscription__price">Inscrivez-vous</span>
                                             </label>
 
-                                            <input type="radio" name="radio" id="option2">
-                                            <label for="option2" class="subscription__button">
+                                            <input type="radio" name="radio" id="parent" value="parent">
+                                            <label for="parent" class="subscription__button">
                                                 <h3 class="subscription__title">Vous êtes un</h3>
                                                 <h3 class="subscription__main-feature">Parent</h3>
                                                 <span class="subscription__price">Inscrivez-vous</span>
