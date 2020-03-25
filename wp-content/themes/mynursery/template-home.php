@@ -160,7 +160,7 @@ get_header();
                         <div class="img-hover-zoom img-hover-zoom-translate">
                             <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>"><img src="<?php echo $image ?>" alt="" class="img-new"></a>
                         </div>
-                        <h3 class="title-new"><?= get_the_title(); ?></h3>
+                        <a href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>"><h3 class="title-new"><?= get_the_title(); ?></h3></a>
                         <span>Posté le : <?= get_the_date('d F Y') ?></span>
                         <p class="resume-new"><?= get_the_excerpt() ?></p>
                     </div>
