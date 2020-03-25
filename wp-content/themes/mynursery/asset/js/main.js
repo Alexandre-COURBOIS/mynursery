@@ -19,9 +19,20 @@ function myFunction() {
 }
 
 // Slider
+$(document).ready(function(){
 
-$('#demo').carousel({
-    interval: 5000
+$("#demo").carousel({
+
+    interval: 8000,
+
 });
+
+});
+
+
+
+
+
+
 
 

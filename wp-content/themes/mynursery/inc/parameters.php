@@ -9,12 +9,28 @@ $web = array(
             'slug' => '/'
         ),
         'about' => array(
-            'id' => 19,
+            'id' => 104,
             'slug' => 'about',
         ),
+        'ajouter un employé' => array(
+            'id' => 17,
+            'slug' => 'ajouter-un-employe'
+        ),
+        'connexion' => array(
+            'id' => 9,
+            'slug' => 'connexion'
+        ),
+        'contact' => array(
+            'id' => 15,
+            'slug' => 'contact'
+        ),
         'inscription' => array(
-            'id' => 7,
+            'id' => 11,
             'slug' => 'inscription'
         ),
+        'profil' => array(
+            'id' => 13,
+            'slug' => 'profil'
+        )
     )
 );
