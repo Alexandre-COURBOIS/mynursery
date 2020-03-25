@@ -18,12 +18,14 @@ get_header();
             );
 
             $query = new WP_Query($args);
+
+            $slider = get_post_meta($web['pages']['home']['id']);
             ?>
+
             <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
                 <!-- Indicators -->
 
                 <ul class="carousel-indicators">
-
                     <?php if ($query->have_posts()) : ?>
                         <?php $i = 1;
                         while ($query->have_posts()) : $query->the_post(); ?>
@@ -41,18 +43,18 @@ get_header();
                         <?php $i = 1;
                         while ($query->have_posts()) : $query->the_post(); ?>
                             <div class="carousel-item <?php if ($i === 1): ?>active<?php endif; ?>">
-                                <?php $image = get_the_post_thumbnail_url(get_the_ID(), 'imgslider');
+                                <?php $image = get_field('image_slider', get_the_ID());
                                 if (!empty($image)) { ?>
-                                    <img class="d-block img-fluid" src="<?php echo $image ?>"
-                                             alt="<?php get_the_content() ?>">
+                                    <img class="d-block img-fluid" src="<?= $image['sizes']['imgslider'] ?>"
+                                             alt="<?= get_field('description_image', get_the_ID()) ?>">
                                 <?php } ?>
 
-                                <?php $slider = get_post_meta($web['pages']['home']['id']); ?>
+                                <?php $informations = get_post_meta(get_the_ID())?>
 
                                 <div class="carousel-caption">
 
-                                        <h3 class="h2"><?= $slider['titre_de_limage_'.$i.'_du_slider'][0] ?></h3>
-                                        <p><?= $slider['texte_de_limage_'.$i.'_du_slider'][0] ?></p>
+                                    <h3 class="h2"><?= $informations['titre_de_limage_du_slider'][0] ?></h3>
+                                    <p><?= $informations['texte_de_limage_du_slider'][0] ?></p>
                                 </div>
                             </div>
 
@@ -60,8 +62,6 @@ get_header();
                         endwhile;
                     endif;
                     wp_reset_postdata(); ?>
-
-                </div>
                 <!-- Left and right controls -->
                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
