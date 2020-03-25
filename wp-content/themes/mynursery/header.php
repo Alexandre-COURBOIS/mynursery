@@ -27,7 +27,7 @@
     <div class="wrap-header">
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?= esc_url(home_url('/'))?>">
                 <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="100" height="50"
                      alt="">
             </a>
@@ -65,7 +65,7 @@
                     </li>
                 </ul>
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
+                    <a href="<?= esc_url(home_url($web['pages']['inscription']['slug'])) ?>" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
                 </div>
                 <div class="btn-toolbar">
                     <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
