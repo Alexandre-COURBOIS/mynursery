@@ -76,23 +76,23 @@ get_header();
             <div id="about-us" class="row">
                 <?php
                 if ($the_query->have_posts()) {
-                while ($the_query->have_posts()) {
-                $the_query->the_post(); ?>
-                <div id="about-us-left" class="col-md-7">
-                    <h2 id="h2" class="section_aboutus">about us</h2>
-                    <h3 id="h3" class="title_aboutus"><?= get_the_title()?></h3>
-                    <p class="text_aboutus"> <?php echo substr(get_the_excerpt(),0,450); ?>
-                    </p>
-                    <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read
+                    while ($the_query->have_posts()) {
+                        $the_query->the_post(); ?>
+                        <div id="about-us-left" class="col-md-7">
+                            <h2 id="h2" class="section_aboutus">about us</h2>
+                            <h3 id="h3" class="title_aboutus"><?= get_the_title() ?></h3>
+                            <p class="text_aboutus"> <?php echo substr(get_the_excerpt(), 0, 450); ?>
+                            </p>
+                            <a id="test" class="btn-redirection btn btn-outline-dark" href="http///www.ici-le-lien.fr">Read
 
 
-                        more...</a>
-                </div>
-                <div id="about-us-right" class="col-md-5">
-                    <img class="img-thumbnail img-fluid mx-auto"
-                         src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'imgabout-us'); ?>" alt="">
-                </div>
-                <?php }
+                                more...</a>
+                        </div>
+                        <div id="about-us-right" class="col-md-5">
+                            <img class="img-thumbnail img-fluid mx-auto"
+                                 src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'imgabout-us'); ?>" alt="">
+                        </div>
+                    <?php }
                 }
                 wp_reset_postdata();
                 ?>
@@ -129,36 +129,16 @@ get_header();
                             <?php
                             $image = get_the_post_thumbnail_url(get_the_ID(), 'imgSpecialization');
                             if (!empty($image)) { ?>
-                            <img src="<?php echo $image; ?>" alt="<?= get_the_title(); ?>">
-                            <?php }?>
+                                <img src="<?php echo $image; ?>" alt="<?= get_the_title(); ?>">
+                            <?php } ?>
                             <!-- <i id="icon" class="fas fa-search-location fa-7x"></i>-->
-                            <h4 id="space-between" class="h4"><?=mb_strtoupper(get_the_title())?></h4>
-                            <p class="text-ourspe"><?= get_the_content()?></p>
+                            <h4 id="space-between" class="h4"><?= mb_strtoupper(get_the_title()) ?></h4>
+                            <p class="text-ourspe"><?= get_the_content() ?></p>
                         </div>
                         <?php
                     }
                 }
                 wp_reset_postdata(); ?>
-                <!-- <div class="col-lg-4">
-                     <i id="icon" class="fas fa-search-location fa-7x"></i>
-                     <h4 id="space-between" class="h4"><a id="supprlink" href="">search</a></h4>
-                     <p class="text-ourspe">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id
-                         dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,
-                         vestibulum at eros.</p>
-                 </div>
-                 <div class="col-lg-4">
-                     <i id="icon" class="fas fa-user-shield fa-7x"></i>
-                     <h4 id="space-between" class="h4"><a id="supprlink" href="">professionnels</a></h4>
-                     <p class="text-ourspe">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-                         odio sem nec elit. Cras mattis consectetur purus sit amet fermentum, bi li li lu. </p>
-                 </div>
-                 <div class="col-lg-4">
-                     <i id="icon" class="fas fa-lock fa-7x"></i>
-                     <h4 id="space-between" class="h4"><a id="supprlink" href="">safety</a></h4>
-                     <p class="text-ourspe">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget
-                         quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
-                         commodo.</p>
-                 </div>-->
             </div>
         </div>
     </section>
@@ -208,60 +188,87 @@ get_header();
 
     <section class="partner-section">
         <div class="wrap-slider">
+            <?php
+            $args = array(
+                'post_type' => 'partner',
+                'post_status' => 'publish',
+                'posts_per_page' => 8,
+                'order' => 'DESC',
+                'orderby' => 'date',
+            );
+            $the_query = new WP_Query($args); ?>
             <div class="row">
                 <div class="col">
                     <h2 class="title-section">Our Partners</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
+                <?php
+                if ($the_query->have_posts()) {
+                    while ($the_query->have_posts()) {
+                        $the_query->the_post();
+                        ?>
+                        <div class="col-lg-3">
+                            <div class="logo-hover-zoom img-hover-zoom-translate">
+                                <?php
+                                $image = get_the_post_thumbnail_url(get_the_ID(), 'imgPartner');
+                                if (!empty($image)) { ?>
+                                    <img src="<?php echo $image; ?>" alt="<?= get_the_title(); ?>" class="logo-client">
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                }
+                wp_reset_postdata(); ?>
+                <!--<div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche1.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche1.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/toupoutou.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/toupoutou.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche3.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche3.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche4.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche4.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche5.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche5.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche6.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche6.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche7.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche7.png" alt=""
                              class="logo-client">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="logo-hover-zoom img-hover-zoom-translate">
-                        <img src="<?php echo get_template_directory_uri() ?>/asset/img/creche8.png" alt=""
+                        <img src="<?php /*echo get_template_directory_uri() */ ?>/asset/img/creche8.png" alt=""
                              class="logo-client">
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
