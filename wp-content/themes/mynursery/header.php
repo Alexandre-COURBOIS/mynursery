@@ -1,4 +1,4 @@
-<?php global $web ?>
+<?php global $web; ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -38,30 +38,30 @@
             <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="<?php echo esc_url(home_url('/')) ?>" id="navbarDropdownMenuLink" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Home
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#"></a>
-                            <a class="dropdown-item" href="#"></a>
-                            <a class="dropdown-item" href="#"></a>
-                            <a class="dropdown-item" href="#"></a>
+                            <a class="dropdown-item" href="#">About</a>
+                            <a class="dropdown-item" href="#">Blog</a>
+                            <a class="dropdown-item" href="#">Contact</a>
+                            <a class="dropdown-item" href="#">Project</a>
                             <a class="dropdown-item" href="#"></a>
                             <a class="dropdown-item" href="#"></a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="<?php echo esc_url(home_url($web['pages']['about']['slug'])); ?>">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="<?php echo esc_url(home_url($web['pages']['blog']['slug'])); ?>">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">contact</a>
+                        <a class="nav-link" href="<?php echo esc_url(home_url($web['pages']['contact']['slug'])); ?>">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Project</a>
+                        <a class="nav-link" href="<?php echo esc_url(home_url($web['pages']['project']['slug'])); ?>">Project</a>
                     </li>
                 </ul>
                 <div class="btn-toolbar">
