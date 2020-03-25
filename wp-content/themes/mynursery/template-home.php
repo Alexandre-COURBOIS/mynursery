@@ -6,6 +6,7 @@ Template Name: Home
 global $web;
 
 get_header();
+
 ?>
     <section>
 
@@ -19,54 +20,57 @@ get_header();
 
             $query = new WP_Query($args);
             ?>
-                <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
-                    <!-- Indicators -->
+            <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
+                <!-- Indicators -->
 
-                    <ul class="carousel-indicators">
+                <ul class="carousel-indicators">
 
-                        <?php if ($query->have_posts()) : ?>
-                            <?php $i = 0;
-                            while ($query->have_posts()) : $query->the_post(); ?>
-                                <li data-target="#demo" data-slide-to="<?php echo $i ?>"
-                                    class="<?php if ($i === 0) : ?>active<?php endif; ?>"></li>
-                                <?php $i++;
-                            endwhile;
-                        endif;
-                        wp_reset_postdata(); ?>
-                    </ul>
+                    <?php if ($query->have_posts()) : ?>
+                        <?php $i = 1;
+                        while ($query->have_posts()) : $query->the_post(); ?>
+                            <li data-target="#demo" data-slide-to="<?php echo $i ?>"
+                                class="<?php if ($i === 1) : ?>active<?php endif; ?>"></li>
+                            <?php $i++;
+                        endwhile;
+                    endif;
+                    wp_reset_postdata(); ?>
+                </ul>
 
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-                        <?php if ($query->have_posts()) : ?>
-                            <?php $i = 0;
-                            while ($query->have_posts()) : $query->the_post(); ?>
-                                <div class="carousel-item <?php if ($i === 0): ?>active<?php endif; ?>">
-                                    <?php $image = get_the_post_thumbnail_url(get_the_ID(), 'imgslider');
-                                    if (!empty($image)) { ?>
-                                        <li><img class="d-block img-fluid" src="<?php echo $image ?>"
-                                                 alt="<?php get_the_content() ?>"></li>
-                                    <?php } ?>
-                                    <?php ($slider = get_post_meta($web['pages']['home']['id'])); echo $slider['titre_de_limage_1_du_slider'][0]; ?>
-                                    <div class="carousel-caption">
-                                        <h3 class="h2">Make them smile !</h3>
-                                        <p>We're here to improve the happiness of your sons</p>
-                                    </div>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <?php if ($query->have_posts()) : ?>
+                        <?php $i = 1;
+                        while ($query->have_posts()) : $query->the_post(); ?>
+                            <div class="carousel-item <?php if ($i === 1): ?>active<?php endif; ?>">
+                                <?php $image = get_the_post_thumbnail_url(get_the_ID(), 'imgslider');
+                                if (!empty($image)) { ?>
+                                    <li><img class="d-block img-fluid" src="<?php echo $image ?>"
+                                             alt="<?php get_the_content() ?>"></li>
+                                <?php } ?>
+
+                                <?php $slider = get_post_meta($web['pages']['home']['id']); ?>
+
+                                <div class="carousel-caption">
+
+                                        <h3 class="h2"><?= $slider['titre_de_limage_'.$i.'_du_slider'][0] ?></h3>
+                                        <p><?= $slider['texte_de_limage_'.$i.'_du_slider'][0] ?></p>
                                 </div>
+                            </div>
 
-                                <?php $i++;
-                            endwhile;
-                        endif;
-                        wp_reset_postdata(); ?>
+                            <?php $i++;
+                        endwhile;
+                    endif;
+                    wp_reset_postdata(); ?>
 
-                    </div>
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#demo" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
                 </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
 
         </div>
 
@@ -242,4 +246,5 @@ get_header();
     <div class="separator"></div>
 
 <?php
+
 get_footer();
