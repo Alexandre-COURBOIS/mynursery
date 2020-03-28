@@ -19,9 +19,52 @@ function myFunction() {
 }
 
 // Slider
+$(document).ready(function(){
 
-$('#demo').carousel({
-    interval: 5000
+$("#demo").carousel({
+
+    interval: 8000,
+
 });
+
+
+$('#pro').click(function () {
+    $('#pro').prop('checked',true)
+    window.location = 'inscription';
+    });
+
+$('#parent').click(function () {
+    $('#parent').prop('checked',true)
+    alert('Lien vers l\'inscription parent');
+});
+
+});
+
+
+/*
+function userChoice() {
+
+    submit = document.getElementById('submit');
+
+    $('#pro').click(function () {
+       var pro = $('#pro').prop('checked', true)
+        if (pro === 1) {
+            submit.onsubmit = console.log('ça fonctionne!')
+        }
+    });
+    $('#parent').click(function () {
+        let parent = $('#pro').prop('checked', true)
+    });
+
+
+
+};
+*/
+
+
+
+
+
+
 
 

@@ -16,7 +16,6 @@
     <script src="https://kit.fontawesome.com/60cfdcc021.js" crossorigin="anonymous"></script>
 
 
-
     <?php wp_head(); ?>
 </head>
 
@@ -27,7 +26,7 @@
     <div class="wrap-header">
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="<?= esc_url(home_url('/'))?>">
+            <a class="navbar-brand" href="<?= esc_url(home_url('/')) ?>">
                 <img src="<?php echo get_template_directory_uri() ?>/asset/img/mynursery.png" width="100" height="50"
                      alt="">
             </a>
@@ -65,7 +64,55 @@
                     </li>
                 </ul>
                 <div class="btn-toolbar">
-                    <a href="<?= esc_url(home_url($web['pages']['inscription']['slug'])) ?>" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>
+                    <!--                    <a href="<? /*= esc_url(home_url($web['pages']['inscription']['slug'])) */ ?>" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>-->
+                    <!-- Button for Modal -->
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-auto" data-toggle="modal"
+                            data-target="#staticBackdrop">
+                        Inscription
+                    </button>
+
+                    <!-- Modal -->
+
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form id="form">
+
+                                        <div class="subscription-container">
+
+                                            <input type="radio" name="radio" id="pro" value="pro">
+                                            <label for="pro" class="subscription__button">
+                                                <h3 class="subscription__title">Vous êtes un</h3>
+                                                <h3 class="subscription__main-feature"> professionnel</h3>
+                                                <span class="subscription__price">Inscrivez-vous</span>
+                                            </label>
+
+                                            <input type="radio" name="radio" id="parent" value="parent">
+                                            <label for="parent" class="subscription__button">
+                                                <h3 class="subscription__title">Vous êtes un</h3>
+                                                <h3 class="subscription__main-feature">Parent</h3>
+                                                <span class="subscription__price">Inscrivez-vous</span>
+                                            </label>
+
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="btn-toolbar">
                     <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
