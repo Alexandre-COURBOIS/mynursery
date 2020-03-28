@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form action="home.php" id="form" method="post">
+                                    <form id="form">
 
                                         <div class="subscription-container">
 
@@ -106,7 +106,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <input id="submitted" type="submit" class="btn btn-success" data-dismiss="modal">
                                 </div>
                                 </form>
 
