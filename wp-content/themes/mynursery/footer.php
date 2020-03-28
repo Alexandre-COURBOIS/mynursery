@@ -15,9 +15,9 @@ global $web; ?>
                     </div>
                     <div>
                         <ul>
-                            <li>24 Place Saint Marc, 76000 Rouen</li>
-                            <li>02.35.00.11.22</li>
-                            <li>contact@mynursery.fr</li>
+                            <li><?= get_field('adresse') ?></li>
+                            <li><?= get_field('numero_de_telephone') ?></li>
+                            <li><?= get_field('adresse_email') ?></li>
                         </ul>
                     </div>
                 </div>
@@ -53,21 +53,28 @@ global $web; ?>
                 <div>
                     <h4>Social</h4>
                     <div>
+                        <?php
+                              $facebook  = get_field('reseau_image_1', get_the_ID());
+                              $instagram = get_field('reseau_image_2', get_the_ID());
+                              $twitter   = get_field('reseau_image_3', get_the_ID());
+                              $pinterest = get_field('reseau_image_4', get_the_ID());
+                              $newreseau = get_field('reseau_image_5', get_the_ID());
+                        ?>
                         <ul id="logo-social">
                             <li>
-                                <a href="#" class="lien-footer"><i class="fab fa-facebook-square"></i></a>
+                                <a href="<?= esc_url(get_field('reseau_1', get_the_ID())) ?>" class="lien-footer"><img src="<?= $facebook['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
                             <li>
-                                <a href="#" class="lien-footer"><i class="fab fa-instagram"></i></a>
+                                <a href="<?= esc_url(get_field('reseau_2', get_the_ID())) ?>" class="lien-footer"><img src="<?= $instagram['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
                             <li>
-                                <a href="#" class="lien-footer"><i class="fab fa-twitter"></i></a>
+                                <a href="<?= esc_url(get_field('reseau_3', get_the_ID())) ?>" class="lien-footer"><img src="<?= $twitter['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
                             <li>
-                                <a href="#" class="lien-footer"><i class="fab fa-pinterest"></i></a>
+                                <a href="<?= esc_url(get_field('reseau_4', get_the_ID())) ?>" class="lien-footer"><img src="<?= $pinterest['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
                             <li>
-                                <a href="#" class="lien-footer"><i class="fab fa-google"></i></a>
+                                <a href="<?= esc_url(get_field('reseau_5', get_the_ID())) ?>" class="lien-footer"><img src="<?= $newreseau['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
                         </ul>
                     </div>
