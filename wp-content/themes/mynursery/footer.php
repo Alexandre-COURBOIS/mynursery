@@ -13,11 +13,18 @@ global $web; ?>
                                  alt="logo_mynursery" id="logo-footer"/>
                         </a>
                     </div>
+                    <?php $informations = get_post_meta($web['pages']['home']['id']);
+                    echo '<pre>';
+                    print_r($informations);
+                    echo '<pre>';?>
+
                     <div>
                         <ul>
-                            <li><?= get_field('adresse') ?></li>
-                            <li><?= get_field('numero_de_telephone') ?></li>
-                            <li><?= get_field('adresse_email') ?></li>
+                            <?php if(!empty($reseaux['ladresse'][0])) { ?>
+                            <li><?php $informations['ladresse'][0];?></li>
+                            <?php } ?>
+                            <li><?php  ?></li>
+                            <li><?php  ?></li>
                         </ul>
                     </div>
                 </div>
@@ -54,16 +61,16 @@ global $web; ?>
                     <h4>Social</h4>
                     <div>
                         <?php
-                              $facebook  = get_field('reseau_image_1', get_the_ID());
-                              $instagram = get_field('reseau_image_2', get_the_ID());
-                              $twitter   = get_field('reseau_image_3', get_the_ID());
-                              $pinterest = get_field('reseau_image_4', get_the_ID());
-                              $newreseau = get_field('reseau_image_5', get_the_ID());
+                        $reseaux = get_post_meta($web['pages']['home']['id']);
+                       /* echo '<pre>';
+                        print_r($reseaux);
+                        echo '<pre>';*/
                         ?>
                         <ul id="logo-social">
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_1', get_the_ID())) ?>" class="lien-footer"><img src="<?= $facebook['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
+
+                                <?php if(!empty($reseaux['reseau_image_1'][0])) { ?>
+                                <li><a href="" class="lien-footer"><img src="<?= $reseaux['reseau_image_1'][0]; ?>" alt=""></a></li>
+                                <?php } ?>
                             <li>
                                 <a href="<?= esc_url(get_field('reseau_2', get_the_ID())) ?>" class="lien-footer"><img src="<?= $instagram['sizes']['imgReseaux'] ?>" alt=""></a>
                             </li>
