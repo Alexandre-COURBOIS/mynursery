@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 global $wpdb;
 /*
 Template Name: Inscription
@@ -9,6 +11,7 @@ $success = false;
 
 if (!empty($_POST['submitted'])) {
 
+    $name_enterprise = trim(strip_tags(stripslashes($_POST['nom_entreprise'])));
     $name = trim(strip_tags(stripslashes($_POST['nom'])));
     $surname = trim(strip_tags(stripslashes($_POST['prenom'])));
     $email = trim(strip_tags(stripslashes($_POST['email'])));
@@ -20,19 +23,54 @@ if (!empty($_POST['submitted'])) {
     $city = trim(strip_tags(stripslashes($_POST['city'])));
     $siret = trim(strip_tags(stripslashes($_POST['siret'])));
     $social_secu = trim(strip_tags(stripslashes($_POST['secu'])));
-    $child_max = trim(strip_tags(stripslashes($_POST['max_child'])));
+    $child_max = trim(strip_tags(stripslashes($_POST['max-child'])));
     $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
     $password = trim(strip_tags(stripslashes($_POST['mdp'])));
-    $password = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+    $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
 
     if (!empty($errors)) {
 
+        $token = token(255);
+
+        $longitude = '1,569845';
+        $latitude = '1,856232';
+
+        $wpdb->insert(
+            'nurs_creche',
+            array(
+                'nom_creche' => $name_enterprise,
+                'nom_gerant' => $name,
+                'prenom_gerant' => $surname,
+                'email' => $email,
+                'telephone_creche' => $phone,
+                'num_rue' => $number_way,
+                'supp_rue' => $id_way,
+                'nom_rue' => $way,
+                'codepostal' => $postal_code,
+                'ville' => $city,
+                'num_siret' => $siret,
+                'num_agrement' => $agrement,
+                'num_secusocial' => $social_secu,
+                'effectif_maxenfant' => $child_max,
+                'longitude' => $longitude,
+                'latitude' => $latitude,
+                'password' => $password2,
+                'token' => $token,
+                'created_at' => current_time('mysql'),
+            ),
+
+            array(
+                '%s', '%s', '%s','%s','%f','%f','%s','%s','%f','%s','%f','%f','%f','%f','%s','%s','%s','%s',
+            )
+        );
+        $success = true;
     }
 }
+
 get_header();
 ?>
 
-<div class="separator"></div>
+    <div class="separator"></div>
 
     <div class="container">
         <form method="post" class="form-style">
@@ -40,6 +78,15 @@ get_header();
             <h3 class="text-center pt-4">Les informations a rentrer sont celle de votre établissement</h3>
             <div class="form-row">
                 <div class="col-md-6 mx-auto mt-3">
+                    <div class="form-row">
+                        <div class="col-md-11 mx-auto mt-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nom_entreprise" id="nom_entreprise"
+                                       placeholder="Nom de votre Etablissement/Entreprise">
+                                <span class="input-highlight"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
@@ -57,7 +104,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email : exemple@mail.fr">
+                                <input type="email" class="form-control" name="email" id="email"
+                                       placeholder="Email : exemple@mail.fr">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -65,7 +113,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="tel" id="tel" placeholder="Tel: 02 11 22 33 44">
+                                <input type="text" class="form-control" name="tel" id="tel"
+                                       placeholder="Tel: 02 11 22 33 44">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -73,7 +122,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="num-rue" id="num-rue" placeholder="N° de rue">
+                                <input type="text" class="form-control" name="num-rue" id="num-rue"
+                                       placeholder="N° de rue">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -92,7 +142,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue">
+                                <input type="text" class="form-control" name="street" id="street"
+                                       placeholder="Nom de la rue">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -100,13 +151,15 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="code-postal" id="code-postal" placeholder="Code postal">
+                                <input type="text" class="form-control" name="code-postal" id="code-postal"
+                                       placeholder="Code postal">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
                         <div class="col-md-7 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="city" id="city" placeholder="Nom de la ville">
+                                <input type="text" class="form-control" name="city" id="city"
+                                       placeholder="Nom de la ville">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -114,7 +167,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET/SIREN">
+                                <input type="text" class="form-control" name="siret" id="siret"
+                                       placeholder="N° SIRET/SIREN">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -122,7 +176,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="secu" id="secu" placeholder="N° sécurité social">
+                                <input type="text" class="form-control" name="secu" id="secu"
+                                       placeholder="N° sécurité social">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -130,7 +185,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément">
+                                <input type="text" class="form-control" name="agrement" id="agrement"
+                                       placeholder="N° d'agrément">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -138,7 +194,8 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum">
+                                <input type="text" class="form-control" name="max-child" id="max-child"
+                                       placeholder="Effectif d'enfant maximum">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -146,13 +203,15 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Votre mot de passe">
+                                <input type="password" class="form-control" name="mdp" id="mdp"
+                                       placeholder="Votre mot de passe">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp" placeholder="Confirmation mot de passe">
+                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp"
+                                       placeholder="Confirmation mot de passe">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -167,7 +226,7 @@ get_header();
 
     <div class="clear"></div>
 
-<div class="separator"></div>
+    <div class="separator"></div>
 
 <?php
 
