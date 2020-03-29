@@ -1,15 +1,41 @@
 <?php
+global $wpdb;
 /*
 Template Name: Inscription
 */
 
+$errors = array();
+$success = false;
+
+if (!empty($_POST['submitted'])) {
+
+    $name = trim(strip_tags(stripslashes($_POST['nom'])));
+    $surname = trim(strip_tags(stripslashes($_POST['prenom'])));
+    $email = trim(strip_tags(stripslashes($_POST['email'])));
+    $phone = trim(strip_tags(stripslashes($_POST['tel'])));
+    $number_way = trim(strip_tags(stripslashes($_POST['num-rue'])));
+    $id_way = trim(strip_tags(stripslashes($_POST['id-rue'])));
+    $way = trim(strip_tags(stripslashes($_POST['street'])));
+    $postal_code = trim(strip_tags(stripslashes($_POST['code-postal'])));
+    $city = trim(strip_tags(stripslashes($_POST['city'])));
+    $siret = trim(strip_tags(stripslashes($_POST['siret'])));
+    $social_secu = trim(strip_tags(stripslashes($_POST['secu'])));
+    $child_max = trim(strip_tags(stripslashes($_POST['max_child'])));
+    $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
+    $password = trim(strip_tags(stripslashes($_POST['mdp'])));
+    $password = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+
+    if (!empty($errors)) {
+
+    }
+}
 get_header();
 ?>
 
 <div class="separator"></div>
 
     <div class="container">
-        <form action="" method="post" class="form-style">
+        <form method="post" class="form-style">
             <h2 class="text-center pt-4">Inscription</h2>
             <h3 class="text-center pt-4">Les informations a rentrer sont celle de votre établissement</h3>
             <div class="form-row">
@@ -17,7 +43,7 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Nom">
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -104,6 +130,14 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+                                <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément">
+                                <span class="input-highlight"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-11 mx-auto mt-3">
+                            <div class="form-group">
                                 <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum">
                                 <span class="input-highlight"></span>
                             </div>
@@ -126,13 +160,15 @@ get_header();
                 </div>
             </div>
             <div class="col-md-5 mx-auto mt-5">
-                <input type="submit" class="btn btn-lg btn-success btn-block">
+                <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
             </div>
         </form>
-        <div class="clear"></div>
     </div>
+
+    <div class="clear"></div>
 
 <div class="separator"></div>
 
 <?php
+
 get_footer();
