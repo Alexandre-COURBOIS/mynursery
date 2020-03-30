@@ -7,8 +7,6 @@ get_header();
 
     <body class="body_mapbox">
 
-    <div class="separator"></div>
-
     <div class="flex-parent viewport-full relative scroll-hidden">
         <div class="flex-child w-full w240-mm absolute static-mm left bottom">
             <div class="flex-parent flex-parent--column viewport-third h-full-mm hmax-full bg-white scroll-auto">
@@ -24,8 +22,6 @@ get_header();
         </div>
         <div class="flex-child flex-child--grow bg-darken10 viewport-twothirds viewport-full-mm" id="map"></div>
     </div>
-
-    <div class="separator"></div>
 
     </body>
 

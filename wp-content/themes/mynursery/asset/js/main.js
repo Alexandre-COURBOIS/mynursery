@@ -68,9 +68,11 @@ map.on('load', function() {
     // add markers to map
     geojson.features.forEach(function(marker) {
 
+        //Instantiation de l'image du pointeur également à gérer sur le style (mapbox.css)
         // create a HTML element for each feature
         var el = document.createElement('div');
         el.className = 'marker';
+
 
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el)
@@ -98,6 +100,14 @@ map.on('load', function() {
             var styleSpecText = JSON.stringify(styleSpec, null, 2);
             var syntaxStyleSpecText = syntaxHighlight(styleSpecText);
             styleSpecBox.innerHTML = syntaxStyleSpecText;
+
+            console.log(syntaxStyleSpecText);
+
+            var location = document.getElementsByClassName('number');
+
+            console.log(location[3]);
+            console.log(location[4]);
+
         });
 
     function syntaxHighlight(json) {
