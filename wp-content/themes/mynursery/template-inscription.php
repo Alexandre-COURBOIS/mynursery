@@ -28,42 +28,78 @@ if (!empty($_POST['submitted'])) {
     $password = trim(strip_tags(stripslashes($_POST['mdp'])));
     $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
 
-    if (!empty($errors)) {
+    debug($_POST['submitted']);
+
+    if (empty($errors)) {
 
         $token = token(255);
 
-        $longitude = '1,569845';
-        $latitude = '1,856232';
+        $longitude = '1.569845';
+        $latitude = '1.856232';
+        /*Attention les %f (floats) prennent en compte le . et non pas la ,*/
 
-        $wpdb->insert(
-            'nurs_creche',
-            array(
-                'nom_creche' => $name_enterprise,
-                'nom_gerant' => $name,
-                'prenom_gerant' => $surname,
-                'email' => $email,
-                'telephone_creche' => $phone,
-                'num_rue' => $number_way,
-                'supp_rue' => $id_way,
-                'nom_rue' => $way,
-                'codepostal' => $postal_code,
-                'ville' => $city,
-                'num_siret' => $siret,
-                'num_agrement' => $agrement,
-                'num_secusocial' => $social_secu,
-                'effectif_maxenfant' => $child_max,
-                'longitude' => $longitude,
-                'latitude' => $latitude,
-                'password' => $password2,
-                'token' => $token,
-                'created_at' => current_time('mysql'),
-            ),
+        if ($id_way == 'NULL') {
 
-            array(
-                '%s', '%s', '%s','%s','%f','%f','%s','%s','%f','%s','%f','%f','%f','%f','%s','%s','%s','%s',
-            )
-        );
-        $success = true;
+            $wpdb->insert(
+                'nurs_creche',
+                array(
+                    'nom_creche' => $name_enterprise,
+                    'nom_gerant' => $name,
+                    'prenom_gerant' => $surname,
+                    'email' => $email,
+                    'telephone_creche' => $phone,
+                    'num_rue' => $number_way,
+                    'nom_rue' => $way,
+                    'codepostal' => $postal_code,
+                    'ville' => $city,
+                    'num_siret' => $siret,
+                    'num_agrement' => $agrement,
+                    'num_secusocial' => $social_secu,
+                    'effectif_maxenfant' => $child_max,
+                    'longitude' => $longitude,
+                    'latitude' => $latitude,
+                    'password' => $password2,
+                    'token' => $token,
+                    'created_at' => current_time('mysql'),
+                ),
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
+                )
+            );
+            $success = true;
+
+        } else {
+
+            $wpdb->insert(
+                'nurs_creche',
+                array(
+                    'nom_creche' => $name_enterprise,
+                    'nom_gerant' => $name,
+                    'prenom_gerant' => $surname,
+                    'email' => $email,
+                    'telephone_creche' => $phone,
+                    'num_rue' => $number_way,
+                    'supp_rue' => $id_way,
+                    'nom_rue' => $way,
+                    'codepostal' => $postal_code,
+                    'ville' => $city,
+                    'num_siret' => $siret,
+                    'num_agrement' => $agrement,
+                    'num_secusocial' => $social_secu,
+                    'effectif_maxenfant' => $child_max,
+                    'longitude' => $longitude,
+                    'latitude' => $latitude,
+                    'password' => $password2,
+                    'token' => $token,
+                    'created_at' => current_time('mysql'),
+                ),
+
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
+                )
+            );
+            $success = true;
+        }
     }
 }
 
@@ -130,7 +166,7 @@ get_header();
                         <div class="col-md-6 mx-auto mt-3">
                             <div class="form-group">
                                 <select name="id-rue" id="id-rue" class="form-control">
-                                    <option value="null">Supplément de numéro</option>
+                                    <option value="NULL">Supplément de numéro</option>
                                     <option value="bis">Bis</option>
                                     <option value="ter">Ter</option>
                                     <option value="quater">Quater</option>

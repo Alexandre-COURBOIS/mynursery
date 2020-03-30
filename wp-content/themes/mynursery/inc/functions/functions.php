@@ -10,3 +10,16 @@ function token($length) {
     }
     return $randomString;
 }
+
+function debug($array,$true = true) {
+
+    if ($true = true)   {
+        echo '<pre>';
+        print_r($array);
+        echo '</pre>';
+    } elseif ($true = false) {
+        echo '<pre>';
+        var_dump($array);
+        echo '</pre>';
+    }
+}
