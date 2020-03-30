@@ -31,6 +31,10 @@ $web = array(
         'profil' => array(
             'id' => 13,
             'slug' => 'profil'
-        )
+        ),
+        'map' => array(
+            'id' => 112,
+            'slug' => 'map'
+        ),
     )
 );
