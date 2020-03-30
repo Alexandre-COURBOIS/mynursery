@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 global $wpdb;
 /*
 Template Name: Inscription
@@ -12,6 +14,7 @@ $success = false;
 
 if (!empty($_POST['submitted'])) {
 
+    $name_enterprise = trim(strip_tags(stripslashes($_POST['nom_entreprise'])));
     $name = trim(strip_tags(stripslashes($_POST['nom'])));
     $surname = trim(strip_tags(stripslashes($_POST['prenom'])));
     $email = trim(strip_tags(stripslashes($_POST['email'])));
@@ -43,19 +46,92 @@ if (!empty($_POST['submitted'])) {
     $errors['max-child'] = $v->intValid($child_max, 1, 10);
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
-
-
-
     if ($v->IsValid($errors)) {
         die('ok');
     }
 }
 print_r($errors);
 $form = new Form($errors);
+
+    debug($_POST['submitted']);
+
+    if (empty($errors)) {
+
+        $token = token(255);
+
+        $longitude = '1.569845';
+        $latitude = '1.856232';
+        /*Attention les %f (floats) prennent en compte le . et non pas la ,*/
+
+        if ($id_way == 'NULL') {
+
+            $wpdb->insert(
+                'nurs_creche',
+                array(
+                    'nom_creche' => $name_enterprise,
+                    'nom_gerant' => $name,
+                    'prenom_gerant' => $surname,
+                    'email' => $email,
+                    'telephone_creche' => $phone,
+                    'num_rue' => $number_way,
+                    'nom_rue' => $way,
+                    'codepostal' => $postal_code,
+                    'ville' => $city,
+                    'num_siret' => $siret,
+                    'num_agrement' => $agrement,
+                    'num_secusocial' => $social_secu,
+                    'effectif_maxenfant' => $child_max,
+                    'longitude' => $longitude,
+                    'latitude' => $latitude,
+                    'password' => $password2,
+                    'token' => $token,
+                    'created_at' => current_time('mysql'),
+                ),
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
+                )
+            );
+            $success = true;
+
+        } else {
+
+            $wpdb->insert(
+                'nurs_creche',
+                array(
+                    'nom_creche' => $name_enterprise,
+                    'nom_gerant' => $name,
+                    'prenom_gerant' => $surname,
+                    'email' => $email,
+                    'telephone_creche' => $phone,
+                    'num_rue' => $number_way,
+                    'supp_rue' => $id_way,
+                    'nom_rue' => $way,
+                    'codepostal' => $postal_code,
+                    'ville' => $city,
+                    'num_siret' => $siret,
+                    'num_agrement' => $agrement,
+                    'num_secusocial' => $social_secu,
+                    'effectif_maxenfant' => $child_max,
+                    'longitude' => $longitude,
+                    'latitude' => $latitude,
+                    'password' => $password2,
+                    'token' => $token,
+                    'created_at' => current_time('mysql'),
+                ),
+
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
+                )
+            );
+            $success = true;
+        }
+    }
+}
+
 get_header();
 ?>
 
-<div class="separator"></div>
+    <div class="separator"></div>
 
     <div class="container">
         <form method="post" class="form-style">
@@ -63,6 +139,15 @@ get_header();
             <h3 class="text-center pt-4">Les informations a rentrer sont celle de votre établissement</h3>
             <div class="form-row">
                 <div class="col-md-6 mx-auto mt-3">
+                    <div class="form-row">
+                        <div class="col-md-11 mx-auto mt-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nom_entreprise" id="nom_entreprise"
+                                       placeholder="Nom de votre Etablissement/Entreprise">
+                                <span class="input-highlight"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
@@ -82,7 +167,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email : exemple@mail.fr" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('email') ?>
                             </div>
@@ -91,7 +178,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="tel" id="tel" placeholder="Tel: 02 11 22 33 44" value="<?php if(!empty($_POST['tel'])) echo $_POST['tel']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('tel') ?>
                             </div>
@@ -100,7 +189,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="num-rue" id="num-rue" placeholder="N° de rue" value="<?php if(!empty($_POST['num-rue'])) echo $_POST['num-rue']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('num-rue') ?>
                             </div>
@@ -108,7 +199,7 @@ get_header();
                         <div class="col-md-6 mx-auto mt-3">
                             <div class="form-group">
                                 <select name="id-rue" id="id-rue" class="form-control">
-                                    <option value="null">Supplément de numéro</option>
+                                    <option value="NULL">Supplément de numéro</option>
                                     <option value="bis">Bis</option>
                                     <option value="ter">Ter</option>
                                     <option value="quater">Quater</option>
@@ -120,7 +211,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue" value="<?php if(!empty($_POST['street'])) echo $_POST['street']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('street') ?>
                             </div>
@@ -129,14 +222,18 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="code-postal" id="code-postal" placeholder="Code postal" value="<?php if(!empty($_POST['code-postal'])) echo $_POST['code-postal']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('code-postal') ?>
                             </div>
                         </div>
                         <div class="col-md-7 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="city" id="city" placeholder="Nom de la ville" value="<?php if(!empty($_POST['city'])) echo $_POST['city']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('city') ?>
                             </div>
@@ -145,7 +242,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET" value="<?php if(!empty($_POST['siret'])) echo $_POST['siret']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('siret') ?>
                             </div>
@@ -154,7 +253,10 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="secu" id="secu" placeholder="N° sécurité social" value="<?php if(!empty($_POST['secu'])) echo $_POST['secu']; ?>">
+
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('secu') ?>
                             </div>
@@ -163,7 +265,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément" value="<?php if(!empty($_POST['agrement'])) echo $_POST['agrement']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('agrement') ?>
                             </div>
@@ -172,7 +276,9 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum" value="<?php if(!empty($_POST['max-child'])) echo $_POST['max-child']; ?>">
+
                                 <span class="input-highlight"></span>
                                 <?= $form->error('max-child') ?>
                             </div>
@@ -181,14 +287,16 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Votre mot de passe">
+                                <input type="password" class="form-control" name="mdp" id="mdp"
+                                       placeholder="Votre mot de passe">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('mdp') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp" placeholder="Confirmation mot de passe">
+                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp"
+                                       placeholder="Confirmation mot de passe">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('mdp') ?>
                             </div>
@@ -204,7 +312,7 @@ get_header();
 
     <div class="clear"></div>
 
-<div class="separator"></div>
+    <div class="separator"></div>
 
 <?php
 
