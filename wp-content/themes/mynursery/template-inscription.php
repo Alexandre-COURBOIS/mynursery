@@ -4,6 +4,9 @@ global $wpdb;
 Template Name: Inscription
 */
 
+use inc\service\Validation;
+use inc\service\Form;
+
 $errors = array();
 $success = false;
 
@@ -23,12 +26,34 @@ if (!empty($_POST['submitted'])) {
     $child_max = trim(strip_tags(stripslashes($_POST['max_child'])));
     $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
     $password = trim(strip_tags(stripslashes($_POST['mdp'])));
-    $password = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+    $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
 
-    if (!empty($errors)) {
+    $v = new Validation();
+    $errors['nom'] = $v->textValid($name, 'nom', 3, 100);
+    $errors['prenom'] = $v->textValid($surname, 'prenom', 3, 100);
+    $errors['email'] = $v->emailValid($email);
+    $errors['tel'] = $v->isNumeric($phone);
+    $errors['tel'] = $v->textValid($phone, 'Numéro de téléphone', 10, 10);
+    $errors['num-rue'] = $v->intValid($number_way, 0, 9999);
+    $errors['street'] = $v->textValid($way, 'Nom de rue', 4, 200);
+    $errors['code-postal'] = $v->textValid($postal_code, 'Code postal', 5, 5);
+    $errors['city'] = $v->textValid($city, 'Ville', 4, 70);
+    $errors['siret'] = $v->textValid($siret, 'N° de siret', 14, 14);
+    $errors['siret'] = $v->isNumeric($siret);
+    $errors['siret'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
+    $errors['siret'] = $v->isNumeric($social_secu);
+    $errors['max_child'] = $v->intValid($child_max, 1, 10);
+    $errors['mdp'] = $v->passwordValid($password, $password2);
 
+
+
+
+    if ($v->IsValid($errors)) {
+        die('ok');
     }
 }
+print_r($errors);
+$form = new Form($errors);
 get_header();
 ?>
 
@@ -45,12 +70,14 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('nom') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('prenom') ?>
                             </div>
                         </div>
                     </div>
@@ -59,6 +86,7 @@ get_header();
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email : exemple@mail.fr">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('email') ?>
                             </div>
                         </div>
                     </div>
@@ -67,6 +95,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="tel" id="tel" placeholder="Tel: 02 11 22 33 44">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('tel') ?>
                             </div>
                         </div>
                     </div>
@@ -75,6 +104,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="num-rue" id="num-rue" placeholder="N° de rue">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('num-rue') ?>
                             </div>
                         </div>
                         <div class="col-md-6 mx-auto mt-3">
@@ -94,6 +124,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('street') ?>
                             </div>
                         </div>
                     </div>
@@ -102,12 +133,14 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="code-postal" id="code-postal" placeholder="Code postal">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('code-postal') ?>
                             </div>
                         </div>
                         <div class="col-md-7 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="city" id="city" placeholder="Nom de la ville">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('city') ?>
                             </div>
                         </div>
                     </div>
@@ -116,6 +149,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET/SIREN">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('siret') ?>
                             </div>
                         </div>
                     </div>
@@ -124,6 +158,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="secu" id="secu" placeholder="N° sécurité social">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('secu') ?>
                             </div>
                         </div>
                     </div>
@@ -132,6 +167,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('agrement') ?>
                             </div>
                         </div>
                     </div>
@@ -140,6 +176,7 @@ get_header();
                             <div class="form-group">
                                 <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('max-child') ?>
                             </div>
                         </div>
                     </div>
@@ -148,12 +185,14 @@ get_header();
                             <div class="form-group">
                                 <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Votre mot de passe">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('mdp') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="password" class="form-control" name="conf-mdp" id="conf-mdp" placeholder="Confirmation mot de passe">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('mdp') ?>
                             </div>
                         </div>
                     </div>
