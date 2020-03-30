@@ -17,7 +17,7 @@ $web = array(
             'slug' => 'ajouter-un-employe'
         ),
         'connexion' => array(
-            'id' => 9,
+            'id' => 104,
             'slug' => 'connexion'
         ),
         'contact' => array(
@@ -25,7 +25,7 @@ $web = array(
             'slug' => 'contact'
         ),
         'inscription' => array(
-            'id' => 11,
+            'id' => 102,
             'slug' => 'inscription'
         ),
         'profil' => array(

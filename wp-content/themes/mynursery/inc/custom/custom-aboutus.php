@@ -44,7 +44,7 @@ function wpdocs_codex_aboutus_init() {
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => null,
-        'menu_icon'          => 'dashicons-editor-paste-word',
+        'menu_icon'          => 'dashicons-editor-contract',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
 
     );
