@@ -1,0 +1,42 @@
+.marker {
+    background-image: url('../img/mapbox-pointeur30.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.body_mapbox {
+    margin: 0;
+    padding: 0;
+}
+#geocoder-container > div {
+    min-width: 50%;
+    margin-left: 25%;
+}
+.string {
+    color: #314ccd;
+}
+.number {
+    color: #b43b71;
+}
+.boolean {
+    color: #5a3fc0;
+}
+.null {
+    color: #ba7334;
+}
+.key {
+    color: #ba3b3f;
+}

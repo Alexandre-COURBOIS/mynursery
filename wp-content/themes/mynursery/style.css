@@ -39,6 +39,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 @import "asset/css/modal-header.css";
 
+@import "asset/css/loader.css";
+
+@import "asset/css/mapbox.css";
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

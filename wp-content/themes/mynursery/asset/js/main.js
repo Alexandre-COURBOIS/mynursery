@@ -22,11 +22,8 @@ function myFunction() {
 $(document).ready(function(){
 
 $("#demo").carousel({
-
     interval: 8000,
-
 });
-
 
 $('#pro').click(function () {
     $('#pro').prop('checked',true)
@@ -40,27 +37,95 @@ $('#parent').click(function () {
 
 });
 
+// Map Box
 
-/*
-function userChoice() {
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViYXBzeSIsImEiOiJjazhlYXk1ejkxNGFpM2dsdjJkaDd2b2RmIn0.pWabX6z0Us-G8OiF9DhuNA';
 
-    submit = document.getElementById('submit');
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styleivals/mapbox/streets-v11',
+    center: [1.098696,49.4379469],
+    zoom : 12,
 
-    $('#pro').click(function () {
-       var pro = $('#pro').prop('checked', true)
-        if (pro === 1) {
-            submit.onsubmit = console.log('ça fonctionne!')
-        }
+});
+
+// Adding pointer on map
+map.on('load', function() {
+    var geojson = {
+        type: 'FeatureCollection',
+        features: [{
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [1.098242,49.437879]
+            },
+            properties: {
+                title: 'Ma maison',
+                description: 'Chez moi'
+            }
+        } /*If need one more put it here*/]
+    };
+    // add markers to map
+    geojson.features.forEach(function(marker) {
+
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
+
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map)
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+            .addTo(map);
+
     });
-    $('#parent').click(function () {
-        let parent = $('#pro').prop('checked', true)
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
     });
 
+    map.addControl(geocoder, 'top-left');
 
 
-};
-*/
+        // Listen for the `geocoder.input` event that is triggered when a user
+        // makes a selection
+        geocoder.on('result', function(ev) {
+            var styleSpec = ev.result;
+            var styleSpecBox = document.getElementById('json-response');
+            var styleSpecText = JSON.stringify(styleSpec, null, 2);
+            var syntaxStyleSpecText = syntaxHighlight(styleSpecText);
+            styleSpecBox.innerHTML = syntaxStyleSpecText;
+        });
 
+    function syntaxHighlight(json) {
+        json = json
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+        return json.replace(
+            /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+            function(match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            }
+        );
+    }
+
+});
 
 
 
