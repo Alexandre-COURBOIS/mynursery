@@ -65,7 +65,7 @@ class Validation
     public function isNumeric( $value)
     {
         $error = '';
-        if(!ctype_digit($value))
+        if(is_numeric($value) === false)
         {
             $error= 'Champ invalide';
         }
