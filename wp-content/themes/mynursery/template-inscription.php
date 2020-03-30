@@ -2,6 +2,7 @@
 session_start();
 
 global $wpdb;
+
 /*
 Template Name: Inscription
 */
@@ -47,16 +48,6 @@ if (!empty($_POST['submitted'])) {
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
     if ($v->IsValid($errors)) {
-        die('ok');
-    }
-}
-print_r($errors);
-$form = new Form($errors);
-
-    debug($_POST['submitted']);
-
-    if (empty($errors)) {
-
         $token = token(255);
 
         $longitude = '1.569845';
@@ -124,9 +115,12 @@ $form = new Form($errors);
                 )
             );
             $success = true;
+
         }
     }
 }
+
+$form = new Form($errors);
 
 get_header();
 ?>
@@ -151,14 +145,16 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" value="<?php if(!empty($_POST['nom'])) echo $_POST['nom']; ?>">
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom"
+                                       value="<?php if (!empty($_POST['nom'])) echo $_POST['nom']; ?>">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('nom') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom" value="<?php if(!empty($_POST['prenom'])) echo $_POST['prenom']; ?>">
+                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom"
+                                       value="<?php if (!empty($_POST['prenom'])) echo $_POST['prenom']; ?>">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('prenom') ?>
                             </div>
@@ -168,7 +164,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email : exemple@mail.fr" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>">
+                                <input type="email" class="form-control" name="email" id="email"
+                                       placeholder="Email : exemple@mail.fr"
+                                       value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('email') ?>
@@ -179,7 +177,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="tel" id="tel" placeholder="Tel: 02 11 22 33 44" value="<?php if(!empty($_POST['tel'])) echo $_POST['tel']; ?>">
+                                <input type="text" class="form-control" name="tel" id="tel"
+                                       placeholder="Tel: 02 11 22 33 44"
+                                       value="<?php if (!empty($_POST['tel'])) echo $_POST['tel']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('tel') ?>
@@ -190,7 +190,9 @@ get_header();
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="num-rue" id="num-rue" placeholder="N° de rue" value="<?php if(!empty($_POST['num-rue'])) echo $_POST['num-rue']; ?>">
+                                <input type="text" class="form-control" name="num-rue" id="num-rue"
+                                       placeholder="N° de rue"
+                                       value="<?php if (!empty($_POST['num-rue'])) echo $_POST['num-rue']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('num-rue') ?>
@@ -212,7 +214,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue" value="<?php if(!empty($_POST['street'])) echo $_POST['street']; ?>">
+                                <input type="text" class="form-control" name="street" id="street"
+                                       placeholder="Nom de la rue"
+                                       value="<?php if (!empty($_POST['street'])) echo $_POST['street']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('street') ?>
@@ -223,7 +227,9 @@ get_header();
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="code-postal" id="code-postal" placeholder="Code postal" value="<?php if(!empty($_POST['code-postal'])) echo $_POST['code-postal']; ?>">
+                                <input type="text" class="form-control" name="code-postal" id="code-postal"
+                                       placeholder="Code postal"
+                                       value="<?php if (!empty($_POST['code-postal'])) echo $_POST['code-postal']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('code-postal') ?>
@@ -232,7 +238,9 @@ get_header();
                         <div class="col-md-7 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="city" id="city" placeholder="Nom de la ville" value="<?php if(!empty($_POST['city'])) echo $_POST['city']; ?>">
+                                <input type="text" class="form-control" name="city" id="city"
+                                       placeholder="Nom de la ville"
+                                       value="<?php if (!empty($_POST['city'])) echo $_POST['city']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('city') ?>
@@ -243,7 +251,8 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET" value="<?php if(!empty($_POST['siret'])) echo $_POST['siret']; ?>">
+                                <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET"
+                                       value="<?php if (!empty($_POST['siret'])) echo $_POST['siret']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('siret') ?>
@@ -254,7 +263,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="secu" id="secu" placeholder="N° sécurité social" value="<?php if(!empty($_POST['secu'])) echo $_POST['secu']; ?>">
+                                <input type="text" class="form-control" name="secu" id="secu"
+                                       placeholder="N° sécurité social"
+                                       value="<?php if (!empty($_POST['secu'])) echo $_POST['secu']; ?>">
 
 
                                 <span class="input-highlight"></span>
@@ -266,7 +277,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément" value="<?php if(!empty($_POST['agrement'])) echo $_POST['agrement']; ?>">
+                                <input type="text" class="form-control" name="agrement" id="agrement"
+                                       placeholder="N° d'agrément"
+                                       value="<?php if (!empty($_POST['agrement'])) echo $_POST['agrement']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('agrement') ?>
@@ -277,7 +290,9 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum" value="<?php if(!empty($_POST['max-child'])) echo $_POST['max-child']; ?>">
+                                <input type="text" class="form-control" name="max-child" id="max-child"
+                                       placeholder="Effectif d'enfant maximum"
+                                       value="<?php if (!empty($_POST['max-child'])) echo $_POST['max-child']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('max-child') ?>
