@@ -22,4 +22,4 @@ require get_template_directory() . '/inc/custom/custom-informations.php';
 
 require get_template_directory() . '/inc/custom/custom-reseauxsociaux.php';
 
-
+require get_template_directory() . '/inc/functions/functions.php';
