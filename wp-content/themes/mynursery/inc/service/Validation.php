@@ -62,4 +62,13 @@ class Validation
         return $error;
 
     }
+    public function isNumeric( $value)
+    {
+        $error = '';
+        if(!ctype_digit($value))
+        {
+            $error= 'Champ invalide';
+        }
+        return $error;
+    }
 }
