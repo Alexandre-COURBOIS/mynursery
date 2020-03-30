@@ -6,6 +6,9 @@ global $wpdb;
 Template Name: Inscription
 */
 
+use inc\service\Validation;
+use inc\service\Form;
+
 $errors = array();
 $success = false;
 
@@ -27,6 +30,28 @@ if (!empty($_POST['submitted'])) {
     $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
     $password = trim(strip_tags(stripslashes($_POST['mdp'])));
     $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+
+    $v = new Validation();
+    $errors['nom'] = $v->textValid($name, 'nom', 3, 100);
+    $errors['prenom'] = $v->textValid($surname, 'prenom', 3, 100);
+    $errors['email'] = $v->emailValid($email);
+    $errors['tel'] = $v->isNumeric($phone);
+    $errors['tel'] = $v->textValid($phone, 'Numéro de téléphone', 10, 10);
+    $errors['num-rue'] = $v->intValid($number_way, 0, 9999);
+    $errors['street'] = $v->textValid($way, 'Nom de rue', 4, 200);
+    $errors['code-postal'] = $v->textValid($postal_code, 'Code postal', 5, 5);
+    $errors['city'] = $v->textValid($city, 'Ville', 4, 70);
+    $errors['siret'] = $v->textValid($siret, 'N° de siret', 14, 14);
+    $errors['siret'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
+    $errors['max-child'] = $v->intValid($child_max, 1, 10);
+    $errors['mdp'] = $v->passwordValid($password, $password2);
+
+    if ($v->IsValid($errors)) {
+        die('ok');
+    }
+}
+print_r($errors);
+$form = new Form($errors);
 
     debug($_POST['submitted']);
 
@@ -126,41 +151,49 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom">
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" value="<?php if(!empty($_POST['nom'])) echo $_POST['nom']; ?>">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('nom') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom">
+                                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom" value="<?php if(!empty($_POST['prenom'])) echo $_POST['prenom']; ?>">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('prenom') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email"
-                                       placeholder="Email : exemple@mail.fr">
+
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email : exemple@mail.fr" value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('email') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="tel" id="tel"
-                                       placeholder="Tel: 02 11 22 33 44">
+
+                                <input type="text" class="form-control" name="tel" id="tel" placeholder="Tel: 02 11 22 33 44" value="<?php if(!empty($_POST['tel'])) echo $_POST['tel']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('tel') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="num-rue" id="num-rue"
-                                       placeholder="N° de rue">
+
+                                <input type="text" class="form-control" name="num-rue" id="num-rue" placeholder="N° de rue" value="<?php if(!empty($_POST['num-rue'])) echo $_POST['num-rue']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('num-rue') ?>
                             </div>
                         </div>
                         <div class="col-md-6 mx-auto mt-3">
@@ -178,61 +211,76 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="street" id="street"
-                                       placeholder="Nom de la rue">
+
+                                <input type="text" class="form-control" name="street" id="street" placeholder="Nom de la rue" value="<?php if(!empty($_POST['street'])) echo $_POST['street']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('street') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="code-postal" id="code-postal"
-                                       placeholder="Code postal">
+
+                                <input type="text" class="form-control" name="code-postal" id="code-postal" placeholder="Code postal" value="<?php if(!empty($_POST['code-postal'])) echo $_POST['code-postal']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('code-postal') ?>
                             </div>
                         </div>
                         <div class="col-md-7 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="city" id="city"
-                                       placeholder="Nom de la ville">
+
+                                <input type="text" class="form-control" name="city" id="city" placeholder="Nom de la ville" value="<?php if(!empty($_POST['city'])) echo $_POST['city']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('city') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="siret" id="siret"
-                                       placeholder="N° SIRET/SIREN">
+
+                                <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET" value="<?php if(!empty($_POST['siret'])) echo $_POST['siret']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('siret') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="secu" id="secu"
-                                       placeholder="N° sécurité social">
+
+                                <input type="text" class="form-control" name="secu" id="secu" placeholder="N° sécurité social" value="<?php if(!empty($_POST['secu'])) echo $_POST['secu']; ?>">
+
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('secu') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="agrement" id="agrement"
-                                       placeholder="N° d'agrément">
+
+                                <input type="text" class="form-control" name="agrement" id="agrement" placeholder="N° d'agrément" value="<?php if(!empty($_POST['agrement'])) echo $_POST['agrement']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('agrement') ?>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="max-child" id="max-child"
-                                       placeholder="Effectif d'enfant maximum">
+
+                                <input type="text" class="form-control" name="max-child" id="max-child" placeholder="Effectif d'enfant maximum" value="<?php if(!empty($_POST['max-child'])) echo $_POST['max-child']; ?>">
+
                                 <span class="input-highlight"></span>
+                                <?= $form->error('max-child') ?>
                             </div>
                         </div>
                     </div>
@@ -242,6 +290,7 @@ get_header();
                                 <input type="password" class="form-control" name="mdp" id="mdp"
                                        placeholder="Votre mot de passe">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('mdp') ?>
                             </div>
                         </div>
                         <div class="col-md-5 mx-auto mt-3">
@@ -249,6 +298,7 @@ get_header();
                                 <input type="password" class="form-control" name="conf-mdp" id="conf-mdp"
                                        placeholder="Confirmation mot de passe">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('mdp') ?>
                             </div>
                         </div>
                     </div>
