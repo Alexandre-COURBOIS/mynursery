@@ -71,4 +71,30 @@ class Validation
         }
         return $error;
     }
+    public function intValid($int, $min, $max)
+    {
+        $error = '';
+        if(empty($int) || filter_var($int, FILTER_VALIDATE_INT) === false) {
+            $error = 'Veuillez renseigner un entier valide';
+        } elseif ($int < $min) {
+            $error = 'Champ invalide (minimum ' . $min . ')';
+        } elseif ($int > $max) {
+            $error = 'Champ invalide (maximum ' . $max . ')';
+        }
+        return $error;
+    }
+    public function passwordValid($password1, $password2)
+    {
+        $error = '';
+        if (!empty($password1)) {
+            if ($password1 != $password2) {
+                $error = 'Les deux mot de passe doivent être identiques';
+            } elseif (mb_strlen($password1) <= 5) {
+                $error = 'min 6  caractères';
+            }
+        } else {
+            $error = 'Veuillez renseigner un mot de passe';
+        }
+        return $error;
+    }
 }
