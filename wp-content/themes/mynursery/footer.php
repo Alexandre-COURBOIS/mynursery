@@ -8,16 +8,28 @@ global $web; ?>
             <div class="column col-lg-4">
                 <div>
                     <div>
-                        <a href="<?= esc_url(home_url('/'))?>">
-                            <img src="<?=get_template_directory_uri()?>/asset/img/mynursery.png"
+                        <a href="<?= esc_url(home_url('/')) ?>">
+                            <img src="<?= get_template_directory_uri() ?>/asset/img/mynursery.png"
                                  alt="logo_mynursery" id="logo-footer"/>
                         </a>
                     </div>
+                    <?php
+                    $info = get_post_meta(139);
+                    /* echo '<pre>';
+                     print_r($info);
+                     echo '<pre>';*/ ?>
+
                     <div>
                         <ul>
-                            <li><?= get_field('adresse') ?></li>
-                            <li><?= get_field('numero_de_telephone') ?></li>
-                            <li><?= get_field('adresse_email') ?></li>
+                            <?php if (!empty($info['ladresse'][0])) { ?>
+                                <li><?= $info['ladresse'][0]; ?></li>
+                            <?php }
+                            if (!empty($info['le_numero_de_telephone'][0])) { ?>
+                                <li><?= $info['le_numero_de_telephone'][0]; ?></li>
+                            <?php }
+                            if (!empty($info['ladresse_email'][0])) { ?>
+                                <li><?= $info['ladresse_email'][0]; ?></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -28,72 +40,83 @@ global $web; ?>
                         <h4>Link</h4>
                         <ul>
                             <li>
-                                <a href="<?= esc_url(home_url('/'))?>" class="lien-footer">Home</a>
+                                <a href="<?= esc_url(home_url('/')) ?>" class="lien-footer">Home</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['features']['slug'])) ?>" class="lien-footer">Features</a>
+                                <a href="<?= esc_url(home_url($web['pages']['features']['slug'])) ?>"
+                                   class="lien-footer">Features</a>
                             </li>
                             <li>
                                 <a href="<?= esc_url(home_url($web['pages']['pages']['slug'])) ?>" class="lien-footer">Pages</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['gallery']['slug'])) ?>" class="lien-footer">Gallery</a>
+                                <a href="<?= esc_url(home_url($web['pages']['gallery']['slug'])) ?>"
+                                   class="lien-footer">Gallery</a>
                             </li>
                             <li>
                                 <a href="<?= esc_url(home_url($web['pages']['blog']['slug'])) ?>" class="lien-footer">Blog</a>
                             </li>
                             <li>
-                                <a href="<?= esc_url(home_url($web['pages']['contact']['slug'])) ?>" class="lien-footer">Contact</a>
+                                <a href="<?= esc_url(home_url($web['pages']['contact']['slug'])) ?>"
+                                   class="lien-footer">Contact</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+
+            <?php
+            $args = array(
+                'post_type' => 'reseaux',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'order' => 'ASC',
+                'orderby' => 'date',
+            );
+            $the_query = new WP_Query($args);
+            ?>
             <div class="column col-lg-3">
                 <div>
-                    <h4>Social</h4>
                     <div>
-                        <?php
-                              $facebook  = get_field('reseau_image_1', get_the_ID());
-                              $instagram = get_field('reseau_image_2', get_the_ID());
-                              $twitter   = get_field('reseau_image_3', get_the_ID());
-                              $pinterest = get_field('reseau_image_4', get_the_ID());
-                              $newreseau = get_field('reseau_image_5', get_the_ID());
-                        ?>
+                        <h4>Social</h4>
                         <ul id="logo-social">
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_1', get_the_ID())) ?>" class="lien-footer"><img src="<?= $facebook['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_2', get_the_ID())) ?>" class="lien-footer"><img src="<?= $instagram['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_3', get_the_ID())) ?>" class="lien-footer"><img src="<?= $twitter['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_4', get_the_ID())) ?>" class="lien-footer"><img src="<?= $pinterest['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="<?= esc_url(get_field('reseau_5', get_the_ID())) ?>" class="lien-footer"><img src="<?= $newreseau['sizes']['imgReseaux'] ?>" alt=""></a>
-                            </li>
+                            <?php
+                            if ($the_query->have_posts()) {
+                                while ($the_query->have_posts()) {
+                                    $the_query->the_post();
+                                    ?>
+
+                                    <?php
+                                    $logo = get_the_post_thumbnail_url(get_the_ID(), 'imgReseaux');
+                                    if (!empty($logo)) { ?>
+                                        <li>
+                                           <a href="<?= get_the_content(); ?>" class="lien-footer"> <img src="<?= $logo; ?>" alt=""> </a>
+                                        </li>
+                                    <?php }
+                                }
+                            }
+                            wp_reset_postdata(); ?>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="column col-lg-3">
+
+
+        <div class="column col-lg-3">
+            <div>
                 <div>
-                    <div>
-                        <h4>copyright</h4>
-                        <p>© 2020 WEBAPSY</p>
-                    </div>
+                    <h4>copyright</h4>
+                    <p>© 2020 WEBAPSY</p>
                 </div>
             </div>
         </div>
     </div>
+    </div>
     <?php wp_footer(); ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 
 </footer>

@@ -52,3 +52,7 @@
 .form-style .form-group .form-control:focus ~ .input-highlight, .form-style .form-group .form-control.hasValue ~ .input-highlight {
     width: 100%;
 }
+.error {
+    color: red;
+    font-size: .8em;
+}
