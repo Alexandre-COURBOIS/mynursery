@@ -20,6 +20,7 @@ get_header();
             $query = new WP_Query($args);
 
             $slider = get_post_meta($web['pages']['home']['id']);
+
             ?>
 
             <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
