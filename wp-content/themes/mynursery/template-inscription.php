@@ -33,6 +33,7 @@ if (!empty($_POST['submitted'])) {
     $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
 
     $v = new Validation();
+    $errors['nom_entreprise'] = $v->textValid($name_enterprise, 'nom de l\'entreprise', 3, 100);
     $errors['nom'] = $v->textValid($name, 'nom', 3, 100);
     $errors['prenom'] = $v->textValid($surname, 'prenom', 3, 100);
     $errors['email'] = $v->emailValid($email);
@@ -44,7 +45,8 @@ if (!empty($_POST['submitted'])) {
     $errors['city'] = $v->textValid($city, 'Ville', 4, 70);
     $errors['siret'] = $v->textValid($siret, 'N° de siret', 14, 14);
     $errors['secu'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
-    $errors['max-child'] = $v->intValid($child_max, 1, 100);
+    $errors['agrement'] = $v->textValid($agrement, 'N° d\'agrement', 3, 13);
+    $errors['max-child'] = $v->intValid($child_max, 1, 10);
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
 
@@ -143,7 +145,7 @@ get_header();
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nom_entreprise" id="nom_entreprise"
-                                       placeholder="Nom de votre Etablissement/Entreprise">
+                                       placeholder="Nom de votre Etablissement/Entreprise" value="<?php if (!empty($_POST['nom_entreprise'])) echo $_POST['nom_entreprise']; ?>">
                                 <span class="input-highlight"></span>
                             </div>
                         </div>
@@ -219,16 +221,15 @@ get_header();
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-
-                                <input type="text" class="form-control" name="street" id="street"
-                                       placeholder="Nom de la rue"
-                                       value="<?php if (!empty($_POST['street'])) echo $_POST['street']; ?>">
+                                <input type="search" name="street" class="form-control" id="street" placeholder="Nom de votre rue"
+                                value="<?php if (!empty($_POST['street'])) echo $_POST['street']; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('street') ?>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="col-md-3 mx-auto mt-3">
                             <div class="form-group">
@@ -326,6 +327,8 @@ get_header();
                 </div>
             </div>
             <div class="col-md-5 mx-auto mt-5">
+                <input type="text" id="longitude" name="longitude" hidden>
+                <input type="text" id="lattitude" name="lattitude" hidden>
                 <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
             </div>
         </form>
@@ -338,3 +341,7 @@ get_header();
 <?php
 
 get_footer();
+
+?>
+
+
