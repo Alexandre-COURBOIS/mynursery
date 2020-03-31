@@ -43,12 +43,17 @@ if (!empty($_POST['submitted'])) {
     $errors['code-postal'] = $v->textValid($postal_code, 'Code postal', 5, 5);
     $errors['city'] = $v->textValid($city, 'Ville', 4, 70);
     $errors['siret'] = $v->textValid($siret, 'N° de siret', 14, 14);
-    $errors['siret'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
-    $errors['max-child'] = $v->intValid($child_max, 1, 10);
+    $errors['secu'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
+    $errors['max-child'] = $v->intValid($child_max, 1, 100);
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
+
+
     if ($v->IsValid($errors)) {
+
         $token = token(255);
+
+        $hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
         $longitude = '1.569845';
         $latitude = '1.856232';
@@ -74,7 +79,7 @@ if (!empty($_POST['submitted'])) {
                     'effectif_maxenfant' => $child_max,
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'password' => $password2,
+                    'password' => $hashPassword,
                     'token' => $token,
                     'created_at' => current_time('mysql'),
                 ),
@@ -83,6 +88,7 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
+            header('Location: home');
 
         } else {
 
@@ -105,7 +111,7 @@ if (!empty($_POST['submitted'])) {
                     'effectif_maxenfant' => $child_max,
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'password' => $password2,
+                    'password' => $hashPassword,
                     'token' => $token,
                     'created_at' => current_time('mysql'),
                 ),
@@ -115,7 +121,7 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
-
+            header('Location: home');
         }
     }
 }

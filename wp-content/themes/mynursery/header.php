@@ -1,5 +1,3 @@
-<?php global $web ?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -13,8 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/60cfdcc021.js" crossorigin="anonymous"></script>
 
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
+          type="text/css"/>
+    <link href="https://api.mapbox.com/mapbox-assembly/v0.23.2/assembly.min.css" rel="stylesheet"/>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js"></script>
 
     <?php wp_head(); ?>
 </head>
@@ -114,25 +119,16 @@
                     </div>
 
                 </div>
+
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <?php if (empty($_SESSION)) { ?>
+                        <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <?php } else { ?>
+                        <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
+                    <?php } ?>
                 </div>
+
         </nav>
     </div>
     </div>
 </header>
-
-<!--    <ul class="nav navbar">
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['home']['slug'])) */ ?>" title="">Home</a>
-        </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['features']['slug'])) */ ?>" title="">Features</a>
-        </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['pages']['slug'])) */ ?>" title="">Pages</a>
-        </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['gallery']['slug'])) */ ?>" title="">Gallery</a>
-        </li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['blog']['slug'])) */ ?>" title="">Blog</a></li>
-        <li><a href="<?php /*echo esc_url(home_url($web['pages']['contact']['slug'])) */ ?>" title="">Contact</a>
-        </li>
-    </ul>
--->

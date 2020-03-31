@@ -22,4 +22,6 @@ function debug($array,$true = true) {
         var_dump($array);
         echo '</pre>';
     }
+
 }
+
