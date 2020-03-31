@@ -32,7 +32,6 @@ class Connexion
 
         header('Location: '.$header);
     }
-
-
+    
 
 }

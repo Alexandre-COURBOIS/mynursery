@@ -121,9 +121,11 @@
                 </div>
 
                 <div class="btn-toolbar">
-                    <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
-
-                    <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
+                    <?php if (empty($_SESSION)) { ?>
+                        <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <?php } else { ?>
+                        <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
+                    <?php } ?>
                 </div>
 
         </nav>
