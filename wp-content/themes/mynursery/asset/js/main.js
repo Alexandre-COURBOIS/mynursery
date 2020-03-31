@@ -31,7 +31,7 @@ $('#pro').click(function () {
     });
 
 $('#parent').click(function () {
-    $('#parent').prop('checked',true)
+    $('#parent').prop('checked',true);
     alert('Lien vers l\'inscription parent');
 });
 
