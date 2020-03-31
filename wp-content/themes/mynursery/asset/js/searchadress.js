@@ -17,6 +17,7 @@
 
         document.querySelector('#city').value = e.suggestion.city || '';
         document.querySelector('#code-postal').value = e.suggestion.postcode || '';
-
+        document.querySelector('#longitude').value = e.suggestion.hit._geoloc.lng || '';
+        document.querySelector('#lattitude').value = e.suggestion.hit._geoloc.lat || '';
     });
 })();
