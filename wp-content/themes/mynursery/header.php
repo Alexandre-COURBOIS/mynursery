@@ -1,5 +1,3 @@
-<?php global $web ?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -14,14 +12,14 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">
 
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css" type="text/css"/>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css"
+          type="text/css"/>
     <link href="https://api.mapbox.com/mapbox-assembly/v0.23.2/assembly.min.css" rel="stylesheet"/>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js"></script>
-
-
 
     <?php wp_head(); ?>
 </head>
@@ -121,9 +119,13 @@
                     </div>
 
                 </div>
+
                 <div class="btn-toolbar">
-                    <a href="#" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+                    <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
+
+                    <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
                 </div>
+
         </nav>
     </div>
     </div>
