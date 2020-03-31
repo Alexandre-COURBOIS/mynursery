@@ -82,7 +82,9 @@ function mynursery_scripts() {
 
     wp_enqueue_script('jquery',get_template_directory_uri().'/asset/js/vendor/jquery-3.4.1.min.js',array(),'3.4.1', true);
 
+    wp_enqueue_script('main',get_template_directory_uri().'/asset/js/searchadress.js',array(),'1.0.0', true);
     wp_enqueue_script('main',get_template_directory_uri().'/asset/js/main.js',array(),'1.0.0', true);
+
 
 
 }
