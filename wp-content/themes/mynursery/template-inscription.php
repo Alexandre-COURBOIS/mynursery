@@ -53,7 +53,7 @@ if (!empty($_POST['submitted'])) {
 
         $token = token(255);
 
-        $hashPassword = password_hash($password2,PASSWORD_BCRYPT);
+        $hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
         $longitude = '1.569845';
         $latitude = '1.856232';

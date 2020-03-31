@@ -20,23 +20,13 @@ class Connexion
         return $errors;
     }
 
-    public function getUserConnexion($login)
-    {
-        global $pdo;
-        $sql = "SELECT * FROM $this->table WHERE email = :login";
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':login', $login, PDO::PARAM_STR);
-        $query->execute();
-        return $query->fetch();
-    }
-
     public function InitializeSession($user,$header)
     {
         $_SESSION['login'] = array(
-            'id' => $user['id'],
-            'nom' => $user['surname'],
-            'prenom' => $user['name'],
-            'role' => $user['role'],
+            'id' => $user->id_creche,
+            'nom_creche' => $user->nom_creche,
+            'prenom' => $user->prenom_gerant,
+            'nom' => $user->nom_gerant,
             'ip' => $_SERVER['REMOTE_ADDR'],
         );
 

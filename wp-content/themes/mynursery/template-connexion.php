@@ -21,13 +21,13 @@ if (!empty($_POST['submitted'])) {
 
     if (count($errors) === 0) {
 
-        $user = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login);
+        $user = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
 
         print_r($user);
 
         if (!empty($user)) {
 
-            if (password_verify($password, $user['password'])) {
+            if (password_verify($password, $user->password)) {
 
                 $session->InitializeSession($user, 'home');
 
