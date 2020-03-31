@@ -30,3 +30,10 @@ require get_template_directory() . '/inc/custom/custom-reseauxsociaux.php';
 
 require get_template_directory() . '/inc/functions/functions.php';
 
+require get_template_directory() . '/inc/admin/admin-contact.php';
+
+/*require get_template_directory() . '/inc/admin/admin-archives.php';*/
+
+
+
+

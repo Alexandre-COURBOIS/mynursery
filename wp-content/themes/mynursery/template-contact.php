@@ -26,6 +26,8 @@ if (!empty($_POST['submitted'])) {
 
     if ($v->IsValid($errors)) {
 
+        $statut = 0;
+
         $wpdb->insert(
             'nurs_contact',
             array(
@@ -33,10 +35,11 @@ if (!empty($_POST['submitted'])) {
                 'email' => $email,
                 'sujet' => $subject,
                 'message' => $message,
+                'statut' => $statut,
                 'created_at' => current_time('mysql'),
             ),
             array(
-                '%s', '%s', '%s', '%s',
+                '%s', '%s', '%s', '%s', '%d',
             )
         );
         $success = true;
