@@ -31,6 +31,8 @@ if (!empty($_POST['submitted'])) {
     $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
     $password = trim(strip_tags(stripslashes($_POST['mdp'])));
     $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+    $latitude = trim(strip_tags(stripslashes($_POST['lattitude'])));
+    $longitude = trim(strip_tags(stripslashes($_POST['longitude'])));
 
     $v = new Validation();
     $errors['nom_entreprise'] = $v->textValid($name_enterprise, 'nom de l\'entreprise', 3, 100);
@@ -57,8 +59,7 @@ if (!empty($_POST['submitted'])) {
 
         $hashPassword = password_hash($password,PASSWORD_BCRYPT);
 
-        $longitude = '1.569845';
-        $latitude = '1.856232';
+
         /*Attention les %f (floats) prennent en compte le . et non pas la ,*/
 
         if ($id_way == 'NULL') {
