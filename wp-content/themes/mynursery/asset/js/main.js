@@ -134,6 +134,7 @@ $.ajax({
             }
 
         });
+
 },
 // La fonction à appeler si la requête n'a pas abouti
 error: function () {
