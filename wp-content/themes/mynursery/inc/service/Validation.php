@@ -62,6 +62,7 @@ class Validation
         return $error;
 
     }
+
     public function isNumeric( $value)
     {
         $error = '';
@@ -71,6 +72,7 @@ class Validation
         }
         return $error;
     }
+
     public function intValid($int, $min, $max)
     {
         $error = '';

@@ -2,7 +2,7 @@
 /*
 Template Name: Home
 */
-
+session_start();
 global $web;
 
 get_header();

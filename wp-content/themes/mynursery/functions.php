@@ -22,6 +22,8 @@ require get_template_directory() . '/inc/service/Validation.php';
 
 require get_template_directory() . '/inc/service/Form.php';
 
+require get_template_directory() . '/inc/service/Connexion.php';
+
 require get_template_directory() . '/inc/custom/custom-informations.php';
 
 require get_template_directory() . '/inc/custom/custom-reseauxsociaux.php';

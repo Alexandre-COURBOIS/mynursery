@@ -2,6 +2,7 @@
 /*
 Template Name: map
 */
+session_start();
 get_header();
 ?>
 
@@ -20,6 +21,7 @@ get_header();
                 </div>
             </div>
         </div>
+        <div id="box" class="box"></div>
         <div class="flex-child flex-child--grow bg-darken10 viewport-twothirds viewport-full-mm" id="map"></div>
     </div>
 
