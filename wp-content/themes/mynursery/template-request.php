@@ -3,9 +3,7 @@
 Template Name: Request
 */
 
-global $pdo;
+global $wpdb;
 
-$sql = "SELECT * FROM nurs_creche";
-$query = $pdo->prepare($sql);
-$query->execute();
-print_r($query->fetchAll());
+$creches = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}creche");
+echo json_encode($creches);
