@@ -73,7 +73,7 @@ $.ajax({
                     },
                     properties: {
                         title: users[i]['nom_creche'],
-                        description: users[i]['telephone_creche']
+                        description: '<p>Téléphone : 0' + users[i]['telephone_creche']+ '</p>' + '<p>Mail : ' + users[i]['email'] + '</p>' + '<p>' + users[i]['num_rue'] + ' ' + users[i]['nom_rue'] + '</p>' + '<p>' + users[i]['codepostal'] + ' ' + users[i]['ville'] + '</p>'
                     }
                 });
             }
