@@ -39,6 +39,7 @@ $(document).ready(function () {
 // Requête
 
 $.ajax({
+
     // Adresse à laquelle la requête est envoyée
     url: '../request',
     type: 'GET',
@@ -47,6 +48,7 @@ $.ajax({
     success: function (creches) {
         var users = jQuery.parseJSON(creches);
         console.log(users);
+
         map.on('load', function () {
             var geojson = {
                 type: 'FeatureCollection',
@@ -118,8 +120,9 @@ $.ajax({
 
                 var location = document.getElementsByClassName('number');
 
+/*
                 console.log(location[3]);
-                console.log(location[4]);
+                console.log(location[4]);*/
 
             });
 
@@ -169,7 +172,6 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styleivals/mapbox/streets-v11',
     center: [1.098696, 49.4379469],
     zoom: 12,
-
 });
 
 // Adding pointer on map
