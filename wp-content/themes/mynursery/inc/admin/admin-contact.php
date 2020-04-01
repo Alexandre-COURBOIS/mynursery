@@ -48,7 +48,7 @@ $contacts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}contact WHERE stat
 
 
 
-$archive = $wpdb->update(
+/*$archive = $wpdb->update(
     'nurs_contact',
     array(
         'statut' => '1',
@@ -59,7 +59,7 @@ $archive = $wpdb->update(
         '%d',
     ),
     array('%d')
-);
+);*/
 
 
 

@@ -68,15 +68,14 @@
                         <a class="nav-link" href="#">Project</a>
                     </li>
                 </ul>
+
+                <?php if (empty($_SESSION)) { ?>
                 <div class="btn-toolbar">
-                    <!--                    <a href="<? /*= esc_url(home_url($web['pages']['inscription']['slug'])) */ ?>" class="btn btn-outline-dark btn-sm mx-auto" role="button">Inscription</a>-->
-                    <!-- Button for Modal -->
+
                     <button type="button" class="btn btn-outline-dark btn-sm mx-auto" data-toggle="modal"
                             data-target="#staticBackdrop">
                         Inscription
                     </button>
-
-                    <!-- Modal -->
 
                     <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
                          aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -119,11 +118,12 @@
                     </div>
 
                 </div>
+                <?php } ?>
 
                 <div class="btn-toolbar">
                     <?php if (empty($_SESSION)) { ?>
                         <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
-                    <?php } else { ?>
+                    <?php  } else { ?>
                         <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
                     <?php } ?>
                 </div>

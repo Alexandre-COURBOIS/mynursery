@@ -1,6 +1,7 @@
 <?php
 
-function token($length) {
+function token($length)
+{
 
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -11,9 +12,10 @@ function token($length) {
     return $randomString;
 }
 
-function debug($array,$true = true) {
+function debug($array, $true = true)
+{
 
-    if ($true = true)   {
+    if ($true = true) {
         echo '<pre>';
         print_r($array);
         echo '</pre>';

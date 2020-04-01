@@ -124,7 +124,7 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
-            header('Location: home');
+            header('Location: connexion');
         }
     }
 }
