@@ -40,11 +40,13 @@ $(document).ready(function () {
 
 $.ajax({
 
+    // Adresse à laquelle la requête est envoyée
     url: '../request',
+    type: 'GET',
+    // La fonction à apeller si la requête aboutie
 
-    success: function (code_html) {
-
-        var users = jquery.parseJSON(code_html);
+    success: function (creches) {
+        var users = jQuery.parseJSON(creches);
         console.log(users);
 
         map.on('load', function () {
@@ -62,6 +64,21 @@ $.ajax({
                     }
                 },/*If need one more put it here*/]
             };
+            var i;
+            for(i=0;i<users.length;i++) {
+                console.log('oui');
+                geojson.features.push({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [users[i]['longitude'], users[i]['latitude']]
+                    },
+                    properties: {
+                        title: users[i]['nom_creche'],
+                        description: '<p>Téléphone : 0' + users[i]['telephone_creche']+ '</p>' + '<p>Mail : ' + users[i]['email'] + '</p>' + '<p>' + users[i]['num_rue'] + ' ' + users[i]['nom_rue'] + '</p>' + '<p>' + users[i]['codepostal'] + ' ' + users[i]['ville'] + '</p>'
+                    }
+                });
+            }
 
             // add markers to map
             geojson.features.forEach(function (marker) {

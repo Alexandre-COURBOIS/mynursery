@@ -3,8 +3,8 @@
 Template Name: Request
 */
 
-
 global $wpdb;
 
-$users = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}creche",ARRAY_A);
-echo json_encode($users);
+$creches = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}creche");
+echo json_encode($creches);
+
