@@ -40,7 +40,6 @@ $(document).ready(function () {
 
 $.ajax({
     // Adresse à laquelle la requête est envoyée
-
     url: '../request',
 
     // La fonction à apeller si la requête aboutie
@@ -48,31 +47,21 @@ $.ajax({
     success: function (code_html) {
         var users = code_html;
 
-        console.log(users);
-
-
         map.on('load', function () {
             var geojson = {
                 type: 'FeatureCollection',
-                features: [
-
-                ]
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [1.101775, 49.438669]
+                    },
+                    properties: {
+                        title: 'Campus Saint Marc',
+                        description: 'WEBAPSY'
+                    }
+                },/*If need one more put it here*/]
             };
-
-            for (i=0; i<users.length; i++) {
-                geojson.features.push(
-                    {
-                        type: 'Feature',
-                        geometry: {
-                            type: 'Point',
-                            coordinates: [users[0]['longitude'],users[0]['lattitude']]
-                        },
-                        properties: {
-                            title: 'Campus Saint Marc',
-                            description: 'WEBAPSY'
-                        }
-                    })
-            }
 
             // add markers to map
             geojson.features.forEach(function (marker) {
@@ -145,12 +134,12 @@ $.ajax({
             }
 
         });
-    },
+},
 // La fonction à appeler si la requête n'a pas abouti
-    error: function () {
-        // J'affiche un message d'erreur
-        console.log("non")
-    }
+error: function () {
+    // J'affiche un message d'erreur
+    console.log("non")
+}
 
 })
 ;
