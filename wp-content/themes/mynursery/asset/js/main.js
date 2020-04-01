@@ -39,13 +39,13 @@ $(document).ready(function () {
 // Requête
 
 $.ajax({
-    // Adresse à laquelle la requête est envoyée
+
     url: '../request',
 
-    // La fonction à apeller si la requête aboutie
-
     success: function (code_html) {
-        var users = code_html;
+
+        var users = jquery.parseJSON(code_html);
+        console.log(users);
 
         map.on('load', function () {
             var geojson = {
@@ -103,8 +103,9 @@ $.ajax({
 
                 var location = document.getElementsByClassName('number');
 
+/*
                 console.log(location[3]);
-                console.log(location[4]);
+                console.log(location[4]);*/
 
             });
 
@@ -154,7 +155,6 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styleivals/mapbox/streets-v11',
     center: [1.098696, 49.4379469],
     zoom: 12,
-
 });
 
 // Adding pointer on map
