@@ -112,9 +112,9 @@ function archive_admin_single($id,$urlBase)
             'id' => $id,
         ),
         array(
-            '%d',
+            '%d'
         ),
-        array('%d', '%s')
+        array('%d')
     );
 
    /* header("Location:'. $urlBase . '&noheader=true");*/
@@ -123,10 +123,10 @@ function archive_admin_single($id,$urlBase)
     in C:\xampp\htdocs\mynursery\wp-content\themes\mynursery\inc\admin\admin-contact.php on line 120
     */
     ?>
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
         window.location = 'http://localhost/mynursery/wp-admin/admin.php?page=contactpageadmin';
     </script>
-
+-->
    <!-- <h2>Votre message a bien été archivé, cliquez sur listing pour retourner aux messages</h2>-->
     <?php
 }
