@@ -49,7 +49,7 @@
                         <a class="nav-link" href="map">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profil">Profil</a>
+                        <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
                     </li>
                     <?php } ?>
                     <li class="nav-item">
