@@ -43,6 +43,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 @import "asset/css/mapbox.css";
 
+@import "asset/css/profil.css";
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -121,6 +123,9 @@ table {
     height: 80px;
 }
 
+.separator_map {
+    height: 40px;
+}
 .separator-connexion {
     height: 180px;
 }

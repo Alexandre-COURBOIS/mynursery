@@ -21,6 +21,11 @@ function myFunction() {
 // Slider
 $(document).ready(function () {
 
+    //Loader profil page
+   var loader = document.getElementById('#loaderProfil');
+
+    // End Loader
+
     $("#demo").carousel({
         interval: 8000,
     });
