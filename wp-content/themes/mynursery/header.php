@@ -44,14 +44,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="home">Home</a>
                     </li>
-                    <?php if (!empty($_SESSION) & is_numeric($_SESSION['login']['id']) ) {?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="map">Map</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
-                    </li>
-                    <?php } ?>
+                    <?php if (!empty($_SESSION)) {
+                        if (is_numeric($_SESSION['login']['id'])) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="map">Map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
+                            </li>
+                        <?php }
+                    } ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
@@ -64,60 +66,61 @@
                 </ul>
 
                 <?php if (empty($_SESSION)) { ?>
-                <div class="btn-toolbar">
+                    <div class="btn-toolbar">
 
-                    <button type="button" class="btn btn-outline-dark btn-sm mx-auto" data-toggle="modal"
-                            data-target="#staticBackdrop">
-                        Inscription
-                    </button>
+                        <button type="button" class="btn btn-outline-dark btn-sm mx-auto" data-toggle="modal"
+                                data-target="#staticBackdrop">
+                            Inscription
+                        </button>
 
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form id="form">
+
+                                            <div class="subscription-container">
+
+                                                <input type="radio" name="radio" id="pro" value="pro">
+                                                <label for="pro" class="subscription__button">
+                                                    <h3 class="subscription__title">Vous êtes un</h3>
+                                                    <h3 class="subscription__main-feature"> professionnel</h3>
+                                                    <span class="subscription__price">Inscrivez-vous</span>
+                                                </label>
+
+                                                <input type="radio" name="radio" id="parent" value="parent">
+                                                <label for="parent" class="subscription__button">
+                                                    <h3 class="subscription__title">Vous êtes un</h3>
+                                                    <h3 class="subscription__main-feature">Parent</h3>
+                                                    <span class="subscription__price">Inscrivez-vous</span>
+                                                </label>
+
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
+                                        </button>
+                                    </div>
+                                    </form>
+
                                 </div>
-                                <div class="modal-body">
-
-                                    <form id="form">
-
-                                        <div class="subscription-container">
-
-                                            <input type="radio" name="radio" id="pro" value="pro">
-                                            <label for="pro" class="subscription__button">
-                                                <h3 class="subscription__title">Vous êtes un</h3>
-                                                <h3 class="subscription__main-feature"> professionnel</h3>
-                                                <span class="subscription__price">Inscrivez-vous</span>
-                                            </label>
-
-                                            <input type="radio" name="radio" id="parent" value="parent">
-                                            <label for="parent" class="subscription__button">
-                                                <h3 class="subscription__title">Vous êtes un</h3>
-                                                <h3 class="subscription__main-feature">Parent</h3>
-                                                <span class="subscription__price">Inscrivez-vous</span>
-                                            </label>
-
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                </div>
-                                </form>
-
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 <?php } ?>
 
                 <div class="btn-toolbar">
                     <?php if (empty($_SESSION)) { ?>
                         <a href="connexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Connexion</a>
-                    <?php  } else { ?>
+                    <?php } else { ?>
                         <a href="deconnexion" class="btn btn-outline-dark btn-sm mx-auto" role="button">Deconnexion</a>
                     <?php } ?>
                 </div>
