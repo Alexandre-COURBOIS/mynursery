@@ -121,6 +121,9 @@ table {
     height: 80px;
 }
 
+.separator_map {
+    height: 40px;
+}
 .separator-connexion {
     height: 180px;
 }

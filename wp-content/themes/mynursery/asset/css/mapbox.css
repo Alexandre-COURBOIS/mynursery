@@ -1,3 +1,9 @@
+.container_map {
+    max-width: 1770px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .marker {
      background-image: url('../img/mapbox-pointeur30.png');
      background-size: cover;
