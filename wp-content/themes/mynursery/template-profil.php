@@ -65,6 +65,7 @@ $employes = $wpdb->get_results(
                         <th scope="col">Nom</th>
                         <th scope="col">Prenom</th>
                         <th scope="col">Téléphone</th>
+                        <th scope="col">Suppression</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,12 +76,12 @@ $employes = $wpdb->get_results(
                             <td><?= $employe->nom_employee?></td>
                             <td><?= $employe->prenom_employee?></td>
                             <td><?= $employe->telephone_employee?></td>
+                            <td><a style="background-color: red !important; border-radius: 15px !important;" href="" type="button" class="btn btn-danger">Delete</a></td>
                         </tr>
                         <?php $i++; } ?>
                     </tbody>
                 </table>
                 <a href="ajouter-un-employe" type="button" class="btn btn-primary btn-lg">Ajouter un employé</a>
-                <button type="button" class="btn btn-primary btn-lg">Supprimer un employé</button>
             </div>
         </div>
 
