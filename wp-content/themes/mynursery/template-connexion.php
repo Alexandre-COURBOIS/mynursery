@@ -33,7 +33,7 @@ if (!empty($_POST['submitted'])) {
             }
         } else if (!empty($userParent)) {
             if (password_verify($password, $userParent->password)) {
-                $session->InitializeSession($userParent, 'http://localhost/mynurserymvc/public/home');
+                $session->InitializeSession($userParent, 'http://localhost/mynurserymvc/public/profil');
             } else {
                 return $errors = 'Email, où mot de passe non valide';
             }
