@@ -75,8 +75,8 @@ $employes = $wpdb->get_results(
                             <th scope="row"><?= $i ?></th>
                             <td><?= $employe->nom_employee?></td>
                             <td><?= $employe->prenom_employee?></td>
-                            <td><?= $employe->telephone_employee?></td>
-                            <td><a style="background-color: red !important; border-radius: 15px !important;" href="" type="button" class="btn btn-danger">Delete</a></td>
+                            <td>0<?= $employe->telephone_employee?></td>
+                            <td><a style="background-color: red !important; border-radius: 15px !important;" href="<?php echo add_query_arg( 'id', $employe->id_employee, home_url().'/delete' );?>" type="button" class="btn btn-danger">Delete</a></td>
                         </tr>
                         <?php $i++; } ?>
                     </tbody>
