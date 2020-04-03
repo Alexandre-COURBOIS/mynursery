@@ -4,7 +4,7 @@ session_start();
 global $wpdb;
 
 /*
-Template Name: Inscription
+Template Name: Inscription_creche
 */
 
 use inc\service\Validation;
