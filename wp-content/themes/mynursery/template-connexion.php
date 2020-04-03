@@ -21,16 +21,19 @@ if (!empty($_POST['submitted'])) {
 
     if (count($errors) === 0) {
 
-        $user = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
-
-        print_r($user);
+        $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
+        $userParent = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}responsable_legal_enfant WHERE email = '%s'", $login));
 
         if (!empty($user)) {
 
             if (password_verify($password, $user->password)) {
-
                 $session->InitializeSession($user, 'home');
-
+            } else {
+                return $errors = 'Email, où mot de passe non valide';
+            }
+        } else if (!empty($userParent)) {
+            if (password_verify($password, $userParent->password)) {
+                $session->InitializeSession($userParent, 'http://localhost/mynurserymvc/public/home');
             } else {
                 return $errors = 'Email, où mot de passe non valide';
             }
