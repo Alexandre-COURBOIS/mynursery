@@ -11,7 +11,7 @@ function wpdocs_register_my_custom_menu_page_users(){
         'userspageadmin',
         'users_menu_page',
         'dashicons-buddicons-buddypress-logo',
-        70);
+        71);
 }
 
 add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page_users' );
@@ -39,7 +39,7 @@ function users_menu_page()
 function users_admin_listing($urlBase)
 {
     global $wpdb;
-    $users = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}users WHERE user_status ='0' ORDER BY user_registered DESC", OBJECT );
+    $users = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}creche ORDER BY created_at DESC", OBJECT );
 
     ?>
     <div class="wrap">
@@ -47,10 +47,12 @@ function users_admin_listing($urlBase)
             <thead>
             <tr>
                 <th>id</th>
-                <th>nom</th>
-                <th>email</th>
-                <th>date d'inscription</th>
-                <th>statut</th>
+                <th>Nom Crèche</th>
+                <th>Nom Gérant</th>
+                <th>Prénom Gérant</th>
+                <th>Ville</th>
+                <th>Date d'inscription</th>
+                <th>Plus d'info</th>
             </tr>
             </thead>
 
@@ -59,11 +61,15 @@ function users_admin_listing($urlBase)
             <table class="wp-list-table widefat fixed striped posts">
                 <thead>
                 <tr>
-                    <td><?= $user->ID; ?></td>
-                    <td><?= $user->user_nicename; ?></td>
-                    <td><?= $user->user_email; ?></td>
-                    <td><?= date('d/m/Y',strtotime($user->user_registered)); ?></td>
-                    <td><?= $user->user_status ?></td>
+                    <td><?= $user->id_creche; ?></td>
+                    <td><?= $user->nom_creche; ?></td>
+                    <td><?= $user->nom_gerant; ?></td>
+                    <td><?= $user->prenom_gerant; ?></td>
+                    <td><?= $user->ville; ?></td>
+                    <td><?= date('d/m/Y',strtotime($user->created_at)); ?></td>
+                    <td>
+                        <a href="<?= $urlBase; ?>&single=<?= $user->id_creche; ?>">Détails</a>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>
@@ -76,14 +82,23 @@ function users_admin_listing($urlBase)
 function users_admin_single($id,$urlBase)
 {
     global $wpdb;
-    $user = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}contact WHERE id = $id" , OBJECT );
+    $user = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}creche WHERE id_creche = $id" , OBJECT );
+    $espace = " ";
     ?>
-    <p>id: <?= $user->id; ?></p>
-    <p>sujet: <?= $user>sujet; ?></p>
-    <p>email: <?= $user->email; ?></p>
-    <p>Message: <?= $user->message; ?></p>
-    <p>Date: <?= date('d/m/Y',strtotime($user->created_at)); ?></p>
+    <p>N° Identifiant: <?= $user->id_creche; ?></p>
+    <p>Nom de la crèche : <?= $user->nom_creche; ?></p>
+    <p>Nom du/de la Gérant(e) : <?= $user->nom_gerant; ?></p>
+    <p>Prénom du/de la Gérant(e) : <?= $user->prenom_gerant; ?></p>
+    <p>Email : <?= $user->email; ?></p>
+    <p>N. Téléphone de la crèche : <?= $user->telephone_creche; ?></p>
+    <p>Adresse : <?= $user->num_rue.' '.$user->supp_rue. ' ' .$user->nom_rue .', '. $user->codepostal.' '.$user->ville; ?></p>
+    <p>Numéro de SIRET : <?= $user->num_siret; ?></p>
+    <p>Numéro d'agrément : <?= $user->num_agrement; ?></p>
+    <p>Numéro de Sécurité Social : <?= $user->num_secusocial; ?></p>
+    <p>Effectif Maximum d'Enfant : <?= $user->effectif_maxenfant; ?></p>
+    <p>Date d'inscription : <?= $user->created_at; ?></p>
     <?php
 }
+
 
 

@@ -6,12 +6,12 @@
 function wpdocs_register_my_custom_menu_page_contact(){
 
     add_menu_page(__( 'Contact', 'mynursery' ),
-        'Admin Contact',
+        'Messages Contact Admin',
         'manage_options',
         'contactpageadmin',
         'contact_menu_page',
         'dashicons-phone',
-        70);
+        72);
 }
 add_action('admin_menu', 'wpdocs_register_my_custom_menu_page_contact');
 
