@@ -4,6 +4,10 @@
     text-decoration: underline;
 }
 
+#hidden {
+    visibility: hidden;
+}
+
 .img_profil {
     border-radius: 25%;
     width: 250px;
