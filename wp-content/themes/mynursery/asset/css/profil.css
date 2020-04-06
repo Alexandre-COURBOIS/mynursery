@@ -49,6 +49,7 @@
     animation: expand .5s linear 1.5s forwards;
 }
 
+
 @keyframes scaleText {
     from {transform: scale(1.5)}
     to {transform: scale(1)}

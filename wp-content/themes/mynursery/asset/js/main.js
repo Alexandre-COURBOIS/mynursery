@@ -18,6 +18,9 @@ function myFunction() {
     }
 }
 
+
+
+
 // Slider
 $(document).ready(function () {
 
@@ -25,6 +28,8 @@ $(document).ready(function () {
    var loader = document.getElementById('#loaderProfil');
 
     // End Loader
+
+    var getPwd = document.getElementById('#modifPwd');
 
     $("#demo").carousel({
         interval: 8000,
@@ -39,6 +44,11 @@ $(document).ready(function () {
         $('#parent').prop('checked', true);
         alert('Lien vers l\'inscription parent');
     });
+
+    $('#modifPwd').click(function () {
+        $('#addclass').toggle();
+    });
+
 
 });
 // Requête

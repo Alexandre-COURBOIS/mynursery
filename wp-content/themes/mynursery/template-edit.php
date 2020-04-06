@@ -122,12 +122,44 @@ if (!empty($_POST['submitted'])) {
     } else {
         $errors['oldmdp'] = "Le mot de passe actuel renseigné n'est pas correct";
     }
+}
 
-    /*    if (password_verify($oldpassword, $creches[0]->password)) {
-            $errors['mdp'] = $v->passwordValid($newpassword, $newpassword1);
-        } else {
-            $errors['oldmdp'] = "Le mot de passe actuel renseigné n'est pas correct";
-        }*/
+
+    if (!empty($_POST['submitpwd'])) {
+
+        $id = $_SESSION['login']['id'];
+
+        $verifoldpwd = trim(strip_tags(stripslashes($_POST['oldpwd'])));
+        $newpwd = trim(strip_tags(stripslashes($_POST['newpwd'])));
+        $verifnewpwd = trim(strip_tags(stripslashes($_POST['confnewpwd'])));
+
+    if (password_verify($verifoldpwd, $creches[0]->password)) {
+
+        $v = new Validation();
+        $errors['newpwd'] = $v->passwordValid($newpwd, $verifnewpwd);
+
+        $hashPassword = password_hash($newpwd,PASSWORD_BCRYPT);
+
+        $wpdb->update(
+            'nurs_creche',
+            array(
+                'password' => $hashPassword,
+                'modified_at' => current_time('mysql'),
+            ),
+            array(
+                'id_creche' => $id,
+            ),
+            array(
+                '%s',
+            ),
+            array('%d')
+        );
+
+    } else {
+        $errors['verifoldpwd'] = "Le mot de passe actuel renseigné n'est pas correct";
+    }
+
+
 }
 
 $form = new Form($errors);
@@ -337,35 +369,63 @@ get_header();
     <div class="col-md-5 mx-auto mt-5">
         <input type="text" id="longitude" name="longitude" hidden>
         <input type="text" id="lattitude" name="lattitude" hidden>
-        <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
+
+        <div id="modifPwd" class="btn btn-lg btn-block btn-success">Modifier votre mot de passe</div>
+
+        <input type="submit" name="submitted" class="btn btn-lg btn-block btn-success">
     </div>
     </form>
     </div>
 
-<!--</div>
-    <div class="col-md-11 mx-auto mt-3"
-    ">
-    <div class="form-group">
 
-        <input type="password" class="form-control" name="newpwd" id="newpwd"
-               placeholder="Renseignez votre nouveau mot de passe">
+    <div id="addclass" class="container" style="display: none">
 
-        <span class="input-highlight"></span>
-        <?/*= $form->error('mdp') */?>
+        <form action="" class="form-style" method="post">
+            <div class="form-row">
+                <div class="col-md-6 mx-auto mt-3">
+                    <div class="form-row">
+                        <div class="col-md-11 mx-auto mt-3"
+                        ">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="oldpwd" id="oldpwd"
+                                   placeholder="Renseignez votre ancien mot de passe">
+                            <span class="input-highlight"></span>
+                            <?= $form->error('verifoldpwd') ?>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="col-md-11 mx-auto mt-3"
+                    ">
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="newpwd" id="newpwd"
+                               placeholder="Renseignez votre nouveau mot de passe">
+                        <span class="input-highlight"></span>
+                        <?= $form->error('newpwd') ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-11 mx-auto mt-3"
+                ">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confnewpwd" id="confnewpwd"
+                           placeholder="Confirmez votre nouveau mot de passe">
+                    <span class="input-highlight"></span>
+                    <?= $form->error('newpwd') ?>
+                </div>
+            </div>
+    </div>
+    <div class="col-md-5 mx-auto mt-5">
+        <input type="submit" name="submitpwd" class="btn btn-lg btn-block btn-success">
     </div>
     </div>
-    <div class="col-md-11 mx-auto mt-3"
-    ">
-    <div class="form-group">
-
-        <input type="password" class="form-control" name="confnewpwd" id="confnewpwd"
-               placeholder="Confirmez votre nouveau mot de passe">
-
-        <span class="input-highlight"></span>
-        <?/*=  $form->error('mdp')  */?>
-
-    </div>-->
+    </div>
+    </form>
+    </div>
+    </div>
 
     <div class="clear"></div>
 
