@@ -11,7 +11,7 @@ class Validation
     public function IsValid($errors)
     {
         foreach ($errors as $key => $value) {
-            if(!empty($value)) {
+            if (!empty($value)) {
                 return false;
             }
         }
@@ -27,7 +27,7 @@ class Validation
     public function emailValid($email)
     {
         $error = '';
-        if(empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
+        if (empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
             $error = 'Adresse email invalide.';
         }
         return $error;
@@ -43,25 +43,26 @@ class Validation
      * @return string $error
      */
 
-    public function textValid($text, $title, $min = 3,  $max = 50, $empty = true)
+    public function textValid($text, $title, $min = 3, $max = 50, $empty = true)
     {
 
         $error = '';
-        if(!empty($text)) {
+        if (!empty($text)) {
             $strtext = strlen($text);
-            if($strtext > $max) {
+            if ($strtext > $max) {
                 $error = 'Votre ' . $title . ' est trop long.';
-            } elseif($strtext < $min) {
+            } elseif ($strtext < $min) {
                 $error = 'Votre ' . $title . ' est trop court.';
             }
         } else {
-            if($empty) {
+            if ($empty) {
                 $error = 'Veuillez renseigner un ' . $title . '.';
             }
         }
         return $error;
 
     }
+
 
     public function isNumeric( $value)
 {
@@ -76,7 +77,7 @@ class Validation
     public function intValid($int, $min, $max)
     {
         $error = '';
-        if(empty($int) || filter_var($int, FILTER_VALIDATE_INT) === false) {
+        if (empty($int) || filter_var($int, FILTER_VALIDATE_INT) === false) {
             $error = 'Veuillez renseigner un entier valide';
         } elseif ($int < $min) {
             $error = 'Champ invalide (minimum ' . $min . ')';
@@ -85,6 +86,7 @@ class Validation
         }
         return $error;
     }
+
     public function passwordValid($password1, $password2)
     {
         $error = '';
@@ -99,6 +101,7 @@ class Validation
         }
         return $error;
     }
+
     public function radioExist($name, $nomRadio)
     {
         $error = '';

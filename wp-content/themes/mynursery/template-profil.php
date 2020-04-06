@@ -53,9 +53,9 @@ $employes = $wpdb->get_results(
                 <p id="margin_profil">Ville : <?= $creches[0]->ville; ?></p>
                 <p id="margin_profil">Numéro de SIRET/SIREN : <?= $creches[0]->num_siret; ?></p>
                 <p id="margin_profil">Numéro de sécurité social : <?= $creches[0]->num_secusocial; ?></p>
+                <p id="margin_profil">Numéro d'agrement' : <?= $creches[0]->num_agrement; ?></p>
                 <p id="margin_profil">Effectif d'enfant maximum : <?= $creches[0]->effectif_maxenfant; ?></p>
-                <button type="button" class="btn btn-primary btn-lg">Editez vos informations</button>
-                <button type="button" class="btn btn-primary btn-lg">Modifiez votre mot de passe</button>
+                <a href="<?= add_query_arg( 'id', $creches[0]->id_creche, home_url().'/edit' );?>" type="button" class="btn btn-primary btn-lg">Editer votre profil</a>
             </div>
             <div class="col-6">
                 <table class="table">
@@ -75,8 +75,8 @@ $employes = $wpdb->get_results(
                             <th scope="row"><?= $i ?></th>
                             <td><?= $employe->nom_employee?></td>
                             <td><?= $employe->prenom_employee?></td>
-                            <td><?= $employe->telephone_employee?></td>
-                            <td><a style="background-color: red !important; border-radius: 15px !important;" href="" type="button" class="btn btn-danger">Delete</a></td>
+                            <td>0<?= $employe->telephone_employee?></td>
+                            <td><a style="background-color: red !important; border-radius: 15px !important;" href="<?php echo add_query_arg( 'id', $employe->id_employee, home_url().'/delete' );?>" type="button" class="btn btn-danger">Delete</a></td>
                         </tr>
                         <?php $i++; } ?>
                     </tbody>
