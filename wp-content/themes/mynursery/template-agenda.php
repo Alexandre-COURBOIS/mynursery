@@ -12,7 +12,10 @@ $length = count($reservations)
 <head>
 
     <meta charset='utf-8' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+    rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet' />
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css' rel='stylesheet' />
@@ -27,6 +30,8 @@ $length = count($reservations)
 
             font-size: 14px;
 
+            font-family: Roboto, sans-serif;
+
             background: #e2e2e2;
 
         }
@@ -34,6 +39,7 @@ $length = count($reservations)
         #calendar{
 
             width: 80%;
+
 
             margin-left: 100px;
 
@@ -101,11 +107,13 @@ $length = count($reservations)
 
                     var calendar = new FullCalendar.Calendar(calendarEl, {
                         locale: 'fr',
+
+
                         events: [
                         <?php
                             for($i = 0;  $i < $length ; $i++) { ?>
                             {
-                                title: 'FULLCALENDAR NTM',
+                                title: 'Nom de l\'enfant : ' + reservation[<?= $i ?>]['nom'] + ' ' + reservation[<?= $i ?>]['prenom'],
                                 start: reservation[<?= $i ?>]['date_resa'],
                                 end: reservation[<?= $i ?>]['fin_resa'],
                                 allDay: false
@@ -133,7 +141,7 @@ $length = count($reservations)
 
                         navLinks: true, // can click day/week names to navigate views
 
-                        editable: true,
+                        editable: false,
 
                         eventLimit: true, // allow "more" link when too many events
 
