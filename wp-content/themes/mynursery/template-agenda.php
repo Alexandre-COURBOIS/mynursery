@@ -7,11 +7,10 @@ $length = count($reservations)
 
 <!DOCTYPE html>
 
-<html>
-
 <head>
-
+    <title>Planning</title>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
     rel="stylesheet">
 
@@ -156,5 +155,4 @@ $length = count($reservations)
 
 </script>
 </body>
-
 </html>
