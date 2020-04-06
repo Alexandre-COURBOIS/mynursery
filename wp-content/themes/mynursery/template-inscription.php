@@ -97,20 +97,21 @@ if (!empty($_POST['submitted'])) {
 
             $to_email = $email;
             $subject = "Bienvenue sur MyNursery";
-            $body = "Bonjour, 
+            $body = "
+            Bonjour, ".$name_enterprise."
+           
             Nous vous souhaitons la bienvenue sur MyNursery,
-            Vous êtes désormais visible sur notre carte, les parents peuvent profité de vos services.
+            Vous êtes désormais visible sur notre carte, les parents peuvent profiter de vos services.
+            
             Bien à vous, 
+            
             L'équipe MyNursery";
+
             $headers = "From : webapsy@gmail.com";
 
-            if (mail($to_email,$subject,$body,$headers)) {
-                echo "Mail send";
-            } else {
-                echo "Mail not send";
-            }
+            mail($to_email,$subject,$body,$headers);
 
-            header('Location: home');
+            header('Location: connexion');
 
         } else {
 
@@ -143,6 +144,23 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
+
+            $to_email = $email;
+            $subject = "Bienvenue sur MyNursery";
+            $body = "
+            Bonjour, ".$name_enterprise."
+           
+            Nous vous souhaitons la bienvenue sur MyNursery,
+            Vous êtes désormais visible sur notre carte, les parents peuvent profiter de vos services.
+            
+            Bien à vous, 
+            
+            L'équipe MyNursery";
+
+            $headers = "From : webapsy@gmail.com";
+
+            mail($to_email,$subject,$body,$headers);
+
             header('Location: connexion');
         }
     }
