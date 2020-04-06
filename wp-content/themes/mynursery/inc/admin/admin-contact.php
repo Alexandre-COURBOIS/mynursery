@@ -114,19 +114,21 @@ function archive_admin_single($id,$urlBase)
         array(
             '%d'
         ),
-        array('%d')
+        array(
+            '%d'
+        )
     );
 
    /* header("Location:'. $urlBase . '&noheader=true");*/
-    /*la redirection, quelque soit la manière dont elle est écrite retourne l'erreur suivante :
+    /*la redirection, quelque soit la manière emprunté (wp_redirect etc ) retourne l'erreur suivante :
     Warning: Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\mynursery\wp-includes\formatting.php:5699)
     in C:\xampp\htdocs\mynursery\wp-content\themes\mynursery\inc\admin\admin-contact.php on line 120
     */
     ?>
-<!--    <script type="text/javascript">
+    <script type="text/javascript">
         window.location = 'http://localhost/mynursery/wp-admin/admin.php?page=contactpageadmin';
     </script>
--->
+
    <!-- <h2>Votre message a bien été archivé, cliquez sur listing pour retourner aux messages</h2>-->
     <?php
 }

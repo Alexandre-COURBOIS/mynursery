@@ -3,6 +3,10 @@
  * Register a custom menu page.
  */
 
+use inc\service\Validation;
+use inc\service\Form;
+
+
 function wpdocs_register_my_custom_menu_page_users(){
 
     add_menu_page(__( 'Users', 'mynursery' ),
@@ -86,6 +90,8 @@ function users_admin_single($id,$urlBase)
 {
     global $wpdb;
     $user = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}creche WHERE id_creche = $id" , OBJECT );
+
+
     ?>
 
 
@@ -111,63 +117,134 @@ function users_admin_single($id,$urlBase)
 function users_admin_edit($id,$urlBase)
 {
     global $wpdb;
-    $user = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}creche WHERE id_creche = $id" , OBJECT );
-    ?>
+    $user = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}creche WHERE id_creche = $id", OBJECT);
 
-<table>
-    <tr>
-        <th><label for="id">N° Identifiant:</label></th>
-        <td><p><?= $user->id_creche; ?></p></td>
-    </tr>
-    <tr>
-        <th><label for="nom_creche">Nom de la crèche :</label></th>
-        <td><input type="text" value="<?= $user->nom_creche; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="nom_gerant">Nom du/de la Gérant(e) :</label></th>
-        <td><input type="text" value="<?= $user->nom_gerant; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="prenom_gerant">Prénom du/de la Gérant(e) :</label></th>
-        <td><input type="text" value="<?= $user->prenom_gerant; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="">Email :</label></th>
-        <td><input type="text" value="<?= $user->email; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="telephone_creche">N. Téléphone de la crèche :</label></th>
-        <td><input type="text" value="<?= $user->telephone_creche; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for=""></label></th>
-        <td><input type="text" value=""></td>
-    </tr>
-    <tr>
-        <th><label for="num_siret">Numéro de SIRET :</label></th>
-        <td><input type="text" value="<?= $user->num_siret; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="num_agrement">Numéro d'agrément :</label></th>
-        <td><input type="text" value="<?= $user->num_agrement; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="num_secusocial">Numéro de Sécurité Social :</label></th>
-        <td><input type="text" value="<?= $user->num_secusocial; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="effectif_maxenfant">Effectif Maximum d'Enfant :</label></th>
-        <td><input type="text" value="<?= $user->effectif_maxenfant; ?>"></td>
-    </tr>
-    <tr>
-        <th><label for="created_at">Date d'inscription : </label></th>
-        <td><p><?= $user->created_at; ?></p></td>
-    </tr>
-</table>
+    $errors = array();
+    $success = false;
 
+    if (!empty($_POST['submitted'])) {
+
+        $nom_creche = trim(strip_tags(stripslashes($_POST['nom_creche'])));
+        $nom_gerant = trim(strip_tags(stripslashes($_POST['nom_gerant'])));
+        $prenom_gerant = trim(strip_tags(stripslashes($_POST['prenom_gerant'])));
+        $email = trim(strip_tags(stripslashes($_POST['email'])));
+        $telephone_creche = trim(strip_tags(stripslashes($_POST['telephone_creche'])));
+        $num_siret = trim(strip_tags(stripslashes($_POST['num_siret'])));
+        $num_agrement = trim(strip_tags(stripslashes($_POST['num_agrement'])));
+        $num_secusocial = trim(strip_tags(stripslashes($_POST['num_secusocial'])));
+        $effectif_maxenfant = trim(strip_tags(stripslashes($_POST['effectif_maxenfant'])));
+
+
+        $v = new Validation();
+        $errors['nom_creche'] = $v->textValid($nom_creche, 'nom d\'entreprise', 3, 100);
+        $errors['nom_gerant'] = $v->textValid($nom_gerant, 'nom', 3, 100);
+        $errors['prenom_gerant'] = $v->textValid($prenom_gerant, 'prénom', 3, 100);
+        $errors['email'] = $v->emailValid($email);
+        $errors['telephone_creche'] = $v->isNumeric($telephone_creche);
+        $errors['telephone_creche'] = $v->textValid($telephone_creche, 'Numéro de téléphone', 10, 10);
+        $errors['num_siret'] = $v->textValid($num_siret, 'N° de siret', 14, 14);
+        $errors['num_agrement'] = $v->textValid($num_agrement, 'N° d\'agrement', 3, 13);
+        $errors['num_secusocial'] = $v->textValid($num_secusocial, 'N° de sécu', 13, 13);
+        $errors['effectif_maxenfant'] = $v->intValid($effectif_maxenfant, 1, 10);
+
+        if ($v->IsValid($errors)) {
+                global $wpdb;
+                $edit = $wpdb->update(
+                    'nurs_creche',
+                    array(
+                        'nom_creche' => $nom_creche,
+                        'nom_gerant' => $nom_gerant,
+                        'prenom_gerant' => $prenom_gerant,
+                        'email' => $email,
+                        'telephone_creche' => $telephone_creche,
+                        'num_siret' => $num_siret,
+                        'num_agrement' => $num_agrement,
+                        'num_secusocial' => $num_secusocial,
+                        'effectif_maxenfant' => $effectif_maxenfant,
+                        'modified_at' => current_time('mysql'),
+                    ),
+                    array(
+                        'id_creche' => $id,
+                    ),
+                    array(
+                        '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%d', '%d', '%d', '%d',
+                    ),
+                    array(
+                        '%d',
+                    )
+                );
+                $success = true;
+            }
+        }
+
+$form = new Form($errors);
+
+?>
+
+    <form action="" method="post" class="form-style">
+        <table>
+            <tr>
+                <th><label for="id">N° Identifiant:</label></th>
+                <td><p><?= $user->id_creche; ?></p></td>
+            </tr>
+            <tr>
+                <th><label for="nom_creche">Nom de la crèche :</label></th>
+                <td><input type="text" name="nom_creche" id="nom_creche" value="<?= $user->nom_creche; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('nom_creche') ?></span></td>
+
+            </tr>
+            <tr>
+                <th><label for="nom_gerant">Nom du/de la Gérant(e) :</label></th>
+                <td><input type="text" name="nom_gerant" id="nom_gerant" value="<?= $user->nom_gerant; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('nom_gerant') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="prenom_gerant">Prénom du/de la Gérant(e) :</label></th>
+                <td><input type="text" name="prenom_gerant" id="prenom_gerant" value="<?= $user->prenom_gerant; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('prenom_gerant') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="email">Email :</label></th>
+                <td><input type="text" name="email" id="email" value="<?= $user->email; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('email') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="telephone_creche">N. Téléphone de la crèche :</label></th>
+                <td><input type="text" name="telephone_creche" id="telephone_creche" value="0<?= $user->telephone_creche; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('telephone_creche') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="num_siret">Numéro de SIRET :</label></th>
+                <td><input type="text" name="num_siret" id="num_siret" value="<?= $user->num_siret; ?>"></td>
+                <td> <span class="input-highlight"><?= $form->error('num_siret') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="num_agrement">Numéro d'agrément :</label></th>
+                <td><input type="text" name="num_agrement" id="num_agrement" value="<?= $user->num_agrement; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('num_agrement') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="num_secusocial">Numéro de Sécurité Social :</label></th>
+                <td><input type="text" name="num_secusocial" id="num_secusocial" value="<?= $user->num_secusocial; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('num_secusocial') ?></span></td>
+
+            </tr>
+            <tr>
+                <th><label for="effectif_maxenfant">Effectif Maximum d'Enfant :</label></th>
+                <td><input type="text" name="effectif_maxenfant" id="effectif_maxenfant" value="<?= $user->effectif_maxenfant; ?>"></td>
+                <td><span class="input-highlight"><?= $form->error('effectif_maxenfant') ?></span></td>
+            </tr>
+            <tr>
+                <th><label for="created_at">Date d'inscription : </label></th>
+                <td><p><?= $user->created_at; ?></p></td>
+            </tr>
+            <tr>
+                <input type="text" id="longitude" name="longitude" hidden>
+                <input type="text" id="lattitude" name="lattitude" hidden>
+                <th><p>Enregistrez vos modifications : </p></th>
+                <td><input type="submit" name="submitted" class="button"></td>
+            </tr>
+        </table>
+    </form>
 <?php
 }
-
-
-
-
