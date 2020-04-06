@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once ('vendor/autoload.php');
 global $wpdb;
 
 /*
@@ -9,6 +9,9 @@ Template Name: Inscription
 
 use inc\service\Validation;
 use inc\service\Form;
+
+
+
 
 $errors = array();
 $success = false;
@@ -91,6 +94,22 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
+
+            $to_email = $email;
+            $subject = "Bienvenue sur MyNursery";
+            $body = "Bonjour, 
+            Nous vous souhaitons la bienvenue sur MyNursery,
+            Vous êtes désormais visible sur notre carte, les parents peuvent profité de vos services.
+            Bien à vous, 
+            L'équipe MyNursery";
+            $headers = "From : webapsy@gmail.com";
+
+            if (mail($to_email,$subject,$body,$headers)) {
+                echo "Mail send";
+            } else {
+                echo "Mail not send";
+            }
+
             header('Location: home');
 
         } else {

@@ -125,20 +125,20 @@ if (!empty($_POST['submitted'])) {
 }
 
 
-    if (!empty($_POST['submitpwd'])) {
+if (!empty($_POST['submitpwd'])) {
 
-        $id = $_SESSION['login']['id'];
+    $id = $_SESSION['login']['id'];
 
-        $verifoldpwd = trim(strip_tags(stripslashes($_POST['oldpwd'])));
-        $newpwd = trim(strip_tags(stripslashes($_POST['newpwd'])));
-        $verifnewpwd = trim(strip_tags(stripslashes($_POST['confnewpwd'])));
+    $verifoldpwd = trim(strip_tags(stripslashes($_POST['oldpwd'])));
+    $newpwd = trim(strip_tags(stripslashes($_POST['newpwd'])));
+    $verifnewpwd = trim(strip_tags(stripslashes($_POST['confnewpwd'])));
 
     if (password_verify($verifoldpwd, $creches[0]->password)) {
 
         $v = new Validation();
         $errors['newpwd'] = $v->passwordValid($newpwd, $verifnewpwd);
 
-        $hashPassword = password_hash($newpwd,PASSWORD_BCRYPT);
+        $hashPassword = password_hash($newpwd, PASSWORD_BCRYPT);
 
         $wpdb->update(
             'nurs_creche',
