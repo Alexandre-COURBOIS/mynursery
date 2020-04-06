@@ -4,7 +4,7 @@ require_once ('vendor/autoload.php');
 global $wpdb;
 
 /*
-Template Name: Inscription
+Template Name: Inscription_creche
 */
 
 use inc\service\Validation;

@@ -32,6 +32,27 @@ class Connexion
 
         header('Location: '.$header);
     }
+
+    public function InitializeSessionParent($user,$header)
+    {
+        $_SESSION['login'] = array(
+            'id' => $user->idresponsable_legale,
+            'nom' => $user->nom,
+            'prenom' => $user->prenom,
+            'sexe' => $user->sexe,
+            'birthdate' => $user->birthdate,
+            'email' => $user->email,
+            'telephone' => $user->telephone,
+            'num_rue' => $user->num_rue,
+            'supp_rue'=> $user->supp_rue,
+            'nom_rue'=>$user->nom_rue,
+            'codepostal'=>$user->codepostal,
+            'ville'=>$user->ville,
+            'ip' => $_SERVER['REMOTE_ADDR'],
+        );
+
+        header('Location: '.$header);
+    }
     
 
 }

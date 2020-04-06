@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     $('#parent').click(function () {
         $('#parent').prop('checked', true);
-        alert('Lien vers l\'inscription parent');
+        window.location = 'inscription_parent';
     });
 
     $('#modifPwd').click(function () {

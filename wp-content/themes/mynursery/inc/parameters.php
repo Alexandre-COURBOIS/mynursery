@@ -5,36 +5,32 @@ global $web;
 $web = array(
     'pages' => array(
         'home' => array(
-            'id' => 6,
+            'id' => 5,
             'slug' => '/'
         ),
         'about' => array(
-            'id' => 104,
+            'id' => 150,
             'slug' => 'about',
         ),
-        'ajouter un employé' => array(
-            'id' => 17,
+        'inscription' => array(
+            'id' => 7,
+            'slug' => 'inscription'
+        ),
+        'ajouter-un-employe' => array(
+            'id' => 26,
             'slug' => 'ajouter-un-employe'
         ),
         'connexion' => array(
-            'id' => 104,
+            'id' => 14,
             'slug' => 'connexion'
         ),
         'contact' => array(
-            'id' => 15,
+            'id' => 22,
             'slug' => 'contact'
         ),
-        'inscription' => array(
-            'id' => 102,
-            'slug' => 'inscription'
-        ),
         'profil' => array(
-            'id' => 13,
+            'id' => 18,
             'slug' => 'profil'
-        ),
-        'map' => array(
-            'id' => 112,
-            'slug' => 'map'
         ),
     )
 );
