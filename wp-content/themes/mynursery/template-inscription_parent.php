@@ -42,7 +42,7 @@ if (!empty($_POST['submitted'])) {
     $errors['num-rue'] = $v->intValid($number_way, 0, 9999);
     $errors['street'] = $v->textValid($way, 'Nom de rue', 4, 200);
     $errors['code-postal'] = $v->textValid($postal_code, 'Code postal', 5, 5);
-    $errors['city'] = $v->textValid($city, 'Ville', 4, 70);
+    $errors['city'] = $v->textValid($city, 'Ville', 1, 70);
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
 
