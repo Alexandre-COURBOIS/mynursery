@@ -40,6 +40,14 @@ class Connexion
             'nom' => $user->nom,
             'prenom' => $user->prenom,
             'sexe' => $user->sexe,
+            'birthdate' => $user->birthdate,
+            'email' => $user->email,
+            'telephone' => $user->telephone,
+            'num_rue' => $user->num_rue,
+            'supp_rue'=> $user->supp_rue,
+            'nom_rue'=>$user->nom_rue,
+            'codepostal'=>$user->codepostal,
+            'ville'=>$user->ville,
             'ip' => $_SERVER['REMOTE_ADDR'],
         );
 
