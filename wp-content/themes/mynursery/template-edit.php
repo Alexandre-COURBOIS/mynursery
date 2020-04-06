@@ -1,20 +1,23 @@
 <?php
-session_start();
-require_once ('vendor/autoload.php');
-global $wpdb;
-
 /*
-Template Name: Inscription
+Template Name: edit
 */
+global $wpdb;
+session_start();
 
 use inc\service\Validation;
 use inc\service\Form;
 
-
-
-
 $errors = array();
-$success = false;
+
+$form = new Form($errors);
+
+$id = $_SESSION['login']['id'];
+
+$creches = $wpdb->get_results(
+    $wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE id_creche = %d", $id)
+);
+
 
 if (!empty($_POST['submitted'])) {
 
@@ -32,8 +35,7 @@ if (!empty($_POST['submitted'])) {
     $social_secu = trim(strip_tags(stripslashes($_POST['secu'])));
     $child_max = trim(strip_tags(stripslashes($_POST['max-child'])));
     $agrement = trim(strip_tags(stripslashes($_POST['agrement'])));
-    $password = trim(strip_tags(stripslashes($_POST['mdp'])));
-    $password2 = trim(strip_tags(stripslashes($_POST['conf-mdp'])));
+    $oldpassword = trim(strip_tags(stripslashes($_POST['pwd'])));
     $latitude = trim(strip_tags(stripslashes($_POST['lattitude'])));
     $longitude = trim(strip_tags(stripslashes($_POST['longitude'])));
 
@@ -52,22 +54,12 @@ if (!empty($_POST['submitted'])) {
     $errors['secu'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
     $errors['agrement'] = $v->textValid($agrement, 'N° d\'agrement', 3, 13);
     $errors['max-child'] = $v->intValid($child_max, 1, 10);
-    $errors['mdp'] = $v->passwordValid($password, $password2);
 
+    if (password_verify($oldpassword, $creches[0]->password)) {
 
+        if (empty($creches[0]->id_rue)) {
 
-    if ($v->IsValid($errors)) {
-
-        $token = token(255);
-
-        $hashPassword = password_hash($password,PASSWORD_BCRYPT);
-
-
-        /*Attention les %f (floats) prennent en compte le . et non pas la ,*/
-
-        if ($id_way == 'NULL') {
-
-            $wpdb->insert(
+            $wpdb->update(
                 'nurs_creche',
                 array(
                     'nom_creche' => $name_enterprise,
@@ -85,36 +77,19 @@ if (!empty($_POST['submitted'])) {
                     'effectif_maxenfant' => $child_max,
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'password' => $hashPassword,
-                    'token' => $token,
-                    'created_at' => current_time('mysql'),
+                    'modified_at' => current_time('mysql'),
                 ),
                 array(
-                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
-                )
+                    'id_creche' => $id,
+                ),
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f'
+                ),
+                array('%d')
             );
-            $success = true;
-
-            $to_email = $email;
-            $subject = "Bienvenue sur MyNursery";
-            $body = "Bonjour, 
-            Nous vous souhaitons la bienvenue sur MyNursery,
-            Vous êtes désormais visible sur notre carte, les parents peuvent profité de vos services.
-            Bien à vous, 
-            L'équipe MyNursery";
-            $headers = "From : webapsy@gmail.com";
-
-            if (mail($to_email,$subject,$body,$headers)) {
-                echo "Mail send";
-            } else {
-                echo "Mail not send";
-            }
-
-            header('Location: home');
 
         } else {
-
-            $wpdb->insert(
+            $wpdb->update(
                 'nurs_creche',
                 array(
                     'nom_creche' => $name_enterprise,
@@ -133,41 +108,81 @@ if (!empty($_POST['submitted'])) {
                     'effectif_maxenfant' => $child_max,
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'password' => $hashPassword,
-                    'token' => $token,
-                    'created_at' => current_time('mysql'),
+                    'modified_at' => current_time('mysql'),
                 ),
-
                 array(
-                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f', '%s', '%s',
-                )
+                    'id_creche' => $id,
+                ),
+                array(
+                    '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%d', '%f', '%f'
+                ),
+                array('%d')
             );
-            $success = true;
-            header('Location: connexion');
         }
+    } else {
+        $errors['oldmdp'] = "Le mot de passe actuel renseigné n'est pas correct";
     }
+}
+
+
+if (!empty($_POST['submitpwd'])) {
+
+    $id = $_SESSION['login']['id'];
+
+    $verifoldpwd = trim(strip_tags(stripslashes($_POST['oldpwd'])));
+    $newpwd = trim(strip_tags(stripslashes($_POST['newpwd'])));
+    $verifnewpwd = trim(strip_tags(stripslashes($_POST['confnewpwd'])));
+
+    if (password_verify($verifoldpwd, $creches[0]->password)) {
+
+        $v = new Validation();
+        $errors['newpwd'] = $v->passwordValid($newpwd, $verifnewpwd);
+
+        $hashPassword = password_hash($newpwd, PASSWORD_BCRYPT);
+
+        $wpdb->update(
+            'nurs_creche',
+            array(
+                'password' => $hashPassword,
+                'modified_at' => current_time('mysql'),
+            ),
+            array(
+                'id_creche' => $id,
+            ),
+            array(
+                '%s',
+            ),
+            array('%d')
+        );
+
+    } else {
+        $errors['verifoldpwd'] = "Le mot de passe actuel renseigné n'est pas correct";
+    }
+
+
 }
 
 $form = new Form($errors);
 
 get_header();
+
 ?>
+
 
     <div class="separator"></div>
 
     <div class="container">
         <form method="post" class="form-style">
-            <h2 class="text-center pt-4">Inscription</h2>
-            <h3 class="text-center pt-4">Les informations a rentrer sont celle de votre établissement</h3>
+            <h2 class="text-center pt-4">Editer vos informations</h2>
             <div class="form-row">
                 <div class="col-md-6 mx-auto mt-3">
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nom_entreprise" id="nom_entreprise"
-                                       placeholder="Nom de votre Etablissement/Entreprise" value="<?php if (!empty($_POST['nom_entreprise'])) echo $_POST['nom_entreprise']; ?>">
+                                       placeholder="Nom de votre Etablissement/Entreprise"
+                                       value="<?= $creches[0]->nom_creche; ?>">
                                 <span class="input-highlight"></span>
-                                <?= $form->error('nom_entreprise') ?>
                             </div>
                         </div>
                     </div>
@@ -175,7 +190,7 @@ get_header();
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom"
-                                       value="<?php if (!empty($_POST['nom'])) echo $_POST['nom']; ?>">
+                                       value="<?= $creches[0]->nom_gerant; ?>">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('nom') ?>
                             </div>
@@ -183,7 +198,7 @@ get_header();
                         <div class="col-md-5 mx-auto mt-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom"
-                                       value="<?php if (!empty($_POST['prenom'])) echo $_POST['prenom']; ?>">
+                                       value="<?= $creches[0]->prenom_gerant; ?>">
                                 <span class="input-highlight"></span>
                                 <?= $form->error('prenom') ?>
                             </div>
@@ -195,7 +210,7 @@ get_header();
 
                                 <input type="email" class="form-control" name="email" id="email"
                                        placeholder="Email : exemple@mail.fr"
-                                       value="<?php if (!empty($_POST['email'])) echo $_POST['email']; ?>">
+                                       value="<?= $creches[0]->email; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('email') ?>
@@ -208,7 +223,7 @@ get_header();
 
                                 <input type="text" class="form-control" name="tel" id="tel"
                                        placeholder="Tel: 02 11 22 33 44"
-                                       value="<?php if (!empty($_POST['tel'])) echo $_POST['tel']; ?>">
+                                       value="0<?= $creches[0]->telephone_creche; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('tel') ?>
@@ -216,34 +231,37 @@ get_header();
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-3 mx-auto mt-3">
+                        <div class="<?php if (!empty($creches[0]->supp_rue)) { ?> col-md-3 mx-auto mt-3 <?php } else { ?>col-md-11 mx-auto mt-3 <?php } ?>">
                             <div class="form-group">
 
                                 <input type="text" class="form-control" name="num-rue" id="num-rue"
                                        placeholder="N° de rue"
-                                       value="<?php if (!empty($_POST['num-rue'])) echo $_POST['num-rue']; ?>">
+                                       value="<?= $creches[0]->num_rue ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('num-rue') ?>
                             </div>
                         </div>
-                        <div class="col-md-6 mx-auto mt-3">
-                            <div class="form-group">
-                                <select name="id-rue" id="id-rue" class="form-control">
-                                    <option value="NULL">Supplément de numéro</option>
-                                    <option value="bis">Bis</option>
-                                    <option value="ter">Ter</option>
-                                    <option value="quater">Quater</option>
-                                </select>
-                                <span class="input-highlight"></span>
+                        <?php if (!empty($creches[0]->supp_rue)) { ?>
+                            <div class="col-md-6 mx-auto mt-3">
+                                <div class="form-group">
+                                    <select name="id-rue" id="id-rue" class="form-control">
+                                        <option value="<?= $creches[0]->supp_rue ?>">Choisir si existant</option>
+                                        <option value="bis">Bis</option>
+                                        <option value="ter">Ter</option>
+                                        <option value="quater">Quater</option>
+                                    </select>
+                                    <span class="input-highlight"></span>
+                                </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
-                                <input type="search" name="street" class="form-control" id="street" placeholder="Nom de votre rue"
-                                value="<?php if (!empty($_POST['street'])) echo $_POST['street']; ?>">
+                                <input type="search" name="street" class="form-control" id="street"
+                                       placeholder="Saisir votre adresse à chaque modification"
+                                       value="">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('street') ?>
@@ -257,7 +275,7 @@ get_header();
 
                                 <input type="text" class="form-control" name="code-postal" id="code-postal"
                                        placeholder="Code postal"
-                                       value="<?php if (!empty($_POST['code-postal'])) echo $_POST['code-postal']; ?>">
+                                       value="">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('code-postal') ?>
@@ -268,7 +286,7 @@ get_header();
 
                                 <input type="text" class="form-control" name="city" id="city"
                                        placeholder="Nom de la ville"
-                                       value="<?php if (!empty($_POST['city'])) echo $_POST['city']; ?>">
+                                       value="">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('city') ?>
@@ -280,7 +298,7 @@ get_header();
                             <div class="form-group">
 
                                 <input type="text" class="form-control" name="siret" id="siret" placeholder="N° SIRET"
-                                       value="<?php if (!empty($_POST['siret'])) echo $_POST['siret']; ?>">
+                                       value="<?= $creches[0]->num_siret; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('siret') ?>
@@ -293,7 +311,7 @@ get_header();
 
                                 <input type="text" class="form-control" name="secu" id="secu"
                                        placeholder="N° sécurité social"
-                                       value="<?php if (!empty($_POST['secu'])) echo $_POST['secu']; ?>">
+                                       value="<?= $creches[0]->num_secusocial; ?>">
 
 
                                 <span class="input-highlight"></span>
@@ -301,58 +319,112 @@ get_header();
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
                                 <input type="text" class="form-control" name="agrement" id="agrement"
                                        placeholder="N° d'agrément"
-                                       value="<?php if (!empty($_POST['agrement'])) echo $_POST['agrement']; ?>">
+                                       value="<?= $creches[0]->num_agrement; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('agrement') ?>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="col-md-11 mx-auto mt-3">
                             <div class="form-group">
 
                                 <input type="text" class="form-control" name="max-child" id="max-child"
                                        placeholder="Effectif d'enfant maximum"
-                                       value="<?php if (!empty($_POST['max-child'])) echo $_POST['max-child']; ?>">
+                                       value="<?= $creches[0]->effectif_maxenfant; ?>">
 
                                 <span class="input-highlight"></span>
                                 <?= $form->error('max-child') ?>
+
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
-                        <div class="col-md-5 mx-auto mt-3">
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="mdp" id="mdp"
-                                       placeholder="Votre mot de passe">
-                                <span class="input-highlight"></span>
-                                <?= $form->error('mdp') ?>
-                            </div>
-                        </div>
-                        <div class="col-md-5 mx-auto mt-3">
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="conf-mdp" id="conf-mdp"
-                                       placeholder="Confirmation mot de passe">
-                                <span class="input-highlight"></span>
-                                <?= $form->error('mdp') ?>
-                            </div>
+                        <div class="col-md-11 mx-auto mt-3"
+                        ">
+                        <div class="form-group">
+
+                            <input type="password" class="form-control" name="pwd" id="pwd"
+                                   placeholder="Renseignez votre mot de passe pour valider les changements">
+
+                            <span class="input-highlight"></span>
+                            <?= $form->error('oldmdp') ?>
+
                         </div>
                     </div>
                 </div>
+
             </div>
-            <div class="col-md-5 mx-auto mt-5">
-                <input type="text" id="longitude" name="longitude" hidden>
-                <input type="text" id="lattitude" name="lattitude" hidden>
-                <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
+    </div>
+    <div class="col-md-5 mx-auto mt-5">
+        <input type="text" id="longitude" name="longitude" hidden>
+        <input type="text" id="lattitude" name="lattitude" hidden>
+
+        <div id="modifPwd" class="btn btn-lg btn-block btn-success">Modifier votre mot de passe</div>
+
+        <input type="submit" name="submitted" class="btn btn-lg btn-block btn-success">
+    </div>
+    </form>
+    </div>
+
+
+    <div id="addclass" class="container" style="display: none">
+
+        <form action="" class="form-style" method="post">
+            <div class="form-row">
+                <div class="col-md-6 mx-auto mt-3">
+                    <div class="form-row">
+                        <div class="col-md-11 mx-auto mt-3"
+                        ">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="oldpwd" id="oldpwd"
+                                   placeholder="Renseignez votre ancien mot de passe">
+                            <span class="input-highlight"></span>
+                            <?= $form->error('verifoldpwd') ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-11 mx-auto mt-3"
+                    ">
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="newpwd" id="newpwd"
+                               placeholder="Renseignez votre nouveau mot de passe">
+                        <span class="input-highlight"></span>
+                        <?= $form->error('newpwd') ?>
+                    </div>
+                </div>
             </div>
-        </form>
+
+            <div class="form-row">
+                <div class="col-md-11 mx-auto mt-3"
+                ">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confnewpwd" id="confnewpwd"
+                           placeholder="Confirmez votre nouveau mot de passe">
+                    <span class="input-highlight"></span>
+                    <?= $form->error('newpwd') ?>
+                </div>
+            </div>
+    </div>
+    <div class="col-md-5 mx-auto mt-5">
+        <input type="submit" name="submitpwd" class="btn btn-lg btn-block btn-success">
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
     </div>
 
     <div class="clear"></div>
@@ -360,9 +432,4 @@ get_header();
     <div class="separator"></div>
 
 <?php
-
 get_footer();
-
-?>
-
-
