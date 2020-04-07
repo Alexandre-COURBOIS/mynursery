@@ -7,6 +7,7 @@ use inc\service\Validation;
 use inc\service\Form;
 
 
+
 function wpdocs_register_my_custom_menu_page_users(){
 
     add_menu_page(__( 'Users', 'mynursery' ),
@@ -174,6 +175,12 @@ function users_admin_edit($id,$urlBase)
                     )
                 );
                 $success = true;
+                echo  '<script type="text/javascript">
+                        alert("Les modifications ont bien été apporté, cliquez sur OK pour retourner sur les informations de l\'utilisateur ");
+                        window.location = "http://localhost/mynursery/wp-admin/admin.php?page=userspageadmin&single='. $user->id_creche.'";
+                       </script>';
+
+
             }
         }
 
@@ -239,12 +246,15 @@ $form = new Form($errors);
                 <td><p><?= $user->created_at; ?></p></td>
             </tr>
             <tr>
-                <input type="text" id="longitude" name="longitude" hidden>
-                <input type="text" id="lattitude" name="lattitude" hidden>
                 <th><p>Enregistrez vos modifications : </p></th>
                 <td><input type="submit" name="submitted" class="button"></td>
             </tr>
         </table>
     </form>
+
+
+
 <?php
 }
+
+
