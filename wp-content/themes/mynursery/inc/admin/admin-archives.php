@@ -7,12 +7,12 @@ function wpdocs_register_my_custom_menu_page_archives()
 {
 
     add_menu_page(__('Archives', 'mynursery'),
-        'Admin Archives',
+        'Messages Contact Archives',
         'manage_options',
         'archivespageadmin',
         'archives_menu_page',
         'dashicons-portfolio',
-        71);
+        73);
 }
 
 add_action('admin_menu', 'wpdocs_register_my_custom_menu_page_archives');

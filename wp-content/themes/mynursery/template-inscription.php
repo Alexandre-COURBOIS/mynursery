@@ -4,7 +4,7 @@ require_once ('vendor/autoload.php');
 global $wpdb;
 
 /*
-Template Name: Inscription
+Template Name: Inscription_creche
 */
 
 use inc\service\Validation;
@@ -185,6 +185,7 @@ get_header();
                                 <input type="text" class="form-control" name="nom_entreprise" id="nom_entreprise"
                                        placeholder="Nom de votre Etablissement/Entreprise" value="<?php if (!empty($_POST['nom_entreprise'])) echo $_POST['nom_entreprise']; ?>">
                                 <span class="input-highlight"></span>
+                                <?= $form->error('nom_entreprise') ?>
                             </div>
                         </div>
                     </div>

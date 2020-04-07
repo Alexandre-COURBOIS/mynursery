@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     $('#parent').click(function () {
         $('#parent').prop('checked', true);
-        alert('Lien vers l\'inscription parent');
+        window.location = 'inscription_parent';
     });
 
     $('#modifPwd').click(function () {
@@ -81,7 +81,6 @@ $.ajax({
             };
             var i;
             for(i=0;i<users.length;i++) {
-                console.log('oui');
                 geojson.features.push({
                     type: 'Feature',
                     geometry: {

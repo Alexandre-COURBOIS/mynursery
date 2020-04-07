@@ -63,14 +63,16 @@ class Validation
 
     }
 
-    public function isNumeric($value)
+
+    public function isNumeric( $value)
+{
+    $error = '';
+    if(is_numeric($value) === false)
     {
-        $error = '';
-        if (is_numeric($value) === false) {
-            $error = 'Champ invalide';
-        }
-        return $error;
+        $error= 'Champ invalide';
     }
+    return $error;
+}
 
     public function intValid($int, $min, $max)
     {
@@ -100,4 +102,13 @@ class Validation
         return $error;
     }
 
+    public function radioExist($name, $nomRadio)
+    {
+        $error = '';
+        if(empty($name))
+        {
+            $error= 'Veuillez séléctionner un ' . $nomRadio . '.';
+        }
+        return $error;
+    }
 }

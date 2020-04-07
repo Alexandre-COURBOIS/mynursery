@@ -2,9 +2,10 @@
 /*
 Template Name: Connexion
 */
+session_start();
 global $wpdb;
 
-session_start();
+
 
 use inc\service\Validation;
 use inc\service\Form;
@@ -22,16 +23,24 @@ if (!empty($_POST['submitted'])) {
 
     $errors['mail'] = $verif->emailValid($login);
 
+
     if ($verif->IsValid($errors)) {
 
         $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
 
+        $userParent = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}responsable_legal_enfant WHERE email = '%s'", $login));
+
+
         if (!empty($user)) {
 
             if (password_verify($password, $user->password)) {
-
                 $session->InitializeSession($user, 'home');
-
+            } else {
+                return $errors = 'Email, où mot de passe non valide';
+            }
+        } else if (!empty($userParent)) {
+            if (password_verify($password, $userParent->password)) {
+                $session->InitializeSessionParent($userParent, 'http://localhost/mynurserymvc/public/profil');
             } else {
                 return $errors = 'Email, où mot de passe non valide';
             }
