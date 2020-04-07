@@ -18,6 +18,6 @@ Now you can copy all the content in the repository of wordpress, and past it int
 
                                                          Our organization
                                                           
-
+//
                                         
-                                              All right reserved ©MyNursery
+                                                    All right reserved ©MyNursery
