@@ -9,8 +9,16 @@
 
 get_header();
 ?>
+<body id="body404">
 
-<h2>404 Not Found</h2>
 
+<h3>404 Not Found</h3>
+<p><a href="home">→ Back home ←</a></p>
+
+
+
+</body>
+<div class="clear"></div>
 <?php
+
 get_footer();

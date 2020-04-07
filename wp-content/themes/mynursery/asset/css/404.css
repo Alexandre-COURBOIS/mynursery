@@ -1,0 +1,22 @@
+#body404 {
+    background-color: #ED6A5A;
+    overflow: hidden;
+}
+
+#body404 h3 {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 125px;
+    color: #E6EBE0;;
+}
+
+#body404 p {
+    text-align: center;
+    margin: 100px 0;
+}
+
+#body404 p a {
+    color: #E6EBE0;
+    text-decoration: none;
+    font-size: 50px;
+}
