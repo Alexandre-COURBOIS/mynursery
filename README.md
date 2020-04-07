@@ -8,7 +8,7 @@ Start by downloading worpress on : https://fr.wordpress.org/ (Get Wordpress).
 
                                                             Installation 
 
-To build it you have to install wordpress in Htdocs if you are using XAMPP. On case you're using MAMP install it on Www as a usual installation in local.
+To build it you have to install wordpress in Htdocs if you are using XAMPP. On case you're using MAMP install it on Www as a usual local installation.
 
 Set the installation of wordpress by using localhost, when wordpress is set, you have to clone the mynursery repo on github at this link https://github.com/Alexandre-COURBOIS/mynursery.git clone it into htdocs or WWW. 
 
