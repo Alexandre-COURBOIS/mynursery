@@ -5,8 +5,11 @@ Template Name: Agenda
 session_start();
 global $wpdb;
 
-
-$reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation");
+$id = $_SESSION['login']['id'];
+$reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation WHERE $id = id_creche");
+if(empty($id) || !is_numeric($id)) {
+    die('404');
+} else {
 $length = count($reservations);
 ?>
 
@@ -161,3 +164,4 @@ $length = count($reservations);
 </script>
 </body>
 </html>
+<?php }
