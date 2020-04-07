@@ -6,9 +6,9 @@ global $wpdb;
 
 session_start();
 
+use inc\service\Validation;
+use inc\service\Form;
 use inc\service\Connexion;
-
-$session = new Connexion();
 
 $errors = array();
 
@@ -17,13 +17,14 @@ if (!empty($_POST['submitted'])) {
     $login = trim(strip_tags(stripslashes($_POST['login'])));
     $password = trim(strip_tags(stripslashes($_POST['password'])));
 
-    $errors = $session->VerifMail($errors, $login, 'login');
+    $verif = new Validation();
+    $session = new Connexion();
 
-    if (count($errors) === 0) {
+    $errors['mail'] = $verif->emailValid($login);
 
-        $user = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
+    if ($verif->IsValid($errors)) {
 
-        print_r($user);
+        $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $login));
 
         if (!empty($user)) {
 
@@ -39,6 +40,9 @@ if (!empty($_POST['submitted'])) {
         }
     }
 }
+
+$form = new Form($errors);
+
 get_header();
 ?>
     <div class="hidden">
@@ -55,6 +59,7 @@ get_header();
                             <input type="email" class="form-control" name="login" id="login"
                                    placeholder="Votre adresse mail : exemple@mail.fr">
                             <span class="input-highlight"></span>
+                            <?= $form->error('mail') ?>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" id="password"
@@ -66,6 +71,9 @@ get_header();
 
                 <div class="col-md-5 mx-auto mt-5">
                     <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
+                    <div class="form-group text-center">
+                        <a href="oublie" >Mot de passe oublié</a>
+                    </div>
                 </div>
 
             </form>
