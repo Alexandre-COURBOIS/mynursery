@@ -2,9 +2,10 @@
 /*
 Template Name: Connexion
 */
+session_start();
 global $wpdb;
 
-session_start();
+
 
 use inc\service\Connexion;
 

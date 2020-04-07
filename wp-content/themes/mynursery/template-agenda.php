@@ -1,8 +1,13 @@
 <?php
+/*
+Template Name: Agenda
+*/
+session_start();
 global $wpdb;
 
+
 $reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation");
-$length = count($reservations)
+$length = count($reservations);
 ?>
 
 <!DOCTYPE html>
