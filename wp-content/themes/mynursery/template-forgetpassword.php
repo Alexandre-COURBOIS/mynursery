@@ -16,19 +16,25 @@ $errors = array();
 
 if (!empty($_POST['submitted'])) {
 
-   $email = trim(strip_tags(stripslashes($_POST['email'])));
+    $email = trim(strip_tags(stripslashes($_POST['email'])));
 
     $verif = new Validation();
 
     $errors['mail'] = $verif->emailValid($email);
 
-
     if ($verif->IsValid($errors)) {
 
         $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $email));
 
-        print_r($user);
+        if (!empty($user)) {
+            if ($email === $user->email) {
+
+            }
+        } else {
+            $errors['mail'] = "Cette adresse n'existe pas";
+        }
     }
+
 }
 
 
