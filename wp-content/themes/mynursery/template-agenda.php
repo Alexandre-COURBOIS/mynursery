@@ -18,107 +18,16 @@ if(empty($id) || !is_numeric($id)) {
 $length = count($reservations);
 ?>
 
-<!DOCTYPE html>
-
-<head>
-    <title>Planning</title>
-    <meta charset='utf-8' />
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
-    rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet' />
-
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css' rel='stylesheet' />
-
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css' rel='stylesheet' />
-
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css' rel='stylesheet' />
-
-    <style>
-
-        html, body {
-
-            font-size: 14px;
-
-            font-family: Roboto, sans-serif;
-
-            background: #e2e2e2;
-
-        }
-
-        #calendar{
-
-            width: 80%;
-
-
-            margin-left: 100px;
-
-            box-shadow: 0px 0px 10px #000;
-
-            padding:15px;
-
-            background: #fff;
-
-        }
-
-        #calendar-container {
-
-            position: fixed;
-
-            top: 0%;
-
-            text-align: center;
-
-            left: 10%;
-
-            right: 10%;
-
-            bottom: 20%;
-
-        }
-        .fc-left button, .fc-right button {
-            background-color: #ed6a5a;
-            background-image: none;
-        }
-        .fc-button-primary:not(:disabled).fc-button-active, .fc-button-primary:not(:disabled):active {
-            background-color: #ed6a5a;
-            opacity: .8;
-        }
-        .fc-button-primary:disabled {
-            background-color: #ed6a5a;
-            opacity: .8;
-        }
-        .fc-button-primary:not(:disabled).fc-button-active,
-        .fc-button-primary:not(:disabled):active {
-            background-color: #ed6a5a;
-            opacity: .8;
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-<div id='calendar-container'>
-    <h2>Réservations <?= $reservations[0]->nom_creche; ?> </h2>
-    <div id='calendar'></div>
-
-</div>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js'></script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/interaction/main.min.js'></script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js'></script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js'></script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js'></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/interaction/main.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
 
@@ -143,7 +52,10 @@ $length = count($reservations);
                                 }
                             }
                         },
-                        theme: 'bootstrap',
+
+                        minTime: '06:00:00',
+                        maxTime: '22:00:00',
+                        allDaySlot: false,
                         locale: 'fr',
                         height: parent,
 
@@ -194,6 +106,11 @@ $length = count($reservations);
     });
 
 </script>
-</body>
-</html>
+<?php get_header(); ?>
+<div class='container-flex mt-4'>
+    <h2 class="calendarTitle">Réservations <?= $reservations[0]->nom_creche; ?> </h2>
+    <div id='calendar'></div>
+
+</div>
+
 <?php }
