@@ -7,7 +7,8 @@ global $wp_query;
 global $wpdb;
 
 $id = $_SESSION['login']['id'];
-$reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation WHERE $id = id_creche");
+$reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation INNER JOIN {$wpdb->prefix}creche ON {$wpdb->prefix}reservation.id_creche = {$wpdb->prefix}creche.id_creche WHERE $id = {$wpdb->prefix}reservation.id_creche");
+
 if(empty($id) || !is_numeric($id)) {
     $wp_query->set_404();
     status_header(404);
@@ -77,6 +78,10 @@ $length = count($reservations);
             bottom: 20%;
 
         }
+        .fc-left button, .fc-right button {
+            background-color: #ed6a5a;
+            background-image: none;
+        }
 
     </style>
 
@@ -85,7 +90,7 @@ $length = count($reservations);
 <body>
 
 <div id='calendar-container'>
-
+    <h2>Réservations <?= $reservations[0]->nom_creche; ?> </h2>
     <div id='calendar'></div>
 
 </div>
@@ -117,7 +122,18 @@ $length = count($reservations);
                 var calendarEl = document.getElementById('calendar');
 
                     var calendar = new FullCalendar.Calendar(calendarEl, {
+                        customButtons: {
+                            backHome: {
+                                text: 'Retour au site',
+                                click: function() {
+                                    document.location.href='../';
+                                }
+                            }
+                        },
+                        theme: 'bootstrap',
                         locale: 'fr',
+                        height: parent,
+
 
 
                         events: [
@@ -136,11 +152,10 @@ $length = count($reservations);
 
                         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
 
-                        height: 'parent',
 
                         header: {
 
-                            left: 'prev,next today',
+                            left: 'prev,next today, backHome',
 
                             center: 'title',
 
