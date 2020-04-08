@@ -37,10 +37,10 @@ if (!empty($_POST['submitted'])) {
                 
                 Pour réinitialiser votre mot de passe cliquer sur le lien suivant : 
                 
-                ".add_query_arg( array(
-                    'token' => urlencode($user->token),
-                    'email' =>urlencode($user->email),
-                    ),'http://localhost/mynursery/update')." 
+                " . add_query_arg(array(
+                        'token' => urlencode($user->token),
+                        'email' => urlencode($user->email),
+                    ), 'http://localhost/mynursery/update') . " 
                          
                 Bien à vous,
                 
@@ -49,13 +49,16 @@ if (!empty($_POST['submitted'])) {
 
                 $headers = "From : webapsy@gmail.com";
 
-                mail($to_email,$subject,$body,$headers);
-            }
-        } else {
-            $errors['mail'] = "Cette adresse n'existe pas";
-        }
-    }
 
+                mail($to_email, $subject, $body, $headers);
+
+                header('Location: home');
+            }
+
+        }
+    } else {
+        $errors['mail'] = "Cette adresse n'existe pas";
+    }
 }
 
 
@@ -85,7 +88,8 @@ get_header(); ?>
 
             <div class="col-md-5 mx-auto mt-5">
 
-                <input type="submit" name="submitted" class="btn btn-lg btn-success btn-block">
+                <input data-toggle="modal" data-target="#exampleModal" type="submit" name="submitted"
+                       class="btn btn-lg btn-success btn-block">
 
             </div>
 
