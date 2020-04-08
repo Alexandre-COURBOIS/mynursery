@@ -29,6 +29,27 @@ if (!empty($_POST['submitted'])) {
         if (!empty($user)) {
             if ($email === $user->email) {
 
+                $to_email = $email;
+                $subject = "Réinitialisation de mot de passe";
+                $body = "
+
+                Bonjour, 
+                
+                Pour réinitialiser votre mot de passe cliquer sur le lien suivant : 
+                
+                ".add_query_arg( array(
+                    'token' => urlencode($user->token),
+                    'email' =>urlencode($user->email),
+                    ),'http://localhost/mynursery/update')." 
+                         
+                Bien à vous,
+                
+                L'equipe MyNursery
+                ";
+
+                $headers = "From : webapsy@gmail.com";
+
+                mail($to_email,$subject,$body,$headers);
             }
         } else {
             $errors['mail'] = "Cette adresse n'existe pas";
