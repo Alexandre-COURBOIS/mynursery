@@ -39,6 +39,9 @@ if (!empty($_GET['email']) && !empty($_GET['token'])) {
                     $hashpassword = password_hash($password, PASSWORD_BCRYPT);
                     $token = token(255);
 
+                    $verify = token(40);
+
+
                     $wpdb->update(
                         'nurs_creche',
                         array(
@@ -55,7 +58,7 @@ if (!empty($_GET['email']) && !empty($_GET['token'])) {
                         array('%s')
                     );
 
-                    header('Location: home');
+                    header('Location: '.add_query_arg( 'key', $verify, home_url().'/success' ));
 
                 }
             }
