@@ -36,16 +36,16 @@ if (!empty($_POST['submitted'])) {
             if (password_verify($password, $user->password)) {
                 $session->InitializeSession($user, 'home');
             } else {
-                return $errors = 'Email, où mot de passe non valide';
+                $errors['mail'] = 'Email, où mot de passe non valide';
             }
         } else if (!empty($userParent)) {
             if (password_verify($password, $userParent->password)) {
-                $session->InitializeSessionParent($userParent, 'http://localhost/mynurserymvc/public/profil');
+                $session->InitializeSessionParent($userParent, 'http://localhost/mynurserymvc/public/');
             } else {
-                return $errors = 'Email, où mot de passe non valide';
+                $errors['mail'] = 'Email, où mot de passe non valide';
             }
         } else {
-            return $errors = "Email, où mot de passe non valide";
+            $errors['mail'] = "Email, où mot de passe non valide";
         }
     }
 }
