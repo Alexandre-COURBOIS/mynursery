@@ -3,7 +3,7 @@
 Template Name: AddEmploye
 */
 global $wpdb;
-
+global $wp_query;
 session_start();
 
 use inc\service\Validation;
@@ -11,6 +11,9 @@ use inc\service\Form;
 
 $errors = array();
 $success = false;
+
+if (!empty($_SESSION)) {
+    if (!empty($_SESSION['login']['id']) && is_numeric($_SESSION['login']['id'])) {
 
 if (!empty($_POST['submitted'])) {
 
@@ -99,3 +102,18 @@ get_header();
     </div>
 
 <?php get_footer();
+
+    } else {
+        $wp_query->set_404();
+        status_header(404);
+        get_template_part(404);
+        exit();
+    }
+
+} else {
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
+}
+

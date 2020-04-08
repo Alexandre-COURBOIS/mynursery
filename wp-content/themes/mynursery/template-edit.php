@@ -2,13 +2,19 @@
 /*
 Template Name: edit
 */
+
 global $wpdb;
+global $wp_query;
+
 session_start();
 
 use inc\service\Validation;
 use inc\service\Form;
 
 $errors = array();
+
+if (!empty($_SESSION)) {
+    if (!empty($_SESSION['login']['id']) && is_numeric($_SESSION['login']['id'])) {
 
 $form = new Form($errors);
 
@@ -433,3 +439,17 @@ get_header();
 
 <?php
 get_footer();
+
+    } else {
+        $wp_query->set_404();
+        status_header(404);
+        get_template_part(404);
+        exit();
+    }
+
+} else {
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
+}
