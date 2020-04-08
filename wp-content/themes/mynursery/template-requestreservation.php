@@ -4,6 +4,7 @@ Template Name: RequestReservation
 */
 session_start();
 
+global $wp_query;
 global $wpdb;
 
 if(!empty($_SESSION) && !empty($_SESSION['login']['nom_creche'])) {
@@ -12,7 +13,11 @@ if(!empty($_SESSION) && !empty($_SESSION['login']['nom_creche'])) {
 
     echo json_encode($reservations);
 } else {
-    die('404');
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
+
 }
 
 

@@ -3,12 +3,16 @@
 Template Name: Agenda
 */
 session_start();
+global $wp_query;
 global $wpdb;
 
 $id = $_SESSION['login']['id'];
 $reservations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}reservation WHERE $id = id_creche");
 if(empty($id) || !is_numeric($id)) {
-    die('404');
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
 } else {
 $length = count($reservations);
 ?>
