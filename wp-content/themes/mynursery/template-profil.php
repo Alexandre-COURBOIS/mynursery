@@ -3,8 +3,12 @@
 Template Name: Profil
 */
 global $wpdb;
+global $wp_query;
 
 session_start();
+
+if (!empty($_SESSION)) {
+    if (!empty($_SESSION['login']['id']) && is_numeric($_SESSION['login']['id'])) {
 
 get_header();
 
@@ -99,3 +103,18 @@ $employes = $wpdb->get_results(
 
 <?php
 get_footer();
+
+    } else {
+        $wp_query->set_404();
+        status_header(404);
+        get_template_part(404);
+        exit();
+    }
+
+} else {
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+    exit();
+}
+
