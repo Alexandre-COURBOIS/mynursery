@@ -10,22 +10,6 @@
 
 }
 
-#calendar-container {
-
-    position: fixed;
-
-    top: 0%;
-
-    text-align: center;
-
-    left: 10%;
-
-    right: 10%;
-
-    bottom: 20%;
-
-}
-
 .calendarTitle {
     text-align: center;
     padding: 20px;
