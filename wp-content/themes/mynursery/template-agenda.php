@@ -82,6 +82,19 @@ $length = count($reservations);
             background-color: #ed6a5a;
             background-image: none;
         }
+        .fc-button-primary:not(:disabled).fc-button-active, .fc-button-primary:not(:disabled):active {
+            background-color: #ed6a5a;
+            opacity: .8;
+        }
+        .fc-button-primary:disabled {
+            background-color: #ed6a5a;
+            opacity: .8;
+        }
+        .fc-button-primary:not(:disabled).fc-button-active,
+        .fc-button-primary:not(:disabled):active {
+            background-color: #ed6a5a;
+            opacity: .8;
+        }
 
     </style>
 
