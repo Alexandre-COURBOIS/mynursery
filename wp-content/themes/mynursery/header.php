@@ -52,22 +52,19 @@
                     <?php if (!empty($_SESSION)) {
                         if (is_numeric($_SESSION['login']['id'])) { ?>
                             <li class="nav-item">
+                                <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="map">Map</a>
                             </li>
                             <li class="nav-item">
-                                <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
+                                <a class="nav-link" href="agenda">Réservations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact">Contact</a>
                             </li>
                         <?php }
                     } ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Project</a>
-                    </li>
                 </ul>
 
                 <?php if (empty($_SESSION)) { ?>
