@@ -1,0 +1,38 @@
+/* ///////////////////
+SECTION ABOUT US
+////////////////// */
+
+
+/*modif unique (.classe) */
+
+.section_aboutus {
+    margin-bottom: 18px;
+}
+.text_aboutus {
+    margin-bottom: 74px;
+    line-height: 32px;
+}
+
+.btn-redirection {
+    display: inline-block;
+    line-height: 43px;
+    border: 1px solid #888;
+    padding: 0 23px;
+    font-size: 13px;
+    color: #555;
+    transition: all .3s ease;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+#supprlink {
+    text-decoration: none;
+}
+
+#h3,#h2 {
+    margin-bottom: 50px;
+}
+
+
+
+

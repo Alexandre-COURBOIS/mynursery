@@ -1,0 +1,30 @@
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid whitesmoke;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+.wrap-header {
+    max-width: 1820px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrap-slider {
+    max-width: 1740px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.btn-toolbar {
+    margin: 5px 5px;
+}
+/*@media screen and (max-width: 950px) {}*/
+

@@ -1,0 +1,58 @@
+.wrap-form {
+    background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e9e9e9));
+    background: linear-gradient(to bottom, #f6f6f6, #e9e9e9);
+    height: 100vh;
+}
+.form-style{
+    z-index: 5000;
+}
+
+.form-style .btn {
+    border-radius: 0;
+}
+.form-style .form-group {
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 0;
+}
+.form-style .form-group:first-child:last-child {
+    height: 100%;
+}
+.form-style .form-group:first-child:last-child .form-control {
+    height: 100%;
+}
+.form-style .form-group textarea {
+    resize: none;
+}
+.form-style .form-group .input-highlight {
+    width: 0;
+    height: 2px;
+    background: #ED6A5A;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    -webkit-transition: width 0.4s ease;
+    transition: width 0.4s ease;
+}
+.form-style .form-group label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: .8em;
+    padding-top: 5px;
+}
+.form-style .form-group .form-control {
+    border-radius: 0;
+    border-width: 0 0 2px 0;
+}
+.form-style .form-group .form-control:focus, .form-style .form-group .form-control.hasValue {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+.form-style .form-group .form-control:focus ~ .input-highlight, .form-style .form-group .form-control.hasValue ~ .input-highlight {
+    width: 100%;
+}
+.error {
+    color: red;
+    font-size: .8em;
+}
