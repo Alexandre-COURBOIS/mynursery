@@ -60,11 +60,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="agenda">Réservations</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact">Contact</a>
-                            </li>
                         <?php }
-                    } ?>
+                    }
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact">Contact</a>
+                    </li>
                 </ul>
 
                 <?php if (empty($_SESSION)) { ?>
