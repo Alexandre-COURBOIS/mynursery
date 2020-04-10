@@ -36,7 +36,7 @@ if (!empty($_POST['submitted'])) {
     $errors['nom'] = $v->textValid($name, 'nom', 3, 100);
     $errors['prenom'] = $v->textValid($surname, 'prenom', 3, 100);
     $errors['birthdate'] = $v->textValid($birthdate, 'date de naissance', 10, 10);
-    $errors['email'] = $v->emailValid($email);
+    $errors['email'] = $v->emailExistAndValid($email,'email','nurs_creche','email','nurs_responsable_legal_enfant');
     $errors['tel'] = $v->isNumeric($phone);
     $errors['tel'] = $v->textValid($phone, 'Numéro de téléphone', 10, 10);
     $errors['num-rue'] = $v->intValid($number_way, 0, 9999);
@@ -81,7 +81,7 @@ if (!empty($_POST['submitted'])) {
                 )
             );
             $success = true;
-            header('Location: home');
+            header('Location: connexion');
 
         } else {
 

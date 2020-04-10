@@ -61,22 +61,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="agenda">Réservations</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact">Contact</a>
+                                </li>
                             <?php } elseif ($_SESSION['login']['user'] == 'particulier') { ?>
                                 <li class="nav-item">
                                     <a id="loaderProfil" class="nav-link" href="http://localhost/mynurserymvc/public/">Profil</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="http://localhost/mynurserymvc/public/ajoutEnfant">Vos enfants</a>
+                                    <a class="nav-link" href="http://localhost/mynurserymvc/public/ajoutEnfant">Vos
+                                        enfants</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="http://localhost/mynurserymvc/public/map">Map</a>
+                                    <a class="nav-link" href="http://localhost/mynursery/map">Map</a>
                                 </li>
                             <?php }
                         }
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
+                        <a class="nav-link" href="http://localhost/mynursery/contact">Contact</a>
                     </li>
                 </ul>
 
