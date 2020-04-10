@@ -14,6 +14,8 @@ class Connexion
             'nom_creche' => $user->nom_creche,
             'prenom' => $user->prenom_gerant,
             'nom' => $user->nom_gerant,
+            'lgt'=>$user->longitude,
+            'lat'=>$user->latitude,
             'ip' => $_SERVER['REMOTE_ADDR'],
         );
 
@@ -35,6 +37,8 @@ class Connexion
             'nom_rue'=>$user->nom_rue,
             'codepostal'=>$user->codepostal,
             'ville'=>$user->ville,
+            'lgt'=>$user->longitude,
+            'lat'=>$user->latitude,
             'ip' => $_SERVER['REMOTE_ADDR'],
         );
 
