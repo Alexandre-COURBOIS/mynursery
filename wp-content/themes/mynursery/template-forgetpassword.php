@@ -25,8 +25,11 @@ if (!empty($_POST['submitted'])) {
     if ($verif->IsValid($errors)) {
 
         $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $email));
+        $userParent = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}responsable_legal_enfant WHERE email = '%s'", $email));
 
-        if (!empty($user)) {
+
+        if (!empty($user || !empty($userParent))) {
+
             if ($email === $user->email) {
 
                 $to_email = $email;
@@ -49,12 +52,41 @@ if (!empty($_POST['submitted'])) {
 
                 $headers = "From : webapsy@gmail.com";
 
+                mail($to_email, $subject, $body, $headers);
+
+                header('Location: home');
+
+            } elseif ($email == $userParent->email) {
+
+                $to_email = $email;
+                $subject = "Réinitialisation de mot de passe";
+                $body = "
+
+                Bonjour, 
+                
+                Pour réinitialiser votre mot de passe cliquer sur le lien suivant : 
+                
+                " . add_query_arg(array(
+                        'token' => urlencode($userParent->token),
+                        'email' => urlencode($userParent->email),
+                    ), 'http://localhost/mynursery/getupdate') . " 
+                         
+                Bien à vous,
+                
+                L'equipe MyNursery
+                ";
+
+                $headers = "From : webapsy@gmail.com";
 
                 mail($to_email, $subject, $body, $headers);
 
                 header('Location: home');
-            }
 
+            } else {
+                $errors['mail'] = "Cette adresse n'existe pas";
+            }
+        } else {
+            $errors['mail'] = "Cette adresse n'existe pas";
         }
     } else {
         $errors['mail'] = "Cette adresse n'existe pas";
