@@ -80,7 +80,25 @@ if (!empty($_POST['submitted'])) {
                     '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%d', '%s', '%s', '%f', '%f', '%s', '%s',
                 )
             );
+
             $success = true;
+
+            $to_email = $email;
+            $subject = "Bienvenue sur MyNursery";
+            $body = "
+            Bonjour, ".$surname.' '.$name."
+           
+            Nous vous souhaitons la bienvenue sur MyNursery,
+            Vous êtes désormais visible sur notre carte, les parents peuvent profiter de vos services.
+            
+            Bien à vous, 
+            
+            L'équipe MyNursery";
+
+            $headers = "From : webapsy@gmail.com";
+
+            mail($to_email,$subject,$body,$headers);
+
             header('Location: connexion');
 
         } else {
@@ -110,7 +128,25 @@ if (!empty($_POST['submitted'])) {
                     '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%d', '%s', '%s', '%f', '%f', '%s', '%s',
                 )
             );
+
             $success = true;
+
+            $to_email = $email;
+            $subject = "Bienvenue sur MyNursery";
+            $body = "
+            Bonjour, ".$surname.' '.$name."
+           
+            Nous vous souhaitons la bienvenue sur MyNursery,
+            Vous êtes désormais visible sur notre carte, les parents peuvent profiter de vos services.
+            
+            Bien à vous, 
+            
+            L'équipe MyNursery";
+
+            $headers = "From : webapsy@gmail.com";
+
+            mail($to_email,$subject,$body,$headers);
+
             header('Location: connexion');
         }
     }
