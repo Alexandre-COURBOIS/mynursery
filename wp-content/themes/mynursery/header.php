@@ -23,7 +23,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
     <script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.fr-fr.js" type="text/javascript"></script>
 
     <?php wp_head(); ?>
@@ -50,21 +50,38 @@
                         <a class="nav-link" href="home">Home</a>
                     </li>
                     <?php if (!empty($_SESSION)) {
-                        if (is_numeric($_SESSION['login']['id'])) { ?>
-                            <li class="nav-item">
-                                <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="map">Map</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="agenda">Réservations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact">Contact</a>
-                            </li>
-                        <?php }
-                    } ?>
+                        if (is_numeric($_SESSION['login']['id'])) {
+                            if ($_SESSION['login']['user'] == 'pro') { ?>
+                                <li class="nav-item">
+                                    <a id="loaderProfil" class="nav-link" href="profil">Profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="map">Map</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="agenda">Réservations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact">Contact</a>
+                                </li>
+                            <?php } elseif ($_SESSION['login']['user'] == 'particulier') { ?>
+                                <li class="nav-item">
+                                    <a id="loaderProfil" class="nav-link" href="http://localhost/mynurserymvc/public/">Profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost/mynurserymvc/public/ajoutEnfant">Vos
+                                        enfants</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost/mynursery/map">Map</a>
+                                </li>
+                            <?php }
+                        }
+                    }
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/mynursery/contact">Contact</a>
+                    </li>
                 </ul>
 
                 <?php if (empty($_SESSION)) { ?>
