@@ -10,6 +10,7 @@ class Connexion
     public function InitializeSession($user,$header)
     {
         $_SESSION['login'] = array(
+            'user' => 'pro',
             'id' => $user->id_creche,
             'nom_creche' => $user->nom_creche,
             'prenom' => $user->prenom_gerant,
@@ -25,6 +26,7 @@ class Connexion
     public function InitializeSessionParent($user,$header)
     {
         $_SESSION['login'] = array(
+            'user' => 'particulier',
             'id' => $user->idresponsable_legale,
             'nom' => $user->nom,
             'prenom' => $user->prenom,
