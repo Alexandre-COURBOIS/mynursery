@@ -28,7 +28,8 @@ if (!empty($_POST['submitted'])) {
         $userParent = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}responsable_legal_enfant WHERE email = '%s'", $email));
 
 
-        if (!empty($user)) {
+        if (!empty($user || !empty($userParent))) {
+
             if ($email === $user->email) {
 
                 $to_email = $email;
@@ -68,7 +69,7 @@ if (!empty($_POST['submitted'])) {
                 " . add_query_arg(array(
                         'token' => urlencode($userParent->token),
                         'email' => urlencode($userParent->email),
-                    ), 'http://localhost/mynursery/update') . " 
+                    ), 'http://localhost/mynursery/getupdate') . " 
                          
                 Bien à vous,
                 

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: update
+Template Name: getupdate
 */
 
 global $wpdb;
@@ -22,7 +22,7 @@ if (!empty($_GET['email']) && !empty($_GET['token'])) {
     $token_url = urldecode($_GET['token']);
     $email_url = urldecode($_GET['email']);
 
-    $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE token = '%s'", $token_url));
+    $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}responsable_legal_enfant WHERE token = '%s'", $token_url));
 
     if (!empty($user)) {
 
@@ -44,7 +44,7 @@ if (!empty($_GET['email']) && !empty($_GET['token'])) {
 
 
                     $wpdb->update(
-                        'nurs_creche',
+                        'nurs_responsable_legal_enfant',
                         array(
                             'password' => $hashpassword,
                             'token' => $token,
@@ -132,7 +132,6 @@ if (!empty($_GET['email']) && !empty($_GET['token'])) {
         exit();
     }
 } else {
-
     $wp_query->set_404();
     status_header(404);
     get_template_part(404);
