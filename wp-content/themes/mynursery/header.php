@@ -72,6 +72,9 @@
                                 <li>
                                     <a href="http://localhost/mynurserymvc/public/nurses" class="nav-link">Les Crèches</a>
                                 </li>
+                                <li>
+                                    <a href="http://localhost/mynurserymvc/public/agenda" class="nav-link">Agenda</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="http://localhost/mynurserymvc/public/map">Map</a>
                                 </li>
