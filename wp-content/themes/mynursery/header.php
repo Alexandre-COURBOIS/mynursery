@@ -61,9 +61,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="agenda">Réservations</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact">Contact</a>
-                                </li>
                             <?php } elseif ($_SESSION['login']['user'] == 'particulier') { ?>
                                 <li class="nav-item">
                                     <a id="loaderProfil" class="nav-link" href="http://localhost/mynurserymvc/public/">Profil</a>
@@ -73,7 +70,7 @@
                                         enfants</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="http://localhost/mynursery/map">Map</a>
+                                    <a class="nav-link" href="http://localhost/mynurserymvc/public/map">Map</a>
                                 </li>
                             <?php }
                         }
