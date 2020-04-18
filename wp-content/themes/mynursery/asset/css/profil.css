@@ -1,18 +1,18 @@
-.container_img {
-    max-width: 1900px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
+.title_profil {
+    font-weight: bold;
+    font-size: 5vh;
+    text-decoration: underline;
 }
 
-#profil_infos {
-    border-radius: 25px !important;
-    z-index: 10;
-    top: 15%;
-    left: 15%;
-    position: absolute;
-    height: 400px;
-    width: 1300px;
-    border: 1px grey solid;
-    background: rgba(255, 255, 255, 0.7);
+#hidden {
+    visibility: hidden;
+}
+
+.img_profil {
+    border-radius: 25%;
+    width: 250px;
+}
+
+#margin_profil {
+    margin: 10px 0;
 }

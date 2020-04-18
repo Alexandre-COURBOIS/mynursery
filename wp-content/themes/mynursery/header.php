@@ -69,6 +69,9 @@
                                     <a class="nav-link" href="http://localhost/mynurserymvc/public/ajoutEnfant">Vos
                                         enfants</a>
                                 </li>
+                                <li>
+                                    <a href="http://localhost/mynurserymvc/public/nurses" class="nav-link">Les Crèches</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="http://localhost/mynurserymvc/public/map">Map</a>
                                 </li>
