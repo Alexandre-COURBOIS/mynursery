@@ -89,7 +89,8 @@ if (!empty($_POST['submitted'])) {
             Bonjour, ".$surname.' '.$name."
            
             Nous vous souhaitons la bienvenue sur MyNursery,
-            Vous êtes désormais visible sur notre carte, les parents peuvent profiter de vos services.
+            
+            Vous avez désormais accès à la totalité de nos services.
             
             Bien à vous, 
             
