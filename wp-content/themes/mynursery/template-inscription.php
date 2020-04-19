@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once ('vendor/autoload.php');
 global $wpdb;
 
 /*
@@ -51,7 +50,7 @@ if (!empty($_POST['submitted'])) {
     $errors['siret'] = $v->textValid($siret, 'N° de siret', 14, 14);
     $errors['secu'] = $v->textValid($social_secu, 'N° de sécu', 13, 13);
     $errors['agrement'] = $v->textValid($agrement, 'N° d\'agrement', 3, 13);
-    $errors['max-child'] = $v->intValid($child_max, 1, 10);
+    $errors['max-child'] = $v->intValid($child_max, 1, 500);
     $errors['mdp'] = $v->passwordValid($password, $password2);
 
 
