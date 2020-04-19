@@ -67,17 +67,7 @@ $.ajax({
         map.on('load', function () {
             var geojson = {
                 type: 'FeatureCollection',
-                features: [{
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [1.101775, 49.438669]
-                    },
-                    properties: {
-                        title: 'Campus Saint Marc',
-                        description: 'WEBAPSY'
-                    }
-                },/*If need one more put it here*/]
+                features: []
             };
             var i;
             for(i=0;i<users.length;i++) {
