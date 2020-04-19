@@ -13,6 +13,16 @@
     width: 250px;
 }
 
-#margin_profil {
+#listeProfil {
+    margin: 10px 0;
+}
+
+#sous-titre{
+font-size: 20px;
+ text-transform: uppercase;
+    margin: 20px 0;
+}
+
+#btnProfil{
     margin: 10px 0;
 }
