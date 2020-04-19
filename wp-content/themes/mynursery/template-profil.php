@@ -24,7 +24,6 @@ if (!empty($_SESSION)) {
 
 
         ?>
-
         <div class="separator"></div>
 
         <div class="container">
@@ -92,13 +91,6 @@ if (!empty($_SESSION)) {
 
 
         <div class="separator"></div>
-
-         <div class="loader">
-                <div class="load-text">
-                    <div class="loaded-text">B</div>
-                    <div class="loading-text">ienvenue</div>
-                </div>
-            </div>
 
         <?php
         get_footer();
