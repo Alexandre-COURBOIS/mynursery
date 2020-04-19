@@ -1,16 +1,22 @@
 .title_profil {
-    font-weight: bold;
-    font-size: 5vh;
-    text-decoration: underline;
+    font-size: 7vh;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .3em;
+    vertical-align: middle;
 }
-
+#profil-label {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    color: black;
+}
 #hidden {
     visibility: hidden;
 }
 
 .img_profil {
     border-radius: 25%;
-    width: 250px;
 }
 
 #margin_profil {
@@ -47,6 +53,9 @@
     width: 0;
     overflow: hidden;
     animation: expand .5s linear 1.5s forwards;
+}
+.titre_tab {
+    caption-side: top;
 }
 
 
