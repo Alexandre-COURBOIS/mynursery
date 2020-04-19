@@ -24,12 +24,33 @@ class Validation
      * @return string $error
      */
 
+    public function emailExistAndValid($email, $column, $table, $column2, $table2)
+    {
+        global $wpdb;
+        $error = '';
+
+        $tab = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $email));
+        $tab2 = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}creche WHERE email = '%s'", $email));
+
+        if (empty($tab) && empty($tab2)) {
+                if (empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
+                    $error = 'Adresse email invalide.';
+                }
+            } else {
+                $error = 'Cette adresse est déjà utilisé.';
+            }
+        return $error;
+    }
+
     public function emailValid($email)
     {
+
         $error = '';
+
         if (empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
             $error = 'Adresse email invalide.';
         }
+
         return $error;
     }
 
@@ -64,15 +85,14 @@ class Validation
     }
 
 
-    public function isNumeric( $value)
-{
-    $error = '';
-    if(is_numeric($value) === false)
+    public function isNumeric($value)
     {
-        $error= 'Champ invalide';
+        $error = '';
+        if (is_numeric($value) === false) {
+            $error = 'Champ invalide';
+        }
+        return $error;
     }
-    return $error;
-}
 
     public function intValid($int, $min, $max)
     {
@@ -105,9 +125,8 @@ class Validation
     public function radioExist($name, $nomRadio)
     {
         $error = '';
-        if(empty($name))
-        {
-            $error= 'Veuillez séléctionner un ' . $nomRadio . '.';
+        if (empty($name)) {
+            $error = 'Veuillez séléctionner un ' . $nomRadio . '.';
         }
         return $error;
     }

@@ -108,7 +108,7 @@ $length = count($reservations);
 </script>
 <?php get_header(); ?>
 <div class='container-flex mt-4'>
-    <h2 class="calendarTitle">Réservations <?= $reservations[0]->nom_creche; ?> </h2>
+    <h2 class="calendarTitle">Réservations <?php if (!empty($reservations)) : echo $reservations[0]->nom_creche; endif ?> </h2>
     <div id='calendar'></div>
 
 </div>

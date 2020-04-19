@@ -125,6 +125,7 @@ if (!empty($_POST['submitted'])) {
                 array('%d')
             );
         }
+        header('Location: profil');
     } else {
         $errors['oldmdp'] = "Le mot de passe actuel renseigné n'est pas correct";
     }

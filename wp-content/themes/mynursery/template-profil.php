@@ -24,7 +24,6 @@ if (!empty($_SESSION)) {
 
 
         ?>
-
         <div class="separator"></div>
 
         <div class="container">
@@ -70,8 +69,9 @@ if (!empty($_SESSION)) {
                     <p id="profil-label">Effectif d'enfant maximum :</p>
                     <p id="margin_profil"><?= $creches[0]->effectif_maxenfant; ?></p>
                     <a href="<?= add_query_arg('id', $creches[0]->id_creche, home_url() . '/edit'); ?>" type="button"
-                       class="btn btn-primary btn-lg">Editer votre profil</a>
+                       id="btnProfil" class="btn btn-primary btn-lg">Editer votre profil</a>
                 </div>
+
                 <div class="col-md-6">
 
                     <div class="separator_map"></div>
@@ -87,38 +87,29 @@ if (!empty($_SESSION)) {
                             <th id="profil-label" scope="col">Prenom</th>
                             <th id="profil-label" scope="col">Téléphone</th>
                             <th id="profil-label" scope="col">Suppression</th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $i = 1 ?>
                         <?php foreach ($employes as $employe) { ?>
                             <tr>
-                                <th scope="row"><?= $i ?></th>
-                                <td><?= $employe->nom_employee ?></td>
-                                <td><?= $employe->prenom_employee ?></td>
+                                <th><?= strtoupper($employe->nom_employee) ?></th>
+                                <td><?= ucfirst($employe->prenom_employee) ?></td>
                                 <td>0<?= $employe->telephone_employee ?></td>
                                 <td><a style="background-color: red !important; border-radius: 15px !important;"
                                        href="<?php echo add_query_arg('id', $employe->id_employee, home_url() . '/delete'); ?>"
                                        type="button" class="btn btn-danger">Delete</a></td>
                             </tr>
-                            <?php $i++;
+                            <?php
                         } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
 
 
         <div class="separator"></div>
-
-        <!--    <div class="loader">
-                <div class="load-text">
-                    <div class="loaded-text">B</div>
-                    <div class="loading-text">ienvenue</div>
-                </div>
-            </div>-->
 
         <?php
         get_footer();
