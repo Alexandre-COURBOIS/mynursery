@@ -16,8 +16,19 @@ At this point you have an initialize repository wordpress, and a clone repositor
 
 Now you can copy all the content in the repository of wordpress, and past it into Mynursery repository ( <!> DO NOT ERASE THE SAME FILES <!> or you'll have to restart everything from the beginning).
 
+When everything is ready, you can go to the "pages" on wordpress and add some, who's name as : 
+
+About,agenda,Ajouter un employé, Connexion, Contact, deconnexion, delete, edit, getupdate, inscription, inscription_parent, map, oublie, Profil, Request, RequestReservation, success, update.
+
+All thoses pages are necessary, to make work correctly the website.
+
+
                                                          Our organization
+
                                                           
-//
+Webapsy is based in France, our objectives in one sentence : 
+
+Simplify the life of every parents, to find a possibility, to keep in security her childrens.
+
                                         
                                                     All right reserved ©MyNursery
